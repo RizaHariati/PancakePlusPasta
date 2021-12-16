@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 
     [theme.breakpoints.down("md")]: {
       paddingBottom: 100,
+      justifyContent: "flex-start",
     },
     [theme.breakpoints.down("sm")]: {
       padding: 10,
@@ -64,14 +65,41 @@ const useStyles = makeStyles({
   },
   image3: {
     display: "block",
-    transition: "all 1s ease-in",
+    zIndex: -2,
+    objectFit: "cover",
+    objectPosition: "center",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
+  subTitle: {
+    fontSize: "40px",
+    transition: "all 1s ease-in",
+    textAlign: "left",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "30px",
+      textAlign: "center",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      textAlign: "center",
+    },
+  },
+  mainTitle: {
+    fontSize: "65px",
+    transition: "all 1s ease-in",
+    textAlign: "left",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "50px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "40px",
+      textAlign: "center",
+    },
+  },
 })
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   const classes = useStyles()
   const [enter, setEnter] = useState(0)
 
@@ -90,23 +118,11 @@ const IndexPage = ({ data }) => {
           variant="h2"
           color="primary"
           align="center"
-          sx={{
-            fontSize: { md: "40px", sm: "30px", xs: "25px" },
-            transition: "all 1s ease-in",
-          }}
+          className={classes.subTitle}
         >
           Welcome to
         </Typography>
-        <Typography
-          variant="h1"
-          color="primary"
-          sx={{
-            fontSize: { md: "60px", sm: "50px", xs: "45px" },
-            transition: "all 1s ease-in",
-            // width: { lg: "100%", md: "30%", sm: "100%", xs: "100%" },
-            textAlign: { md: "left", sm: "left", xs: "center" },
-          }}
-        >
+        <Typography variant="h1" color="primary" className={classes.mainTitle}>
           Pancake{" "}
           <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
           Pasta
@@ -116,8 +132,8 @@ const IndexPage = ({ data }) => {
           alt="detail"
           placeholder="tracedSVG"
           layout="constrained"
+          height={225}
           className={classes.image3}
-          height={200}
         />
       </div>
       <StaticImage
