@@ -102,7 +102,7 @@ const IndexPage = ({ data }) => {
           }}
         >
           Pancake{" "}
-          <span style={{ color: theme.palette.secondary.main }}>Plus</span>{" "}
+          <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
           Pasta
         </Typography>
         <StaticImage
@@ -116,7 +116,7 @@ const IndexPage = ({ data }) => {
       </div>
       <StaticImage
         src="../images/main/fruits2.jpg"
-        alt="fruits"
+        alt="fruits2"
         placeholder="tracedSVG"
         layout="constrained"
         className={classes.image1}
@@ -125,7 +125,7 @@ const IndexPage = ({ data }) => {
       />
       <StaticImage
         src="../images/main/fruits1.jpg"
-        alt="fruits"
+        alt="fruits1"
         placeholder="tracedSVG"
         layout="constrained"
         className={classes.image2}

@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Dr Sugiyama
+- Font Author: Copyright (c) 2004 Alejandro Paul (sudtipos@sudtipos.com), with Reserved Font Name "Dr Sujiyama"
+- Font Source: http://fonts.gstatic.com/s/drsugiyama/v12/HTxoL2k4N3O9n5I1boGI7abRM4-t-g7y.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

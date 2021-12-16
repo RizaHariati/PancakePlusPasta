@@ -3,50 +3,80 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
   width: 100%;
+  color: white;
 }
 
 .main-background {
   position: relative;
   width: 100%;
+  min-height: 100vh;
+  text-decoration: none;
 }
 
-.main-image1 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  width: 70%;
+.content-container {
   height: 100vh;
-  -o-object-fit: fill;
-     object-fit: fill;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7fr 5fr;
+      grid-template-columns: 7fr 5fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
 }
 
-.detail-image {
-  display: inline-block;
+.slider {
+  position: relative;
+  height: calc(100% - 60px);
+  width: 100%;
+  background-color: transparent;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 900px) {
-  .main-image1 {
-    display: none;
-  }
-  .main-image2 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    width: 70%;
-    height: 100vh;
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-    -o-object-fit: fill;
-       object-fit: fill;
-  }
+.slide {
+  -webkit-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+  position: absolute;
+  max-height: 80vh;
+  width: 100%;
+}
+
+.slide.before {
+  left: -100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+.slide.active {
+  left: 0;
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide.after {
+  left: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+
+.loginContainer {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.loginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
 }
 /*# sourceMappingURL=styles.css.map */
