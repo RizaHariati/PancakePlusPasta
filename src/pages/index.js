@@ -11,6 +11,7 @@ const useStyles = makeStyles({
     position: "relative",
     width: "100%",
     minHeight: "100vh",
+    transition: "all 1s ease-in",
   },
   mainText: {
     height: "100vh",
@@ -63,6 +64,7 @@ const useStyles = makeStyles({
   },
   image3: {
     display: "block",
+    transition: "all 1s ease-in",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -88,7 +90,10 @@ const IndexPage = ({ data }) => {
           variant="h2"
           color="primary"
           align="center"
-          sx={{ fontSize: { md: "40px", sm: "30px", xs: "25px" } }}
+          sx={{
+            fontSize: { md: "40px", sm: "30px", xs: "25px" },
+            transition: "all 1s ease-in",
+          }}
         >
           Welcome to
         </Typography>
@@ -96,7 +101,8 @@ const IndexPage = ({ data }) => {
           variant="h1"
           color="primary"
           sx={{
-            fontSize: { md: "60px", sm: "50px", xs: "40px" },
+            fontSize: { md: "60px", sm: "50px", xs: "45px" },
+            transition: "all 1s ease-in",
             // width: { lg: "100%", md: "30%", sm: "100%", xs: "100%" },
             textAlign: { md: "left", sm: "left", xs: "center" },
           }}
