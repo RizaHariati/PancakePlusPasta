@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Pancake Plus Pasta`,
@@ -29,6 +33,14 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon-32x32.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `e5luqde77e5w`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.API_KEY,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

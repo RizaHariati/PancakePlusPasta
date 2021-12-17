@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles"
-import { blueGrey, grey, orange } from "@mui/material/colors"
+import { grey, orange } from "@mui/material/colors"
 export const theme = createTheme({
   palette: {
     primary: orange,
@@ -15,6 +15,11 @@ export const theme = createTheme({
     },
     h3: {
       fontSize: "32px",
+    },
+    h6: {
+      fontSize: "10px",
+      lineHeight: "12px",
+      fontWeight: 300,
     },
   },
 })

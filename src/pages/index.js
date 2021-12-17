@@ -110,7 +110,7 @@ const IndexPage = () => {
         navigate("/Content")
       }, 1500)
     }
-  }, [])
+  }, [enter])
   return (
     <div className={classes.mainBackground}>
       <div className={classes.mainText}>

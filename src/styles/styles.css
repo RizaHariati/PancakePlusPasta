@@ -1,3 +1,7 @@
+:root {
+  --primary-light: #ffac33;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +13,15 @@
 body {
   width: 100%;
   color: white;
+}
+
+.footerAttribute {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
 }
 
 .main-background {
@@ -31,7 +44,8 @@ body {
 
 .slider {
   position: relative;
-  height: calc(100% - 60px);
+  height: calc(100% -20px);
+  margin-inline: auto;
   width: 100%;
   background-color: transparent;
   overflow: hidden;
@@ -41,7 +55,7 @@ body {
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
   position: absolute;
-  max-height: 80vh;
+  padding-block: 30px;
   width: 100%;
 }
 
@@ -67,9 +81,12 @@ body {
   width: 100%;
   height: 100%;
   padding: 20px;
+  background-color: var(--primary-light);
 }
 
 .loginForm {
+  width: 100%;
+  max-width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,6 +94,65 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
   row-gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .content-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 4fr 8fr;
+        grid-template-rows: 4fr 8fr;
+  }
+  .slider {
+    width: 300px;
+    max-width: 400px;
+  }
+  .slide {
+    padding-block: 10px;
+  }
+  .loginContainer {
+    padding: 15px;
+  }
+  .loginForm {
+    max-width: 300px;
+    row-gap: 8px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .content-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: 4fr 8fr;
+        grid-template-rows: 4fr 8fr;
+  }
+  .slider {
+    width: 300px;
+    max-width: 400px;
+  }
+  .loginContainer {
+    padding: 10px;
+  }
+  .loginForm {
+    max-width: 250px;
+    row-gap: 8px;
+  }
+  .footerAttribute {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -webkit-column-gap: 0rem;
+            column-gap: 0rem;
+    row-gap: 0rem;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

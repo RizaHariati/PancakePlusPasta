@@ -2,18 +2,16 @@ import {
   AppBar,
   Avatar,
   Badge,
-  Button,
   IconButton,
-  Link,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material"
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
-import { links, toolbar } from "../styles/styles"
+import { toolbar } from "../styles/styles"
 import React from "react"
-import { AccountCircle } from "@mui/icons-material"
+import { Link } from "gatsby"
 
 const Navbar = () => {
   const theme = useTheme()
@@ -21,7 +19,14 @@ const Navbar = () => {
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
-        <Link to="/Content" sx={links}>
+        <Link
+          to="/Content/"
+          style={{
+            display: "inline-flex",
+            columnGap: "10px",
+            cursor: "pointer",
+          }}
+        >
           <Avatar variant="square" alt="icon">
             <StaticImage
               src="../images/icons/icon-light-192x192.png"
@@ -30,7 +35,11 @@ const Navbar = () => {
               alt="logo"
             />
           </Avatar>
-          <Typography variant="h3" color="white">
+          <Typography
+            variant="h3"
+            color="white"
+            sx={{ display: { md: "block", sm: "none", xs: "none" } }}
+          >
             Pancake{" "}
             <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
             Pasta
