@@ -8,7 +8,7 @@ const Footer = () => {
 
   const footerAppbar = {
     background: theme.palette.secondary.dark,
-    position: "absolute",
+
     bottom: { md: -80, xs: -130 },
     top: "auto",
     textAlign: { md: "left", xs: "center" },
@@ -16,7 +16,7 @@ const Footer = () => {
   }
 
   return (
-    <AppBar sx={footerAppbar}>
+    <AppBar position="sticky" sx={footerAppbar}>
       <Toolbar sx={footerToolbar}>
         <Typography variant="body1" color="white">
           <span style={{ color: theme.palette.primary.light }}>

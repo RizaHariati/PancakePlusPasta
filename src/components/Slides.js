@@ -8,7 +8,7 @@ const query = graphql`
   query delivery {
     allContentfulPancakeMenu(
       filter: { type: { eq: "delivery" } }
-      sort: { fields: title, order: DESC }
+      sort: { fields: title, order: ASC }
     ) {
       nodes {
         title
@@ -39,7 +39,7 @@ const Slides = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(prev => prev - 1)
+      setIndex(prev => prev + 1)
     }, 3000)
     return () => {
       clearInterval(interval)

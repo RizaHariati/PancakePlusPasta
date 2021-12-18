@@ -11,6 +11,11 @@
 body {
   width: 100%;
   color: white;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 .footerAttribute {
   display: grid;
@@ -24,7 +29,7 @@ body {
   text-decoration: none;
 }
 .content-container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 7fr 5fr;
@@ -32,11 +37,14 @@ body {
 }
 .slider {
   position: relative;
-  height: calc(100% -20px);
+  min-height: calc(100% -10px);
   margin-inline: auto;
   width: 100%;
   background-color: transparent;
   overflow: hidden;
+}
+.menu-links {
+  padding-top: 7px;
 }
 .slide {
   transition: all 1s ease-in;
@@ -45,7 +53,7 @@ body {
   width: 100%;
 
   &.before {
-    left: -100%;
+    left: 100%;
     opacity: 0;
     z-index: -1;
   }
@@ -55,7 +63,7 @@ body {
     z-index: 1;
   }
   &.after {
-    left: 100%;
+    left: -100%;
     opacity: 0;
     z-index: -1;
   }
@@ -77,7 +85,30 @@ body {
   margin: auto;
   row-gap: 20px;
 }
-
+.myCartPrice-logos {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.myCartPrice-price1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.myCartPrice-price2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-between;
+  column-gap: 10px;
+}
 @media screen and(max-width:900px) {
   .content-container {
     grid-template-columns: 1fr;
@@ -122,4 +153,39 @@ body {
     column-gap: 0rem;
     row-gap: 0rem;
   }
+}
+
+// ======================submenu==============
+.priceContainer {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  row-gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.addToCart {
+  border: 0.5px solid black;
+  height: 25px;
+  width: 75px;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  overflow: hidden;
+}
+.inputCart {
+  border: none;
+  height: 100%;
+  width: 25px;
+  text-align: center;
+  border-inline: 0.5px solid black;
+}
+.itemPrice {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }

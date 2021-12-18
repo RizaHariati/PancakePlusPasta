@@ -10,12 +10,17 @@ import {
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
-
-const Navbar = () => {
+import {
+  useGlobalContext,
+  GlobalContext,
+} from "../context/GlobalContextProvider"
+const Navbar = ({ showList, setShowList }) => {
   const theme = useTheme()
-
+  const { totalItems } = useGlobalContext()
+  console.log(useContext(GlobalContext))
+  console.log(totalItems)
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
@@ -47,9 +52,13 @@ const Navbar = () => {
         </Link>
         <div className="menu-links">
           <Tooltip title="your order">
-            <Badge badgeContent={1} color="error" overlap="circular">
-              <IconButton variant="contained" color="secondary">
-                <Avatar>
+            <Badge badgeContent={totalItems} color="error" overlap="circular">
+              <IconButton
+                variant="contained"
+                color="secondary"
+                onClick={() => setShowList(!showList)}
+              >
+                <Avatar style={{ height: 35, width: 35 }}>
                   <StaticImage src="../images/icons/cart.jpg" alt="cart" />
                 </Avatar>
               </IconButton>
@@ -59,7 +68,7 @@ const Navbar = () => {
           <Tooltip title="messages">
             <Badge badgeContent={1} color="error" overlap="circular">
               <IconButton variant="contained" color="secondary">
-                <Avatar>
+                <Avatar style={{ height: 35, width: 35 }}>
                   <StaticImage src="../images/icons/mail.jpg" alt="mail" />
                 </Avatar>
               </IconButton>
@@ -67,7 +76,7 @@ const Navbar = () => {
           </Tooltip>
           <Tooltip title="your account">
             <IconButton variant="contained">
-              <Avatar>
+              <Avatar style={{ height: 35, width: 35 }}>
                 <StaticImage src="../images/icons/user.jpg" alt="user" />
               </Avatar>
             </IconButton>

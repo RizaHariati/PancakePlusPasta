@@ -1,5 +1,5 @@
 const mainDark = "#ef6c00"
-
+// =====================layout=======================
 const toolbar = {
   width: "100%",
   display: "flex",
@@ -45,5 +45,65 @@ const loginButton = {
   width: "100%",
   size: { md: "large", sm: "small" },
 }
+// =====================Menu=======================
 
-export { toolbar, footerToolbar, subTitle, paper, loginButton, deliveryTitle }
+const container = {
+  width: "100%",
+  minHeight: "calc(100vh - 60px)",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "20px",
+  paddingBlock: "20px",
+}
+const card = {
+  width: "220px",
+  margin: "auto",
+}
+const cardActions = {
+  minHeight: "100px",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}
+
+// ====================box======================
+const boxContainer = {
+  position: "relative",
+  width: { sm: "300px", xs: "100vw" },
+  height: { sm: "100%", xs: "100vh" },
+  background: "white",
+  margin: "auto",
+  padding: "20px",
+  paddingTop: "50px",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "10px",
+}
+const modalBtn = {
+  position: "absolute",
+  top: 0,
+  right: 0,
+}
+const shoppingPaper = {
+  height: "calc(100% - 80px)",
+  overflowY: "scroll",
+  padding: "5px",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "10px",
+}
+export {
+  container,
+  toolbar,
+  footerToolbar,
+  subTitle,
+  paper,
+  loginButton,
+  deliveryTitle,
+  card,
+  cardActions,
+  boxContainer,
+  modalBtn,
+  shoppingPaper,
+}

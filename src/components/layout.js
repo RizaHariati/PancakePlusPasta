@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 import "../styles/styles.css"
+import ShoppingList from "./ShoppingList"
 const Layout = ({ children }) => {
+  const [showList, setShowList] = useState(true)
   return (
     <div>
-      <Navbar />
+      <Navbar showList={showList} setShowList={setShowList} />
+      <ShoppingList showList={showList} setShowList={setShowList} />
       {children}
       <Footer />
     </div>

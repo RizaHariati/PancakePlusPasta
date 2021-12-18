@@ -8,13 +8,18 @@ export const theme = createTheme({
   typography: {
     fontFamily: "'Roboto', sans-serif",
     h1: {
-      fontSize: "70px",
+      fontSize: "60px",
     },
     h2: {
-      fontSize: "40px",
+      fontSize: "45px",
     },
     h3: {
       fontSize: "32px",
+      textTransform: "capitalize",
+    },
+    h4: {
+      fontSize: "26px",
+      textTransform: "capitalize",
     },
     h6: {
       fontSize: "10px",

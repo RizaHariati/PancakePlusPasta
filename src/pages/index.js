@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     minHeight: "100vh",
     transition: "all 1s ease-in",
   },
-  mainText: {
+  mainText1: {
     height: "100vh",
     width: "100%",
     display: "flex",
@@ -27,13 +27,22 @@ const useStyles = makeStyles({
       justifyContent: "flex-start",
     },
     [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  mainText2: {
+    height: "100vh",
+    width: "100%",
+    display: "none",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: 10,
+
+    [theme.breakpoints.down("sm")]: {
       padding: 10,
       alignItems: "center",
-      justifyContent: "flex-start",
-    },
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "flex-start",
-      padding: 3,
+      display: "flex",
     },
   },
   image1: {
@@ -59,7 +68,9 @@ const useStyles = makeStyles({
     top: 0,
     right: 0,
     zIndex: -1,
+
     [theme.breakpoints.down("sm")]: {
+      width: "100%",
       display: "none",
     },
   },
@@ -70,31 +81,6 @@ const useStyles = makeStyles({
     objectPosition: "center",
     [theme.breakpoints.down("md")]: {
       display: "none",
-    },
-  },
-  subTitle: {
-    fontSize: "40px",
-    transition: "all 1s ease-in",
-    textAlign: "left",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "30px",
-      textAlign: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "25px",
-      textAlign: "center",
-    },
-  },
-  mainTitle: {
-    fontSize: "65px",
-    transition: "all 1s ease-in",
-    textAlign: "left",
-    [theme.breakpoints.down("md")]: {
-      fontSize: "50px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "40px",
-      textAlign: "center",
     },
   },
 })
@@ -113,16 +99,29 @@ const IndexPage = () => {
   }, [enter])
   return (
     <div className={classes.mainBackground}>
-      <div className={classes.mainText}>
-        <Typography
-          variant="h2"
-          color="primary"
-          align="center"
-          className={classes.subTitle}
-        >
+      <div className={classes.mainText1}>
+        <Typography variant="h2" color="primary" align="left">
           Welcome to
         </Typography>
-        <Typography variant="h1" color="primary" className={classes.mainTitle}>
+        <Typography variant="h1" color="primary" align="left">
+          Pancake{" "}
+          <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
+          Pasta
+        </Typography>
+        <StaticImage
+          src="../images/main/detail.jpg"
+          alt="detail"
+          placeholder="tracedSVG"
+          layout="constrained"
+          height={225}
+          className={classes.image3}
+        />
+      </div>
+      <div className={classes.mainText2}>
+        <Typography variant="h3" color="primary" align="center">
+          Welcome to
+        </Typography>
+        <Typography variant="h2" color="primary" align="center">
           Pancake{" "}
           <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
           Pasta
