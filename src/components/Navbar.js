@@ -47,7 +47,7 @@ const Navbar = ({ showList, setShowList }) => {
         </Link>
         <div className="menu-links">
           <Tooltip title="your order">
-            <Badge badgeContent={totalItems} color="error" overlap="circular">
+            <Badge badgeContent={4} color="error" overlap="circular">
               <IconButton
                 variant="contained"
                 color="secondary"
