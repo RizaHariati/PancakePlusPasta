@@ -1,7 +1,6 @@
 import { Add, Remove } from "@mui/icons-material"
 import { ButtonBase, Typography } from "@mui/material"
 import React from "react"
-import { useGlobalContext } from "../context/GlobalContextProvider"
 
 const Item = ({ item }) => {
   const { name, price } = item
