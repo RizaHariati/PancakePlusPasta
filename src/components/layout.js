@@ -4,7 +4,7 @@ import Navbar from "./Navbar"
 import "../styles/styles.css"
 import ShoppingList from "./ShoppingList"
 const Layout = ({ children }) => {
-  const [showList, setShowList] = useState(true)
+  const [showList, setShowList] = useState(false)
   return (
     <div>
       <Navbar showList={showList} setShowList={setShowList} />

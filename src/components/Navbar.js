@@ -10,17 +10,12 @@ import {
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
-import React, { useContext } from "react"
+import React from "react"
 import { Link } from "gatsby"
-import {
-  useGlobalContext,
-  GlobalContext,
-} from "../context/GlobalContextProvider"
+
 const Navbar = ({ showList, setShowList }) => {
   const theme = useTheme()
-  const { totalItems } = useGlobalContext()
-  console.log(useContext(GlobalContext))
-  console.log(totalItems)
+
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
