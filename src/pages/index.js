@@ -18,68 +18,36 @@ const useStyles = makeStyles({
     width: "100%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
-
-    [theme.breakpoints.down("md")]: {
-      paddingBottom: 100,
+    [theme.breakpoints.down("sm")]: {
       justifyContent: "flex-start",
     },
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
   },
-  mainText2: {
-    height: "100vh",
-    width: "100%",
-    display: "none",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 10,
 
-    [theme.breakpoints.down("sm")]: {
-      padding: 10,
-      alignItems: "center",
-      display: "flex",
-    },
-  },
-  image1: {
-    display: "none",
+  image2: {
+    display: "block",
     position: "absolute",
-    height: "100vh",
-    // width: "100%",
+    width: "35%",
+    left: 0,
     bottom: 0,
     zIndex: -1,
     [theme.breakpoints.down("sm")]: {
       display: "block",
-      bottom: -50,
-    },
-    [theme.breakpoints.down("xs")]: {
-      bottom: "0px",
+      width: "100%",
     },
   },
-  image2: {
+  image1: {
     display: "block",
     position: "absolute",
-    width: "70%",
-    height: "100%",
-    top: 0,
+    width: "35%",
     right: 0,
+    top: 0,
     zIndex: -1,
 
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      display: "none",
-    },
-  },
-  image3: {
-    display: "block",
-    zIndex: -2,
-    objectFit: "cover",
-    objectPosition: "center",
-    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
@@ -94,49 +62,34 @@ const IndexPage = () => {
       setTimeout(async () => {
         await setEnter(prev => prev + 1)
         navigate("/Content")
-      }, 1500)
+      }, 2000)
     }
   }, [enter])
   return (
     <div className={classes.mainBackground}>
       <div className={classes.mainText1}>
-        <Typography variant="h2" color="primary" align="left">
+        <Typography
+          variant="h2"
+          color="primary"
+          align="center"
+          sx={{ fontSize: { md: "40px", sm: "30px", xs: "24px" } }}
+        >
           Welcome to
         </Typography>
-        <Typography variant="h1" color="primary" align="left">
+        <Typography
+          variant="h1"
+          color="primary"
+          align="center"
+          sx={{ fontSize: { md: "60px", sm: "50px", xs: "40px" } }}
+        >
           Pancake{" "}
           <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
           Pasta
         </Typography>
-        <StaticImage
-          src="../images/main/detail.jpg"
-          alt="detail"
-          placeholder="tracedSVG"
-          layout="constrained"
-          height={225}
-          className={classes.image3}
-        />
       </div>
-      <div className={classes.mainText2}>
-        <Typography variant="h3" color="primary" align="center">
-          Welcome to
-        </Typography>
-        <Typography variant="h2" color="primary" align="center">
-          Pancake{" "}
-          <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
-          Pasta
-        </Typography>
-        <StaticImage
-          src="../images/main/detail.jpg"
-          alt="detail"
-          placeholder="tracedSVG"
-          layout="constrained"
-          height={225}
-          className={classes.image3}
-        />
-      </div>
+
       <StaticImage
-        src="../images/main/fruits2.jpg"
+        src="../images/main/fruits1.jpg"
         alt="fruits2"
         placeholder="tracedSVG"
         layout="constrained"
@@ -145,10 +98,12 @@ const IndexPage = () => {
         objectPosition="center"
       />
       <StaticImage
-        src="../images/main/fruits1.jpg"
+        src="../images/main/fruits2.jpg"
         alt="fruits1"
         placeholder="tracedSVG"
         layout="constrained"
+        objectFit="cover"
+        objectPosition="center"
         className={classes.image2}
       />
     </div>
