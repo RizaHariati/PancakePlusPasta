@@ -18,7 +18,7 @@ export const theme = createTheme({
       textTransform: "capitalize",
     },
     h4: {
-      fontSize: "26px",
+      fontSize: "24px",
       textTransform: "capitalize",
     },
     h6: {

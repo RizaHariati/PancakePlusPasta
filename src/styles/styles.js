@@ -18,7 +18,8 @@ const footerToolbar = {
 }
 const subTitle = {
   textTransform: "capitalize",
-  fontSize: { md: "40px", sm: "30px", xs: "25px" },
+  fontSize: { md: "40px", sm: "30px", xs: "24px" },
+  width: "35%",
   transition: "all 1s ease-in",
   textAlign: { md: "left", sm: "center", xs: "center" },
 }

@@ -21,6 +21,10 @@ body input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+body input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
 .footerAttribute {
   display: -ms-grid;
   display: grid;
@@ -119,13 +123,13 @@ body input::-webkit-inner-spin-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -169,6 +173,16 @@ body input::-webkit-inner-spin-button {
           justify-content: space-between;
   -webkit-column-gap: 10px;
           column-gap: 10px;
+}
+
+.myCart-image {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 900px) {

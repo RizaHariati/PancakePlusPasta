@@ -12,10 +12,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
 import React from "react"
 import { Link } from "gatsby"
-
+import { useGlobalContext } from "../context/GlobalContextProvider"
 const Navbar = ({ showList, setShowList }) => {
   const theme = useTheme()
-
+  const { totalItem } = useGlobalContext()
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
@@ -47,7 +47,7 @@ const Navbar = ({ showList, setShowList }) => {
         </Link>
         <div className="menu-links">
           <Tooltip title="your order">
-            <Badge badgeContent={4} color="error" overlap="circular">
+            <Badge badgeContent={totalItem} color="error" overlap="circular">
               <IconButton
                 variant="contained"
                 color="secondary"
