@@ -3,7 +3,11 @@ import { grey, orange } from "@mui/material/colors"
 export const theme = createTheme({
   palette: {
     primary: orange,
-    secondary: grey,
+    secondary: {
+      dark: grey[700],
+      main: grey[300],
+      light: grey[200],
+    },
   },
   typography: {
     fontFamily: "'Roboto', sans-serif",

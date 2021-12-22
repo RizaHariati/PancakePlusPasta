@@ -48,10 +48,12 @@ const request = graphql`
 `
 const initialState = {
   mainData: [],
-  user: { name: "", email: "", password: "" },
+  user: { phoneID: 0, name: "", email: "", password: "", address: {} },
+  userList: [],
   shoppingList: [],
   totalItem: 0,
   totalPrice: 0,
+  loginStatus: false,
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -66,11 +68,11 @@ const GlobalProvider = ({ children }) => {
   useEffect(() => {
     const saveCart = (cart, user) => {
       localStorage.setItem("cart", JSON.stringify(cart))
-      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("userList", JSON.stringify(user))
     }
 
-    saveCart(state.mainData, state.user)
-  }, [state.mainData, state.user])
+    saveCart(state.mainData, state.userList)
+  }, [state.shoppingList, state.userList])
 
   const editList = (id, nameItem, amount, price) => {
     dispatch({
@@ -78,11 +80,17 @@ const GlobalProvider = ({ children }) => {
       payload: { id, nameItem, amount, price },
     })
   }
+  const register = () => {
+    dispatch({
+      type: "REGISTER",
+    })
+  }
   return (
     <GlobalContext.Provider
       value={{
         ...state,
         editList,
+        register,
       }}
     >
       {children}

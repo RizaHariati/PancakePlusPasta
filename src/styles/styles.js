@@ -37,9 +37,14 @@ const deliveryTitle = {
   marginTop: { md: "10px", sm: "5px", xs: "5px" },
 }
 const paper = {
-  minHeight: "calc(100% - 80px)",
+  minHeight: "100%",
   margin: "auto",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   background: "transparent",
+  rowGap: "20px",
   border: `0.5px ${mainDark} ease-in`,
 }
 const loginButton = {
@@ -71,7 +76,7 @@ const cardActions = {
 // ====================box======================
 const boxContainer = {
   position: "relative",
-  width: { sm: "300px", xs: "100vw" },
+  width: { sm: "400px", xs: "100vw" },
   height: { sm: "100%", xs: "100vh" },
   background: "white",
   margin: "auto",
@@ -89,7 +94,7 @@ const modalBtn = {
 const shoppingPaper = {
   height: "calc(100% - 80px)",
   overflowY: "scroll",
-  padding: "5px",
+  padding: "10px",
   display: "flex",
   flexDirection: "column",
   rowGap: "10px",

@@ -20,7 +20,7 @@ const Navbar = ({ showList, setShowList }) => {
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
         <Link
-          to="/Content/"
+          to="/Welcome/"
           style={{
             display: "inline-flex",
             columnGap: "10px",

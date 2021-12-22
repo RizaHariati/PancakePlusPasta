@@ -19,6 +19,7 @@ const Item = ({ name, price, amount, id }) => {
 
   useEffect(() => {
     editList(id, name, data, price)
+    // eslint-disable-next-line
   }, [data])
 
   return (

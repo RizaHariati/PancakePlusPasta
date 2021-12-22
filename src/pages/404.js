@@ -1,13 +1,23 @@
+import { Container, Typography } from "@mui/material"
 import * as React from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { container } from "../styles/styles"
 
 const NotFoundPage = () => (
   <Layout>
     <Seo title="404: Not found" />
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Container maxWidth="md" sx={container}>
+      <Typography
+        variant="h1"
+        color="primary"
+        align="center"
+        sx={{ fontSize: { md: "60px", sm: "50px", xs: "40px" } }}
+      >
+        Page Not Found{" "}
+      </Typography>
+    </Container>
   </Layout>
 )
 

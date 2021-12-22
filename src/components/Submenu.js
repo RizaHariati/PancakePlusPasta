@@ -10,7 +10,6 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { card, cardActions } from "../styles/styles"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-
 import Item from "./Item"
 
 const Submenu = ({ type }) => {

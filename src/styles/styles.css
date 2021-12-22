@@ -42,7 +42,7 @@ body input[type="number"] {
 }
 
 .content-container {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -98,7 +98,7 @@ body input[type="number"] {
   background-color: var(--primary-light);
 }
 
-.loginForm {
+.form-container {
   width: 100%;
   max-width: 300px;
   display: -webkit-box;
@@ -114,8 +114,41 @@ body input[type="number"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: auto;
-  row-gap: 20px;
+  row-gap: 15px;
+}
+
+.loginForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  row-gap: 5px;
+}
+
+.myCartPrice-title {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .myCartPrice-logos {
@@ -152,8 +185,7 @@ body input[type="number"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
+  row-gap: 10px;
 }
 
 .myCartPrice-price2 {
@@ -171,8 +203,6 @@ body input[type="number"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
 }
 
 .myCart-image {
@@ -292,5 +322,23 @@ body input[type="number"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.guest-loginForm {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  row-gap: 5px;
 }
 /*# sourceMappingURL=styles.css.map */

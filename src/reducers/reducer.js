@@ -30,7 +30,7 @@ export const reducer = (state, action) => {
     let newShoppingList = []
     let newTotalItem = 0
 
-    const { id, nameItem, amount, price } = action.payload
+    const { id, nameItem, amount } = action.payload
     if (amount > 0) {
       const meal = state.mainData.find(data => data.id === id)
       const { title, image, price } = meal
@@ -76,10 +76,10 @@ export const reducer = (state, action) => {
             return item
           })
         }
+        return item
       })
-      console.log(zeroAmount)
       const newList = shoppingList.filter(item => {
-        const newlist = item.price.filter(a => a.amount != 0)
+        const newlist = item.price.filter(a => a.amount !== 0)
         return newlist.length > 0
       })
 
@@ -88,6 +88,12 @@ export const reducer = (state, action) => {
         shoppingList: newList,
         totalItem: state.totalItem + zeroAmount,
       }
+    }
+  }
+  if (action.type === "REGISTER") {
+    return {
+      ...state,
+      loginStatus: true,
     }
   }
   return state

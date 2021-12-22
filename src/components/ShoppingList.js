@@ -1,6 +1,5 @@
-import { Add, Cancel, Close, Remove } from "@mui/icons-material"
+import { Add, Cancel, Remove } from "@mui/icons-material"
 import {
-  Avatar,
   Box,
   Button,
   ButtonBase,
@@ -10,8 +9,9 @@ import {
   Paper,
   Typography,
 } from "@mui/material"
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
-import React from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React, { useState, useEffect } from "react"
+
 import "../styles/styles.css"
 import { boxContainer, modalBtn, shoppingPaper } from "../styles/styles"
 import { useGlobalContext } from "../context/GlobalContextProvider"
@@ -73,48 +73,81 @@ const ShoppingList = ({ showList, setShowList }) => {
 export default ShoppingList
 
 const ListItem = ({ list }) => {
-  const { title, nameItem, image, price } = list
+  const { id, title, image, price } = list
   const pathToImage = getImage(image)
+
   return (
     <div className="myCartPrice-logos">
-      <GatsbyImage image={pathToImage} alt="title" className="myCart-image" />
-
-      <div className="myCartPrice-price1">
+      <div className="myCartPrice-title">
+        <GatsbyImage image={pathToImage} alt="title" className="myCart-image" />
         <Typography variant="h4" color="primary">
           {title}
         </Typography>
+      </div>
+      <div className="myCartPrice-price1">
         {price.map((item, index) => {
-          const { name, price, amount } = item
-          if (!amount) <div></div>
+          const { amount } = item
+          if (!amount) return <div key={index}></div>
           else {
             return (
-              <div key={index} className="myCartPrice-price2">
-                <Typography variant="body1">
-                  {name.replace(/_/g, " ")}
-                </Typography>
-                <div className="addToCart">
-                  <ButtonBase>
-                    <Remove fontSize="20px" />
-                  </ButtonBase>
-                  <input
-                    type="number"
-                    value={amount}
-                    placeholder="0"
-                    className="inputCart"
-                  />
-                  <ButtonBase>
-                    <Add fontSize="20px" />
-                  </ButtonBase>
-                </div>
-                <Typography variant="body2">
-                  ${(price * amount) / 100}
-                </Typography>
-              </div>
+              <ShoppingListItem key={index} {...item} id={id} amount={amount} />
             )
           }
         })}
+        <Divider variant="fullWidth" sx={{ width: "100%" }} />
       </div>
-      <Divider variant="fullWidth" />
+    </div>
+  )
+}
+
+const ShoppingListItem = ({ name, price, amount, id }) => {
+  const { editList } = useGlobalContext()
+  const [data, setData] = useState(amount)
+  const handleChange = e => {
+    e.preventDefault()
+    const number = parseInt(e.target.value)
+    if (number > 0) {
+      setData(number)
+    } else {
+      setData(0)
+    }
+  }
+  useEffect(() => {
+    editList(id, name, data, price)
+    // eslint-disable-next-line
+  }, [data])
+
+  return (
+    <div className="myCartPrice-price2">
+      <Typography variant="body1">{name.replace(/_/g, " ")}</Typography>
+      <div className="addToCart">
+        <ButtonBase
+          type="button"
+          onClick={() => {
+            if (data <= 0) {
+              setData(0)
+            } else {
+              setData(data - 1)
+            }
+          }}
+        >
+          <Remove fontSize="20px" />
+        </ButtonBase>
+        <input
+          id="menu"
+          name="menu"
+          type="number"
+          value={data}
+          onChange={e => handleChange(e)}
+          className="inputCart"
+        />
+        <ButtonBase type="button" onClick={() => setData(data + 1)}>
+          <Add fontSize="20px" />
+        </ButtonBase>
+      </div>
+      <Typography variant="body2" align="right" sx={{ width: "25%" }}>
+        ${(price * amount) / 100}
+      </Typography>
     </div>
   )
 }
