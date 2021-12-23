@@ -5,7 +5,7 @@ import {
   getshoppinglist,
   getuserList,
   getuser,
-  getloginStatus,
+  // getloginStatus,
 } from "../util/GetLocalStorage"
 
 const request = graphql`
@@ -51,7 +51,7 @@ const initialState = {
   shoppingList: getshoppinglist(),
   totalItem: 0,
   totalPrice: 0,
-  loginStatus: getloginStatus(),
+  loginStatus: false,
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {

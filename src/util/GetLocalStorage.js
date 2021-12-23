@@ -26,10 +26,10 @@ const getuser = () => {
   }
   return {}
 }
-const getloginStatus = () => {
-  let loginStatus = JSON.parse(localStorage.getItem("loginStatus"))
-  if (loginStatus) return loginStatus
-  return false
-}
+// const getloginStatus = () => {
+//   let loginStatus = JSON.parse(localStorage.getItem("loginStatus"))
+//   if (loginStatus) return loginStatus
+//   return false
+// }
 
-export { getshoppinglist, getuserList, getuser, getloginStatus }
+export { getshoppinglist, getuserList, getuser }
