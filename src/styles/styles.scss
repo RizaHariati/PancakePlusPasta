@@ -132,6 +132,16 @@ body {
   object-position: center;
   border-radius: 3px;
 }
+.myCartPrice-total {
+  width: 100%;
+}
+.myCartPrice-subtotal {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 @media screen and(max-width:900px) {
   .content-container {
     grid-template-columns: 1fr;
@@ -219,5 +229,5 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 5px;
+  row-gap: 15px;
 }

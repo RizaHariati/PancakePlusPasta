@@ -1,16 +1,13 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react"
 import { reducer } from "../reducers/reducer"
 import { graphql, useStaticQuery } from "gatsby"
+import {
+  getshoppinglist,
+  getuserList,
+  getuser,
+  getloginStatus,
+} from "../util/GetLocalStorage"
 
-// const getCart = () => {
-//   try {
-//     const cart = JSON.parse(localStorage.getItem("cart"))
-//     if (cart) return cart
-//   } catch (error) {
-//     console.log(error)
-//   }
-//   return []
-// }
 const request = graphql`
   query getBlankMenu {
     allContentfulPancakeMenu(filter: { type: { nin: "delivery" } }) {
@@ -29,6 +26,7 @@ const request = graphql`
             large
             regular
             sprite
+            item
           }
         }
         image {
@@ -48,12 +46,12 @@ const request = graphql`
 `
 const initialState = {
   mainData: [],
-  user: { phoneID: 0, name: "", email: "", password: "", address: {} },
-  userList: [],
-  shoppingList: [],
+  user: getuser(),
+  userList: getuserList(),
+  shoppingList: getshoppinglist(),
   totalItem: 0,
   totalPrice: 0,
-  loginStatus: false,
+  loginStatus: getloginStatus(),
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -66,13 +64,17 @@ const GlobalProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    const saveCart = (cart, user) => {
-      localStorage.setItem("cart", JSON.stringify(cart))
-      localStorage.setItem("userList", JSON.stringify(user))
+    dispatch({ type: "GET_TOTAL" })
+    const saveCart = (shoppingList, user, userList, loginStatus) => {
+      localStorage.setItem("shoppingList", JSON.stringify(shoppingList))
+      localStorage.setItem("userList", JSON.stringify(userList))
+      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
     }
 
-    saveCart(state.mainData, state.userList)
-  }, [state.shoppingList, state.userList])
+    saveCart(state.shoppingList, state.userList, state.user, state.loginStatus)
+    // eslint-disable-next-line
+  }, [state.shoppingList, state.userList, state.user, state.loginStatus])
 
   const editList = (id, nameItem, amount, price) => {
     dispatch({
@@ -80,10 +82,15 @@ const GlobalProvider = ({ children }) => {
       payload: { id, nameItem, amount, price },
     })
   }
-  const register = () => {
+  const register = data => {
     dispatch({
       type: "REGISTER",
+      payload: data,
     })
+  }
+  const newGuest = () => {
+    dispatch({ type: "CLEAR_CART" })
+    dispatch({ type: "GUEST_OUT" })
   }
   return (
     <GlobalContext.Provider
@@ -91,6 +98,7 @@ const GlobalProvider = ({ children }) => {
         ...state,
         editList,
         register,
+        newGuest,
       }}
     >
       {children}

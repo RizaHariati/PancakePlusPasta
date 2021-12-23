@@ -3,10 +3,19 @@ import { ButtonBase, Typography } from "@mui/material"
 import React, { useState, useEffect } from "react"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 
-const Item = ({ name, price, amount, id }) => {
-  const { editList } = useGlobalContext()
-  const [data, setData] = useState(amount)
+const Item = ({ name, price, id }) => {
+  const { editList, shoppingList } = useGlobalContext()
+  const [data, setData] = useState(0)
 
+  useEffect(() => {
+    const menu = shoppingList.find(item => item.id === id)
+    if (menu) {
+      const item = menu.price.find(item => item.name === name)
+      setData(item.amount)
+    } else setData(0)
+
+    // eslint-disable-next-line
+  }, [id])
   const handleChange = e => {
     e.preventDefault()
     const number = parseInt(e.target.value)

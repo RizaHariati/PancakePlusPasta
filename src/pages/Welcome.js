@@ -3,11 +3,13 @@ import Layout from "../components/layout"
 import Slides from "../components/Slides"
 import "../styles/styles.css"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-import WelcomeNoLogin from "../components/WelcomeNoLogin"
+import WelcomeForm from "../components/WelcomeForm"
 import GuestForm from "../components/GuestForm"
+import LoginAsGuest from "../components/LoginAsGuest"
+import RegisterForm from "../components/RegisterForm"
 
 const Welcome = () => {
-  const { loginStatus } = useGlobalContext()
+  const { loginStatus, user } = useGlobalContext()
   const [openGuestForm, setOpenGuestForm] = useState(false)
   const [openRegisterForm, setOpenRegisterForm] = useState(false)
   return (
@@ -16,16 +18,21 @@ const Welcome = () => {
         <Slides />
         <div className="loginContainer">
           {!loginStatus && (
-            <WelcomeNoLogin
+            <WelcomeForm
               setOpenGuestForm={setOpenGuestForm}
               setOpenRegisterForm={setOpenRegisterForm}
             />
           )}
+          {loginStatus && user.name === "guest" && <LoginAsGuest />}
         </div>
       </div>
       <GuestForm
         openGuestForm={openGuestForm}
         setOpenGuestForm={setOpenGuestForm}
+      />
+      <RegisterForm
+        openRegisterForm={openRegisterForm}
+        setOpenRegisterForm={setOpenRegisterForm}
       />
     </Layout>
   )

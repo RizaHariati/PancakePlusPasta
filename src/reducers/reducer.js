@@ -28,7 +28,6 @@ export const reducer = (state, action) => {
   if (action.type === "EDIT_LIST") {
     const shoppingList = state.shoppingList
     let newShoppingList = []
-    let newTotalItem = 0
 
     const { id, nameItem, amount } = action.payload
     if (amount > 0) {
@@ -36,7 +35,6 @@ export const reducer = (state, action) => {
       const { title, image, price } = meal
       const newPrice = price.map(item => {
         if (item.name === nameItem) {
-          newTotalItem = amount - item.amount
           item.amount = amount
         }
         return item
@@ -62,15 +60,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         shoppingList: newShoppingList,
-        totalItem: state.totalItem + newTotalItem,
       }
     } else {
-      let zeroAmount = 0
       shoppingList.map(item => {
         if (item.id === id) {
           item.price.map(num => {
             if (num.name === nameItem) {
-              zeroAmount = -1
               num.amount = 0
             }
             return item
@@ -86,7 +81,6 @@ export const reducer = (state, action) => {
       return {
         ...state,
         shoppingList: newList,
-        totalItem: state.totalItem + zeroAmount,
       }
     }
   }
@@ -94,6 +88,46 @@ export const reducer = (state, action) => {
     return {
       ...state,
       loginStatus: true,
+      user: action.payload,
+    }
+  }
+  if (action.type === "GET_TOTAL") {
+    const reducer = state.shoppingList.reduce(
+      (total, item) => {
+        const eachItem = item.price.reduce(
+          (totalPrice, totalItem) => {
+            totalPrice.price += totalItem.price * totalItem.amount
+            totalPrice.amount += totalItem.amount
+            return totalPrice
+          },
+          { price: 0, amount: 0 }
+        )
+        total.amount += eachItem.amount
+        total.price += eachItem.price
+        return total
+      },
+      { price: 0, amount: 0 }
+    )
+
+    return {
+      ...state,
+      totalItem: reducer.amount,
+      totalPrice: reducer.price,
+    }
+  }
+  if (action.type === "CLEAR_CART") {
+    return {
+      ...state,
+      shoppingList: [],
+      totalItem: 0,
+      totalPrice: 0,
+    }
+  }
+  if (action.type === "GUEST_OUT") {
+    return {
+      ...state,
+      loginStatus: false,
+      user: {},
     }
   }
   return state

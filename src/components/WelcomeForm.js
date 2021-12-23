@@ -1,11 +1,10 @@
 import { Button, Paper, TextField, Typography } from "@mui/material"
 import React from "react"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { red } from "@mui/material/colors"
 import { paper, loginButton } from "../styles/styles"
 import "../styles/styles.css"
-const WelcomeNoLogin = ({ setOpenGuestForm }) => {
+
+const WelcomeForm = ({ setOpenGuestForm, setOpenRegisterForm }) => {
   return (
     <Paper variant="outlined" sx={paper}>
       <StaticImage
@@ -44,12 +43,12 @@ const WelcomeNoLogin = ({ setOpenGuestForm }) => {
         <Button
           type="button"
           variant="text"
-          color="secondary"
-          style={{ color: red[900] }}
+          color="error"
+          onClick={() => setOpenRegisterForm(true)}
         >
           want to enjoy our membership privilege? register!
         </Button>
-        <Typography variant="h3" color="white">
+        <Typography variant="h4" color="white">
           OR
         </Typography>
 
@@ -67,4 +66,4 @@ const WelcomeNoLogin = ({ setOpenGuestForm }) => {
   )
 }
 
-export default WelcomeNoLogin
+export default WelcomeForm

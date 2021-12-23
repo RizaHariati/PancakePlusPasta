@@ -9,10 +9,9 @@ import {
 } from "react-leaflet"
 
 const MapInput = ({ address, setAddress }) => {
-  const [position, setPosition] = useState([-6.175392, 106.827153])
+  const position = [-6.175392, 106.827153]
   const [position2, setPosition2] = useState([-6.175392, 106.827153])
-
-  const [zoom, setZoom] = useState(13)
+  const zoom = 13
 
   return (
     <MapContainer
@@ -55,14 +54,13 @@ const GetCoordinates = ({ position, position2, setPosition2, setAddress }) => {
     setInArea(true)
     map.on("click", e => {
       const location = e.latlng
-
       let x = (Math.abs(location.lat) + position[0]) * 100
       let y = (Math.abs(location.lng) - position[1]) * 100
       const distance = Math.sqrt(x * x + y * y)
       distance > 2.2 ? setInArea(false) : setInArea(true)
-
       setPosition2([location.lat, location.lng])
     })
+    // eslint-disable-next-line
   }, [map])
 
   useEffect(() => {
@@ -75,11 +73,13 @@ const GetCoordinates = ({ position, position2, setPosition2, setAddress }) => {
       )
 
       const data = await resp.json()
-      const { Neighborhood, District, Region, Postal } = data.address
-      const takeAddress = { Neighborhood, District, Region, Postal }
+
+      const { Neighborhood, District, Region, Postal, Address } = data.address
+      const takeAddress = { Address, Neighborhood, District, Region, Postal }
       setAddress({ inArea, location: takeAddress })
     }
     fetchData()
+    // eslint-disable-next-line
   }, [position2])
 
   return (

@@ -1,4 +1,12 @@
-import { Grid, Modal, Paper, Snackbar, Typography, Alert } from "@mui/material"
+import {
+  Grid,
+  Modal,
+  Paper,
+  Snackbar,
+  Typography,
+  Alert,
+  Button,
+} from "@mui/material"
 import { navigate } from "gatsby"
 import React, { useState, useEffect } from "react"
 import { useGlobalContext } from "../context/GlobalContextProvider"
@@ -10,19 +18,20 @@ import {
 } from "../styles/modalStyles"
 import GuestAddress from "./GuestAddress"
 import MapInput from "./MapInput"
+import RegisterAddress from "./RegisterAddress"
 
-const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
+const RegisterForm = ({ openRegisterForm, setOpenRegisterForm }) => {
   const { register } = useGlobalContext()
   const [address, setAddress] = useState({
     inArea: "true",
     location: { Neighborhood: "", District: "", Region: "", Postal: "" },
   })
   const [openAlert, setOpenAlert] = useState(false)
-  const handleStartOrdering = data => {
-    setOpenGuestForm(false)
-    navigate("/Menu")
-    register(data)
-  }
+  // const handleStartOrdering = data => {
+  //   setOpenRegisterForm(false)
+  //   navigate("/Menu")
+  //   register(data)
+  // }
   useEffect(() => {
     if (!address.inArea) {
       setOpenAlert(true)
@@ -41,13 +50,13 @@ const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
           Location you pick is outside the delivery Address
         </Alert>
       </Snackbar>
-      <Modal open={openGuestForm}>
+      <Modal open={openRegisterForm}>
         <Paper sx={paperModal}>
           <Grid container sx={gridModalContainer}>
             <Grid item md={7} xs={12} sx={gridModalForm}>
-              <GuestAddress
-                handleStartOrdering={handleStartOrdering}
-                setOpenGuestForm={setOpenGuestForm}
+              <RegisterAddress
+                // handleStartOrdering={handleStartOrdering}
+                setOpenRegisterForm={setOpenRegisterForm}
                 address={address}
               />
             </Grid>
@@ -79,4 +88,4 @@ const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
   )
 }
 
-export default GuestForm
+export default RegisterForm

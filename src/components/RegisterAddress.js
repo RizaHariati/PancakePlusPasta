@@ -8,16 +8,31 @@ import {
 import React, { useState, useEffect } from "react"
 import { paperForm } from "../styles/modalStyles"
 
-const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
+const RegisterAddress = ({
+  handleStartOrdering,
+  setOpenRegisterForm,
+  address,
+}) => {
   const [addressValue, setAddressValue] = useState("")
   const [addressValueError, setAddressValueError] = useState({
     status: false,
     message: "Location is out of our delivery area",
   })
+  const [userName, setUserName] = useState("")
+  const [userNameError, setUserNameError] = useState({
+    status: false,
+    message: "Your name...",
+  })
+
+  const [email, setEmail] = useState("")
+  const [emailError, setEmailError] = useState({
+    status: false,
+    message: "Your email...",
+  })
   const [phone, setPhone] = useState()
   const [phoneError, setPhoneError] = useState({
     status: false,
-    message: "phone number",
+    message: "Phone number",
   })
   const [street, setStreet] = useState("")
   const [streetError, setStreetError] = useState({
@@ -60,13 +75,19 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (!phone || phone.length < 11 || phone.length > 13) {
-      return setPhoneError({
+    if (!userName) {
+      return setUserNameError({
         status: true,
-        message: "phone number is not valid",
+        message: "Name is required",
       })
     }
 
+    if (!phone || phone.length < 11 || phone.length > 13) {
+      return setPhoneError({
+        status: true,
+        message: "Phone number is not valid",
+      })
+    }
     if (!addressValue) {
       return setAddressValueError({
         status: true,
@@ -85,12 +106,11 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
         message: "please add more detail or put '0' ",
       })
     }
-    if (phone && addressValue && street && number) {
+    if (userName && phone && addressValue && street && number) {
       console.log(phone.toString())
       const fullData = {
-        name: "guest",
+        name: userName,
         email: "default",
-        password: "default",
         phone: phone.toString(),
         location: addressValue,
         street,
@@ -114,9 +134,21 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
     }
   }
   return (
-    <Paper variant="outlined" sx={paperForm}>
-      <Typography>Please fill in your phone and Address</Typography>
+    <Paper variant="outlined" sx={paperForm} style={{ overflowY: "scroll" }}>
+      <Typography>Please fill in your data</Typography>
       <form noValidate className="guest-loginForm" onSubmit={handleSubmit}>
+        <TextField
+          min={0}
+          error={userNameError.status}
+          size="small"
+          fullWidth
+          variant="outlined"
+          type="number"
+          value={userName || ""}
+          label={userNameError.message}
+          onChange={e => setPhone(e.target.value)}
+        />
+
         <TextField
           min={0}
           error={phoneError.status}
@@ -126,7 +158,6 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
           type="number"
           value={phone || ""}
           label={phoneError.message}
-          placeholder="Phone number"
           onChange={e => setPhone(e.target.value)}
           helperText="we will send text to verify your phone number"
         />
@@ -138,7 +169,6 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
           type="text"
           value={addressValue}
           label={addressValueError.message}
-          placeholder="Pick location from the map"
           InputProps={{
             disabled: true,
           }}
@@ -151,7 +181,6 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
           type="text"
           value={street || ""}
           label={streetError.message}
-          placeholder="street name"
           onChange={e => setStreet(e.target.value)}
         />
         <TextField
@@ -161,7 +190,6 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
           variant="outlined"
           type="text"
           label={numberError.message}
-          placeholder="Address detail (number/floor/block)"
           value={number || ""}
           onChange={e => setNumber(e.target.value)}
         />
@@ -170,7 +198,7 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
           <Button
             variant="outlined"
             color="primary"
-            onClick={() => setOpenGuestForm(false)}
+            onClick={() => setOpenRegisterForm(false)}
           >
             cancel
           </Button>
@@ -189,4 +217,4 @@ const GuestAddress = ({ handleStartOrdering, setOpenGuestForm, address }) => {
   )
 }
 
-export default GuestAddress
+export default RegisterAddress

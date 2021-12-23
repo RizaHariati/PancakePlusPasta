@@ -60,6 +60,7 @@ const ShoppingList = ({ showList, setShowList }) => {
               const { id } = list
               return <ListItem key={id} list={list} />
             })}
+            <TotalPrice />
           </Paper>
           <Button variant="contained" color="primary" size="small">
             Check Out
@@ -80,7 +81,7 @@ const ListItem = ({ list }) => {
     <div className="myCartPrice-logos">
       <div className="myCartPrice-title">
         <GatsbyImage image={pathToImage} alt="title" className="myCart-image" />
-        <Typography variant="h4" color="primary">
+        <Typography variant="h4" color="primary" fontSize={18}>
           {title}
         </Typography>
       </div>
@@ -119,7 +120,9 @@ const ShoppingListItem = ({ name, price, amount, id }) => {
 
   return (
     <div className="myCartPrice-price2">
-      <Typography variant="body1">{name.replace(/_/g, " ")}</Typography>
+      <Typography variant="body1" sx={{ width: "100px" }}>
+        {name.replace(/_/g, " ")}
+      </Typography>
       <div className="addToCart">
         <ButtonBase
           type="button"
@@ -145,9 +148,59 @@ const ShoppingListItem = ({ name, price, amount, id }) => {
           <Add fontSize="20px" />
         </ButtonBase>
       </div>
-      <Typography variant="body2" align="right" sx={{ width: "25%" }}>
+      <Typography variant="body2" align="right" sx={{ width: "50px" }}>
         ${(price * amount) / 100}
       </Typography>
+    </div>
+  )
+}
+
+const TotalPrice = () => {
+  const { totalPrice } = useGlobalContext()
+  const tax = (totalPrice + 125 + 345) / 1000
+  const total = (totalPrice + 125 + 345) / 100 + tax
+  return (
+    <div className="myCartPrice-total">
+      <div className="myCartPrice-subtotal">
+        <Typography variant="body1" color="secondary.dark">
+          Subtotal
+        </Typography>
+        <Typography variant="body1" color="secondary.dark">
+          ${totalPrice / 100}
+        </Typography>
+      </div>
+      <div className="myCartPrice-subtotal">
+        <Typography variant="body1" color="secondary.dark">
+          Delivery Fee
+        </Typography>
+        <Typography variant="body1" color="secondary.dark">
+          $3.45
+        </Typography>
+      </div>
+      <div className="myCartPrice-subtotal">
+        <Typography variant="body1" color="secondary.dark">
+          Packaging Fee
+        </Typography>
+        <Typography variant="body1" color="secondary.dark">
+          $1.25
+        </Typography>
+      </div>
+      <div className="myCartPrice-subtotal">
+        <Typography variant="body1" color="secondary.dark">
+          Tax 10%
+        </Typography>
+        <Typography variant="body1" color="secondary.dark">
+          ${tax.toFixed(2)}
+        </Typography>
+      </div>
+      <div className="myCartPrice-subtotal">
+        <Typography variant="h4" color="textPrimary" fontSize={18}>
+          Total
+        </Typography>
+        <Typography variant="h4" color="textPrimary" fontSize={18}>
+          ${total.toFixed(2)}
+        </Typography>
+      </div>
     </div>
   )
 }
