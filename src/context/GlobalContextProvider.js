@@ -5,7 +5,7 @@ import {
   getshoppinglist,
   getuserList,
   getuser,
-  // getloginStatus,
+  getloginStatus,
 } from "../util/GetLocalStorage"
 
 const request = graphql`
@@ -47,11 +47,13 @@ const request = graphql`
 const initialState = {
   mainData: [],
   user: getuser(),
-  userList: getuserList(),
+  memberList: getuserList(),
   shoppingList: getshoppinglist(),
   totalItem: 0,
   totalPrice: 0,
-  loginStatus: false,
+  editList: false,
+  loginStatus: getloginStatus(),
+  registerSuccess: false,
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -65,28 +67,46 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" })
-    const saveCart = (shoppingList, user, userList, loginStatus) => {
+    const saveCart = (shoppingList, user, memberList, loginStatus) => {
       localStorage.setItem("shoppingList", JSON.stringify(shoppingList))
-      localStorage.setItem("userList", JSON.stringify(userList))
+      localStorage.setItem("memberList", JSON.stringify(memberList))
       localStorage.setItem("user", JSON.stringify(user))
       localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
     }
 
-    saveCart(state.shoppingList, state.userList, state.user, state.loginStatus)
+    saveCart(
+      state.shoppingList,
+      state.user,
+      state.memberList,
+      state.loginStatus
+    )
     // eslint-disable-next-line
-  }, [state.shoppingList, state.userList, state.user, state.loginStatus])
+  }, [state.shoppingList, state.user, state.memberList, state.loginStatus])
 
   const editList = (id, nameItem, amount, price) => {
     dispatch({
-      type: "EDIT_LIST",
+      type: "EDIT_SHOPPING_LIST",
       payload: { id, nameItem, amount, price },
     })
   }
   const register = data => {
-    dispatch({
-      type: "REGISTER",
-      payload: data,
-    })
+    if (data.userData.name === "guest") {
+      return dispatch({
+        type: "GUEST_LOGIN",
+        payload: data,
+      })
+    }
+    if (!state.memberList) {
+      dispatch({
+        type: "REGISTER",
+        payload: data,
+      })
+    } else {
+      dispatch({
+        type: "SCREEN_MEMBER",
+        payload: data,
+      })
+    }
   }
   const newGuest = () => {
     dispatch({ type: "CLEAR_CART" })

@@ -3,9 +3,10 @@ const paperModal = {
   top: { md: "50%", xs: "0%" },
   left: "50%",
   transform: { md: "translate(-50%, -50%)", xs: "translate(-50%, 0%)" },
-  width: { md: "80vw", xs: "100vw" },
-  height: { md: "80vh", xs: "100vh" },
+  width: { md: "400px", xs: "100vw" },
+  height: { md: "auto", xs: "100%" },
   overflowY: { md: "auto", xs: "scroll" },
+  padding: "20px",
 }
 const gridModalContainer = { padding: "20px" }
 
@@ -24,7 +25,7 @@ const paperForm = {
   width: "100%",
   marginRight: { md: "15px", xs: "0px" },
   marginTop: { md: "0px", xs: "15px" },
-  height: { md: "calc(80vh - 40px)", xs: "auto" },
+  height: "auto",
 }
 export {
   paperModal,

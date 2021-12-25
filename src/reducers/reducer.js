@@ -1,3 +1,5 @@
+import { decryptItem } from "../util/EncryptionHandler"
+import { v4 as uuidv4 } from "uuid"
 import FindPrice from "../util/FindPrice"
 
 export const reducer = (state, action) => {
@@ -25,7 +27,7 @@ export const reducer = (state, action) => {
       mainData: newData,
     }
   }
-  if (action.type === "EDIT_LIST") {
+  if (action.type === "EDIT_SHOPPING_LIST") {
     const shoppingList = state.shoppingList
     let newShoppingList = []
 
@@ -84,11 +86,44 @@ export const reducer = (state, action) => {
       }
     }
   }
-  if (action.type === "REGISTER") {
+  if (action.type === "GUEST_LOGIN") {
+    const newUser = action.payload
+
     return {
       ...state,
-      loginStatus: true,
-      user: action.payload,
+      loginStatus: { login: true },
+      user: newUser,
+    }
+  }
+  if (action.type === "REGISTER") {
+    const data = action.payload
+    const id = uuidv4()
+    return {
+      ...state,
+      memberList: [{ id, ...data }],
+      registerSuccess: true,
+    }
+  }
+  if (action.type === "SCREEN_MEMBER") {
+    const data = action.payload
+    const email = data.userData.email
+    console.log(email)
+    const list = state.memberList
+    const findEmail = list.find(user => user.userData.email === email)
+    if (!findEmail) {
+      const id = uuidv4()
+      const newData = { id, ...data }
+      return {
+        ...state,
+        memberList: [...state.memberList, newData],
+        registerSuccess: true,
+      }
+    } else {
+      console.log(findEmail)
+      return {
+        ...state,
+        editList: true,
+      }
     }
   }
   if (action.type === "GET_TOTAL") {
@@ -126,7 +161,7 @@ export const reducer = (state, action) => {
   if (action.type === "GUEST_OUT") {
     return {
       ...state,
-      loginStatus: false,
+      loginStatus: { login: false },
       user: {},
     }
   }

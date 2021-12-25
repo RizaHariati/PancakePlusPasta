@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { paper, loginButton } from "../styles/styles"
 import "../styles/styles.css"
 
-const WelcomeForm = ({ setOpenGuestForm, setOpenRegisterForm }) => {
+const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
   return (
     <Paper variant="outlined" sx={paper}>
       <StaticImage
@@ -53,7 +53,16 @@ const WelcomeForm = ({ setOpenGuestForm, setOpenRegisterForm }) => {
         </Typography>
 
         <Button
-          onClick={() => setOpenGuestForm(true)}
+          onClick={() =>
+            setOpenAddressForm({
+              status: true,
+              userData: {
+                name: "guest",
+                email: "default",
+                password: "default",
+              },
+            })
+          }
           type="button"
           variant="contained"
           color="secondary"

@@ -4,35 +4,46 @@ import Slides from "../components/Slides"
 import "../styles/styles.css"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 import WelcomeForm from "../components/WelcomeForm"
-import GuestForm from "../components/GuestForm"
+import AddressForm from "../components/AddressForm"
 import LoginAsGuest from "../components/LoginAsGuest"
 import RegisterForm from "../components/RegisterForm"
 
 const Welcome = () => {
   const { loginStatus, user } = useGlobalContext()
-  const [openGuestForm, setOpenGuestForm] = useState(false)
+  const [openAddressForm, setOpenAddressForm] = useState({
+    status: false,
+    userData: {
+      name: "guest",
+      email: "default",
+      password: "default",
+    },
+  })
   const [openRegisterForm, setOpenRegisterForm] = useState(false)
+
   return (
     <Layout>
       <div className="content-container">
         <Slides />
         <div className="loginContainer">
-          {!loginStatus && (
+          {!loginStatus.login && (
             <WelcomeForm
-              setOpenGuestForm={setOpenGuestForm}
+              setOpenAddressForm={setOpenAddressForm}
               setOpenRegisterForm={setOpenRegisterForm}
             />
           )}
-          {loginStatus && user.name === "guest" && <LoginAsGuest />}
+          {loginStatus.login && user.userData.name === "guest" && (
+            <LoginAsGuest />
+          )}
         </div>
       </div>
-      <GuestForm
-        openGuestForm={openGuestForm}
-        setOpenGuestForm={setOpenGuestForm}
+      <AddressForm
+        openAddressForm={openAddressForm}
+        setOpenAddressForm={setOpenAddressForm}
       />
       <RegisterForm
         openRegisterForm={openRegisterForm}
         setOpenRegisterForm={setOpenRegisterForm}
+        setOpenAddressForm={setOpenAddressForm}
       />
     </Layout>
   )

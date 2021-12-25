@@ -8,10 +8,10 @@ import {
   paperModal,
   gridModalContainer,
 } from "../styles/modalStyles"
-import GuestAddress from "./GuestAddress"
+import AddressData from "./AddressData"
 import MapInput from "./MapInput"
 
-const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
+const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
   const { register } = useGlobalContext()
   const [address, setAddress] = useState({
     inArea: "true",
@@ -19,7 +19,7 @@ const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
   })
   const [openAlert, setOpenAlert] = useState(false)
   const handleStartOrdering = data => {
-    setOpenGuestForm(false)
+    setOpenAddressForm(false)
     navigate("/Menu")
     register(data)
   }
@@ -41,13 +41,14 @@ const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
           Location you pick is outside the delivery Address
         </Alert>
       </Snackbar>
-      <Modal open={openGuestForm}>
+      <Modal open={openAddressForm.status}>
         <Paper sx={paperModal}>
           <Grid container sx={gridModalContainer}>
             <Grid item md={7} xs={12} sx={gridModalForm}>
-              <GuestAddress
+              <AddressData
                 handleStartOrdering={handleStartOrdering}
-                setOpenGuestForm={setOpenGuestForm}
+                openAddressForm={openAddressForm}
+                setOpenAddressForm={setOpenAddressForm}
                 address={address}
               />
             </Grid>
@@ -79,4 +80,4 @@ const GuestForm = ({ openGuestForm, setOpenGuestForm }) => {
   )
 }
 
-export default GuestForm
+export default AddressForm
