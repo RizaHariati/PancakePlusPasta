@@ -8,5 +8,9 @@ const validationSchema1 = Yup.object({
     .required("retype password")
     .oneOf([Yup.ref("password1"), null], "Passwords must match"),
 })
+const validationSchema2 = Yup.object({
+  email: Yup.string().required("required").email("invalid email format"),
+  password: Yup.string().required("required"),
+})
 
-export { validationSchema1 }
+export { validationSchema1, validationSchema2 }

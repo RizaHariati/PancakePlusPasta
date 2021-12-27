@@ -26,11 +26,15 @@ const ShoppingList = ({ showList, setShowList }) => {
           <IconButton onClick={() => setShowList(false)} sx={modalBtn}>
             <Cancel color="error" />
           </IconButton>
-          <Typography variant="h3" color="primary.dark">
+          <Typography variant="h4" color="primary.dark">
             My Cart
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
-            <Typography variant="h3" color="secondary.dark">
+            <Typography
+              variant="h3"
+              color="secondary.dark"
+              sx={{ fontVariant: "small-caps", fontSize: "28px" }}
+            >
               You have no items in your cart yet
             </Typography>
           </Paper>

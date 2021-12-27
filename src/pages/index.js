@@ -62,7 +62,7 @@ const IndexPage = () => {
       setTimeout(async () => {
         await setEnter(prev => prev + 1)
         navigate("/Welcome")
-      }, 2000)
+      }, 1000)
     }
   }, [enter])
   return (

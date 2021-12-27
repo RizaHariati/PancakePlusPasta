@@ -26,7 +26,7 @@ const subTitle = {
 const deliveryTitle = {
   width: "100%",
   position: "absolute",
-  top: 0,
+  top: { md: "10px", xs: "0px" },
   left: "50%",
   transform: "translateX(-50%)",
   textTransform: "capitalize",

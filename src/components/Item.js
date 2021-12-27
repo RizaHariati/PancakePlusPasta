@@ -3,8 +3,8 @@ import { ButtonBase, Typography } from "@mui/material"
 import React, { useState, useEffect } from "react"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 
-const Item = ({ name, price, id }) => {
-  const { editList, shoppingList } = useGlobalContext()
+const Item = ({ name, price, id, setShowAlertMenu }) => {
+  const { editList, shoppingList, loginStatus } = useGlobalContext()
   const [data, setData] = useState(0)
 
   useEffect(() => {
@@ -16,6 +16,23 @@ const Item = ({ name, price, id }) => {
 
     // eslint-disable-next-line
   }, [id])
+  const handleData = (data, status) => {
+    if (!loginStatus.login) setShowAlertMenu(true)
+    else {
+      if (status === "decrease") {
+        if (data <= 0) {
+          setData(0)
+        } else {
+          setData(data - 1)
+        }
+      } else if (status === "increase") {
+        setData(data + 1)
+      }
+    }
+    setTimeout(() => {
+      setShowAlertMenu(false)
+    }, 1000)
+  }
   const handleChange = e => {
     e.preventDefault()
     const number = parseInt(e.target.value)
@@ -37,16 +54,7 @@ const Item = ({ name, price, id }) => {
         {name.replace(/_/g, " ")} : ${price / 100}
       </Typography>
       <div className="addToCart">
-        <ButtonBase
-          type="button"
-          onClick={() => {
-            if (data <= 0) {
-              setData(0)
-            } else {
-              setData(data - 1)
-            }
-          }}
-        >
+        <ButtonBase type="button" onClick={() => handleData(data, "decrease")}>
           <Remove fontSize="20px" />
         </ButtonBase>
 
@@ -59,7 +67,7 @@ const Item = ({ name, price, id }) => {
           className="inputCart"
         />
 
-        <ButtonBase type="button" onClick={() => setData(data + 1)}>
+        <ButtonBase type="button" onClick={() => handleData(data, "increase")}>
           <Add fontSize="20px" />
         </ButtonBase>
       </div>

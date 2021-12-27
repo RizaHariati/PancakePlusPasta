@@ -1,5 +1,5 @@
-import { decryptItem } from "../util/EncryptionHandler"
 import { v4 as uuidv4 } from "uuid"
+import { decryptItem } from "../util/EncryptionHandler"
 import FindPrice from "../util/FindPrice"
 
 export const reducer = (state, action) => {
@@ -148,6 +148,54 @@ export const reducer = (state, action) => {
       ...state,
       totalItem: reducer.amount,
       totalPrice: reducer.price,
+    }
+  }
+  if (action.type === "LOGIN_MEMBER") {
+    const { memberEmail, memberPassword } = action.payload
+    const findUser = state.memberList.find(
+      user => user.userData.email === memberEmail
+    )
+    if (!findUser)
+      return {
+        ...state,
+        loginMessage: "user not found, please register",
+        alertStatus: "error",
+        alert: true,
+      }
+    else {
+      const password = decryptItem(findUser.userData.password)
+      if (password !== memberPassword) {
+        return {
+          ...state,
+          loginMessage: "password doesn't match",
+          alertStatus: "error",
+          alert: true,
+        }
+      } else {
+        return {
+          ...state,
+          loginMessage: "login successful",
+          alertStatus: "success",
+          alert: true,
+          user: findUser,
+          loginStatus: { login: true },
+        }
+      }
+    }
+  }
+  if (action.type === "CLOSE_ALERT_LOGIN") {
+    return {
+      ...state,
+      loginMessage: "",
+      alert: false,
+    }
+  }
+  if (action.type === "ALERT_REGISTER") {
+    return {
+      ...state,
+      loginMessage: "user not found, please register",
+      alertStatus: "error",
+      alert: true,
     }
   }
   if (action.type === "CLEAR_CART") {

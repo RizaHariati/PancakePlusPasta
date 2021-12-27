@@ -20,8 +20,8 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
   const [openAlert, setOpenAlert] = useState(false)
   const handleStartOrdering = data => {
     setOpenAddressForm(false)
-    navigate("/Menu")
     register(data)
+    if (data.userData.name === "guest") navigate("/Menu")
   }
   useEffect(() => {
     if (!address.inArea) {

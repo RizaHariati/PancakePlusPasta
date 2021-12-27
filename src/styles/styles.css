@@ -54,11 +54,19 @@ body input[type="number"] {
 
 .slider {
   position: relative;
-  min-height: calc(100% -10px);
   margin-inline: auto;
   width: 100%;
   background-color: transparent;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .menu-links {
@@ -236,27 +244,21 @@ body input[type="number"] {
           justify-content: space-between;
 }
 
-@media screen and (max-width: 900px) {
-  .content-container {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-    -ms-grid-rows: 4fr 8fr;
-        grid-template-rows: 4fr 8fr;
-  }
-  .slider {
-    width: 300px;
-    max-width: 400px;
-  }
-  .slide {
-    padding-block: 10px;
-  }
-  .loginContainer {
-    padding: 15px;
-  }
-  .loginForm {
-    max-width: 300px;
-    row-gap: 8px;
-  }
+.user-account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  row-gap: 10px;
 }
 
 @media screen and (max-width: 900px) {
@@ -267,9 +269,14 @@ body input[type="number"] {
         grid-template-rows: 4fr 8fr;
   }
   .slider {
-    width: 300px;
-    max-width: 400px;
+    max-width: 350px;
   }
+  .slide {
+    padding-block: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
   .loginContainer {
     padding: 10px;
   }

@@ -33,7 +33,7 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
         status: true,
         userData: {
           name: values.name,
-          email: values.email,
+          email: values.email.toLowerCase(),
           password: passwordEncrypted,
         },
       })

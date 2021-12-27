@@ -13,9 +13,14 @@ import { toolbar } from "../styles/styles"
 import React from "react"
 import { Link } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-const Navbar = ({ showList, setShowList }) => {
+const Navbar = ({
+  showList,
+  setShowList,
+  showUserAccount,
+  setShowUserAccount,
+}) => {
   const theme = useTheme()
-  const { totalItem } = useGlobalContext()
+  const { totalItem, loginStatus } = useGlobalContext()
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
@@ -69,12 +74,23 @@ const Navbar = ({ showList, setShowList }) => {
               </IconButton>
             </Badge>
           </Tooltip>
-          <Tooltip title="your account">
-            <IconButton variant="contained">
-              <Avatar style={{ height: 35, width: 35 }}>
-                <StaticImage src="../images/icons/user.jpg" alt="user" />
-              </Avatar>
-            </IconButton>
+
+          <Tooltip
+            title="your account"
+            onClick={() => setShowUserAccount(!showUserAccount)}
+          >
+            <Badge
+              color="success"
+              overlap="circular"
+              variant="dot"
+              invisible={!loginStatus.login}
+            >
+              <IconButton variant="contained">
+                <Avatar style={{ height: 35, width: 35 }}>
+                  <StaticImage src="../images/icons/user.jpg" alt="user" />
+                </Avatar>
+              </IconButton>
+            </Badge>
           </Tooltip>
         </div>
       </Toolbar>

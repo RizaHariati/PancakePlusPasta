@@ -8,6 +8,11 @@ export const theme = createTheme({
       main: grey[300],
       light: grey[200],
     },
+    info: {
+      dark: grey[900],
+      main: grey[800],
+      light: grey[500],
+    },
   },
   typography: {
     fontFamily: "'Roboto', sans-serif",

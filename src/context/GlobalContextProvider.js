@@ -53,7 +53,10 @@ const initialState = {
   totalPrice: 0,
   editList: false,
   loginStatus: getloginStatus(),
+  loginMessage: "",
   registerSuccess: false,
+  alert: false,
+  alertStatus: "success",
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -83,6 +86,15 @@ const GlobalProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [state.shoppingList, state.user, state.memberList, state.loginStatus])
 
+  // =================useEffect for Alert Login============
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch({ type: "CLOSE_ALERT_LOGIN" })
+    }, 2000)
+    // eslint-disable-next-line
+  }, [state.alert])
+
   const editList = (id, nameItem, amount, price) => {
     dispatch({
       type: "EDIT_SHOPPING_LIST",
@@ -108,10 +120,24 @@ const GlobalProvider = ({ children }) => {
       })
     }
   }
+
+  const loginMember = (memberEmail, memberPassword) => {
+    if (state.memberList) {
+      dispatch({
+        type: "LOGIN_MEMBER",
+        payload: { memberEmail, memberPassword },
+      })
+    } else {
+      dispatch({
+        type: "ALERT_REGISTER",
+      })
+    }
+  }
   const newGuest = () => {
     dispatch({ type: "CLEAR_CART" })
     dispatch({ type: "GUEST_OUT" })
   }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -119,6 +145,7 @@ const GlobalProvider = ({ children }) => {
         editList,
         register,
         newGuest,
+        loginMember,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ import { card, cardActions } from "../styles/styles"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 import Item from "./Item"
 
-const Submenu = ({ type }) => {
+const Submenu = ({ type, setShowAlertMenu }) => {
   const { mainData } = useGlobalContext()
 
   if (!mainData) return <div></div>
@@ -51,7 +51,14 @@ const Submenu = ({ type }) => {
                       </Typography>
                       <div className="priceContainer">
                         {price.map((item, index) => {
-                          return <Item key={index} {...item} id={id} />
+                          return (
+                            <Item
+                              key={index}
+                              {...item}
+                              id={id}
+                              setShowAlertMenu={setShowAlertMenu}
+                            />
+                          )
                         })}
                       </div>
                     </CardActions>

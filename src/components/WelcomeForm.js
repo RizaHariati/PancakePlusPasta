@@ -1,8 +1,9 @@
-import { Button, Paper, TextField, Typography } from "@mui/material"
+import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { paper, loginButton } from "../styles/styles"
 import "../styles/styles.css"
+import LoginForm from "./LoginForm"
 
 const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
   return (
@@ -16,30 +17,7 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         Welcome to Pancake Plus Pasta
       </Typography>
       <div className="form-container">
-        <form noValidate className="loginForm">
-          <TextField
-            fullWidth
-            variant="outlined"
-            size="small"
-            placeholder="Email..."
-            style={{ backgroundColor: "white", borderRadius: "5px" }}
-          />
-          <TextField
-            fullWidth
-            variant="outlined"
-            size="small"
-            placeholder="Password..."
-            style={{ backgroundColor: "white", borderRadius: "5px" }}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="secondary"
-            sx={loginButton}
-          >
-            Login
-          </Button>
-        </form>
+        <LoginForm />
         <Button
           type="button"
           variant="text"

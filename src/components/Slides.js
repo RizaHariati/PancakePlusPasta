@@ -4,6 +4,7 @@ import "../styles/styles.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Typography } from "@mui/material"
 import { deliveryTitle } from "../styles/styles"
+
 const query = graphql`
   query delivery {
     allContentfulPancakeMenu(
@@ -17,7 +18,12 @@ const query = graphql`
           description
         }
         image {
-          gatsbyImageData(placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
+          gatsbyImageData(
+            placeholder: DOMINANT_COLOR
+            layout: CONSTRAINED
+            height: 700
+            aspectRatio: 1.6
+          )
         }
       }
     }
@@ -70,7 +76,8 @@ const Slides = () => {
             <GatsbyImage
               image={pathToImage}
               alt="transaction"
-              objectFit="fill"
+              objectFit="cover"
+              style={{ height: "100%" }}
             />
           </div>
         )

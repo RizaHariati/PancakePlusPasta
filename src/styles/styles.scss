@@ -40,12 +40,16 @@ body {
 }
 .slider {
   position: relative;
-  min-height: calc(100% -10px);
+
   margin-inline: auto;
   width: 100%;
   background-color: transparent;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .menu-links {
   padding-top: 7px;
 }
@@ -142,27 +146,13 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-@media screen and(max-width:900px) {
-  .content-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 4fr 8fr;
-  }
-  .slider {
-    // max-height: 50vh;
 
-    width: 300px;
-    max-width: 400px;
-  }
-  .slide {
-    padding-block: 10px;
-  }
-  .loginContainer {
-    padding: 15px;
-  }
-  .loginForm {
-    max-width: 300px;
-    row-gap: 8px;
-  }
+.user-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 10px;
 }
 @media screen and(max-width:900px) {
   .content-container {
@@ -170,9 +160,14 @@ body {
     grid-template-rows: 4fr 8fr;
   }
   .slider {
-    width: 300px;
-    max-width: 400px;
+    max-width: 350px;
   }
+  .slide {
+    padding-block: 10px;
+  }
+}
+
+@media screen and(max-width:900px) {
   .loginContainer {
     padding: 10px;
   }
