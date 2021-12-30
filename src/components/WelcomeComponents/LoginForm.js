@@ -1,48 +1,66 @@
 import {
-  Alert,
   Button,
   FormControl,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  Snackbar,
   TextField,
 } from "@mui/material"
+
 import React, { useState } from "react"
-import { loginButton } from "../styles/styles"
+import { loginButton } from "../../styles/styles"
 import { useFormik } from "formik"
-import { validationSchema2 } from "../util/RegistrationFunctions"
+import { validationSchema2 } from "../../util/RegistrationFunctions"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { useGlobalContext } from "../context/GlobalContextProvider"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
+import { navigate } from "gatsby"
+import { decryptItem } from "../../util/EncryptionHandler"
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const { loginMember, loginMessage, alert, alertStatus, loginStatus } =
-    useGlobalContext()
+  const { memberList, openAlert, loginMember } = useGlobalContext()
   const loginData = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit: values => {
-      loginMember(values.email, values.password.toLowerCase())
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      const { password } = values
+      const email = values.email.toLowerCase()
+      if (!memberList) {
+        resetForm()
+        return openAlert("error", "User not found, please register")
+      }
+
+      const findMember = await memberList.find(
+        member => member.userData.email === email
+      )
+      if (!findMember) {
+        openAlert("error", "User not found, please register")
+        resetForm()
+        return
+      }
+      const passwordDecrypted = decryptItem(findMember.userData.password)
+      if (passwordDecrypted !== password) {
+        openAlert("error", "wrong password")
+      } else {
+        loginMember(email)
+        navigate("/Menu")
+      }
+
+      resetForm()
+      setSubmitting(false)
     },
     validationSchema: validationSchema2,
   })
   return (
-    <form noValidate className="loginForm" onSubmit={loginData.handleSubmit}>
-      <Snackbar
-        open={alert}
-        onClose={() => {
-          if (loginStatus.login) {
-            console.log(loginStatus.login)
-          }
-        }}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert severity={alertStatus}>{loginMessage}</Alert>
-      </Snackbar>
+    <form
+      noValidate
+      className="loginForm"
+      autoComplete="disable"
+      onSubmit={loginData.handleSubmit}
+    >
       <TextField
         fullWidth
         id="email"

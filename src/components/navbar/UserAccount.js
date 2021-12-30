@@ -10,17 +10,19 @@ import {
   Typography,
 } from "@mui/material"
 import React from "react"
-import "../styles/styles.css"
-import { boxContainer, modalBtn, shoppingPaper } from "../styles/styles"
-import { useGlobalContext } from "../context/GlobalContextProvider"
-import { decryptItem } from "../util/EncryptionHandler"
+import "../../styles/styles.css"
+import { navigate } from "gatsby"
+import { boxContainer, modalBtn, shoppingPaper } from "../../styles/styles"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
+import { decryptItem } from "../../util/EncryptionHandler"
 
 const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
-  const { loginStatus, user, newGuest } = useGlobalContext()
+  const { user, loginStatus, logoutUser } = useGlobalContext()
 
   const handleLogout = () => {
+    logoutUser()
     setShowUserAccount(false)
-    newGuest()
+    navigate("/Welcome/")
   }
   return (
     <Modal open={showUserAccount} sx={{ padding: { md: "20px", xs: "0" } }}>
@@ -42,7 +44,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
               : "You're not logged in"}
           </Typography>
           <Divider />
-          {loginStatus.login && <AccountData />}
+          {loginStatus.login && <AccountData user={user} />}
         </Paper>
         <Button
           variant="contained"
@@ -52,14 +54,16 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         >
           Cancel
         </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
+        {loginStatus.login && (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        )}
       </Box>
     </Modal>
   )
@@ -67,8 +71,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
 
 export default UserAccount
 
-const AccountData = () => {
-  const { user } = useGlobalContext()
+const AccountData = ({ user }) => {
   const { userData, location, number, phone, street } = user
   const { email } = userData
   const phoneNumber = decryptItem(phone)
@@ -83,6 +86,9 @@ const AccountData = () => {
         InputLabelProps={{
           shrink: true,
         }}
+        InputProps={{
+          readOnly: true,
+        }}
         sx={{ color: "black" }}
       />
       {email !== "default" && (
@@ -94,6 +100,9 @@ const AccountData = () => {
           fullWidth
           InputLabelProps={{
             shrink: true,
+          }}
+          InputProps={{
+            readOnly: true,
           }}
           sx={{ color: "black" }}
         />
@@ -107,6 +116,9 @@ const AccountData = () => {
         InputLabelProps={{
           shrink: true,
         }}
+        InputProps={{
+          readOnly: true,
+        }}
         sx={{ color: "black" }}
       />
       {number !== "0" && (
@@ -119,6 +131,9 @@ const AccountData = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          InputProps={{
+            readOnly: true,
+          }}
           sx={{ color: "black" }}
         />
       )}
@@ -130,6 +145,9 @@ const AccountData = () => {
         fullWidth
         InputLabelProps={{
           shrink: true,
+        }}
+        InputProps={{
+          readOnly: true,
         }}
         sx={{ color: "black" }}
       />

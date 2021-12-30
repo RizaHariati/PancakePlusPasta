@@ -1,13 +1,13 @@
 import { Grid, Modal, Paper, Snackbar, Typography, Alert } from "@mui/material"
 import { navigate } from "gatsby"
 import React, { useState, useEffect } from "react"
-import { useGlobalContext } from "../context/GlobalContextProvider"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
 import {
   gridModalForm,
   gridModalMap,
   paperModal,
   gridModalContainer,
-} from "../styles/modalStyles"
+} from "../../styles/modalStyles"
 import AddressData from "./AddressData"
 import MapInput from "./MapInput"
 
@@ -38,7 +38,7 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert severity="error" sx={{ width: "100%" }}>
-          Location you pick is outside the delivery Address
+          Location is outside the delivery Address
         </Alert>
       </Snackbar>
       <Modal open={openAddressForm.status}>

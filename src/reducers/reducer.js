@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid"
-import { decryptItem } from "../util/EncryptionHandler"
 import FindPrice from "../util/FindPrice"
 
 export const reducer = (state, action) => {
+  // ===========shopping list& menu=====================
   if (action.type === "GET_DATA") {
     const data = action.payload.allContentfulPancakeMenu.nodes
     let newData = []
@@ -27,6 +27,7 @@ export const reducer = (state, action) => {
       mainData: newData,
     }
   }
+
   if (action.type === "EDIT_SHOPPING_LIST") {
     const shoppingList = state.shoppingList
     let newShoppingList = []
@@ -86,46 +87,7 @@ export const reducer = (state, action) => {
       }
     }
   }
-  if (action.type === "GUEST_LOGIN") {
-    const newUser = action.payload
 
-    return {
-      ...state,
-      loginStatus: { login: true },
-      user: newUser,
-    }
-  }
-  if (action.type === "REGISTER") {
-    const data = action.payload
-    const id = uuidv4()
-    return {
-      ...state,
-      memberList: [{ id, ...data }],
-      registerSuccess: true,
-    }
-  }
-  if (action.type === "SCREEN_MEMBER") {
-    const data = action.payload
-    const email = data.userData.email
-    console.log(email)
-    const list = state.memberList
-    const findEmail = list.find(user => user.userData.email === email)
-    if (!findEmail) {
-      const id = uuidv4()
-      const newData = { id, ...data }
-      return {
-        ...state,
-        memberList: [...state.memberList, newData],
-        registerSuccess: true,
-      }
-    } else {
-      console.log(findEmail)
-      return {
-        ...state,
-        editList: true,
-      }
-    }
-  }
   if (action.type === "GET_TOTAL") {
     const reducer = state.shoppingList.reduce(
       (total, item) => {
@@ -150,68 +112,148 @@ export const reducer = (state, action) => {
       totalPrice: reducer.price,
     }
   }
-  if (action.type === "LOGIN_MEMBER") {
-    const { memberEmail, memberPassword } = action.payload
-    const findUser = state.memberList.find(
-      user => user.userData.email === memberEmail
-    )
-    if (!findUser)
-      return {
-        ...state,
-        loginMessage: "user not found, please register",
-        alertStatus: "error",
-        alert: true,
-      }
-    else {
-      const password = decryptItem(findUser.userData.password)
-      if (password !== memberPassword) {
-        return {
-          ...state,
-          loginMessage: "password doesn't match",
-          alertStatus: "error",
-          alert: true,
-        }
-      } else {
-        return {
-          ...state,
-          loginMessage: "login successful",
-          alertStatus: "success",
-          alert: true,
-          user: findUser,
-          loginStatus: { login: true },
-        }
-      }
-    }
-  }
-  if (action.type === "CLOSE_ALERT_LOGIN") {
-    return {
-      ...state,
-      loginMessage: "",
-      alert: false,
-    }
-  }
-  if (action.type === "ALERT_REGISTER") {
-    return {
-      ...state,
-      loginMessage: "user not found, please register",
-      alertStatus: "error",
-      alert: true,
-    }
-  }
+
   if (action.type === "CLEAR_CART") {
     return {
       ...state,
       shoppingList: [],
-      totalItem: 0,
-      totalPrice: 0,
     }
   }
-  if (action.type === "GUEST_OUT") {
+
+  if (action.type === "MEMBER_LOGIN") {
+    // ================== register && login=======================
+
+    const memberList = state.memberList
+    const email = action.payload.memberEmail
+    const member = memberList.find(user => user.userData.email === email)
+    const name = member.userData.name
     return {
       ...state,
-      loginStatus: { login: false },
-      user: {},
+      loginStatus: { login: true },
+      user: member,
+      alertMessage: `Login successful. Welcome ${name}!`,
+      alerting: true,
+      alertStatus: "success",
     }
   }
+
+  if (action.type === "LOGOUT_USER") {
+    return {
+      ...state,
+      shoppingList: [],
+      loginStatus: { login: false },
+      user: {},
+      messageList: [],
+      alertMessage: "You are logged out, data cleared",
+      alerting: true,
+      alertStatus: "success",
+    }
+  }
+
+  if (action.type === "GUEST_LOGIN") {
+    const newUser = action.payload
+
+    return {
+      ...state,
+      loginStatus: { login: true },
+      user: newUser,
+      alertMessage: "You are logged in as guest",
+      alerting: true,
+      alertStatus: "success",
+    }
+  }
+
+  if (action.type === "REGISTER") {
+    const data = action.payload
+    const id = uuidv4()
+    const newData = { id, ...data }
+    let list = []
+    if (!state.memberList) {
+      list = [newData]
+    } else {
+      list = [...state.memberList, newData]
+    }
+    return {
+      ...state,
+      memberList: list,
+      registerSuccess: true,
+      alertMessage: "Data is registered, please login",
+      alerting: true,
+      alertStatus: "success",
+    }
+  }
+
+  if (action.type === "OPEN_ALERT") {
+    return {
+      ...state,
+      alertMessage: action.payload.message,
+      alerting: true,
+      alertStatus: action.payload.status,
+    }
+  }
+
+  if (action.type === "CLOSE_ALERT") {
+    return {
+      ...state,
+      alertMessage: "",
+      alerting: false,
+      alertStatus: "info",
+    }
+  }
+
+  // ========================checkout process==================
+  if (action.type === "CHECK_OUT") {
+    const { checkOut, itemsOut, customerOut } = action.payload
+
+    return {
+      ...state,
+      checkout: { check: checkOut, items: itemsOut, customer: customerOut },
+    }
+  }
+
+  if (action.type === "CANCEL_CHECK_OUT") {
+    return {
+      ...state,
+      checkout: { check: false, items: [], customer: {} },
+    }
+  }
+
+  if (action.type === "CONFIRM_CHECK_OUT") {
+    const id = uuidv4()
+    const newMessage = {
+      id,
+      items: state.checkout.items,
+      customer: state.checkout.customer,
+      total: state.totalPrice,
+    }
+    console.log(newMessage)
+    if (state.checkout.customer.userData.name === "guest") {
+      return {
+        ...state,
+        checkout: { check: false, items: [], customer: {}, total: 0 },
+        shoppingList: [],
+        loginStatus: { login: false },
+        user: {},
+        messageList: [],
+        alertMessage: "finish purcashing, thank you",
+        alerting: true,
+        alertStatus: "success",
+      }
+    }
+
+    let messageArray
+    if (!state.messageList) {
+      messageArray = [newMessage]
+    } else {
+      messageArray = [...state.messageList, newMessage]
+    }
+    return {
+      ...state,
+      messageList: messageArray,
+      checkout: { check: false, items: [], customer: {} },
+      shoppingList: [],
+    }
+  }
+
   return state
 }

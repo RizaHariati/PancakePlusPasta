@@ -3,8 +3,8 @@ import { ButtonBase, Typography } from "@mui/material"
 import React, { useState, useEffect } from "react"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 
-const Item = ({ name, price, id, setShowAlertMenu }) => {
-  const { editList, shoppingList, loginStatus } = useGlobalContext()
+const Item = ({ name, price, id }) => {
+  const { editList, shoppingList, loginStatus, openAlert } = useGlobalContext()
   const [data, setData] = useState(0)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Item = ({ name, price, id, setShowAlertMenu }) => {
     // eslint-disable-next-line
   }, [id])
   const handleData = (data, status) => {
-    if (!loginStatus.login) setShowAlertMenu(true)
+    if (!loginStatus.login) return openAlert("error", "Please login first")
     else {
       if (status === "decrease") {
         if (data <= 0) {
@@ -29,9 +29,6 @@ const Item = ({ name, price, id, setShowAlertMenu }) => {
         setData(data + 1)
       }
     }
-    setTimeout(() => {
-      setShowAlertMenu(false)
-    }, 1000)
   }
   const handleChange = e => {
     e.preventDefault()

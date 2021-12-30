@@ -3,10 +3,11 @@ import Layout from "../components/layout"
 import Slides from "../components/Slides"
 import "../styles/styles.css"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-import WelcomeForm from "../components/WelcomeForm"
-import AddressForm from "../components/AddressForm"
-import LoginAsGuest from "../components/LoginAsGuest"
-import RegisterForm from "../components/RegisterForm"
+import WelcomeForm from "../components/WelcomeComponents/WelcomeForm"
+import RegisterForm from "../components/register/RegisterForm"
+import AddressForm from "../components/register/AddressForm"
+import LoginAsMember from "../components/WelcomeComponents/LoginAsMember"
+import LoginAsGuest from "../components/WelcomeComponents/LoginAsGuest"
 
 const Welcome = () => {
   const { loginStatus, user } = useGlobalContext()
@@ -32,7 +33,10 @@ const Welcome = () => {
             />
           )}
           {loginStatus.login && user.userData.name === "guest" && (
-            <LoginAsGuest />
+            <LoginAsGuest setOpenRegisterForm={setOpenRegisterForm} />
+          )}
+          {loginStatus.login && user.userData.name !== "guest" && (
+            <LoginAsMember />
           )}
         </div>
       </div>

@@ -226,3 +226,41 @@ body {
   justify-content: center;
   row-gap: 15px;
 }
+
+// ======================submenu==============
+
+.checkout-address-title {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+.checkout-price1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.success-order {
+  position: absolute;
+  width: 70%;
+  transform: rotateZ(180deg);
+  bottom: 5px;
+  right: 5px;
+}
+
+.success-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 2;
+  row-gap: 10px;
+}
+@media screen and(max-width:400px) {
+  .success-order {
+    width: 100%;
+  }
+}

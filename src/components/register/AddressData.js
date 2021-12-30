@@ -6,8 +6,8 @@ import {
   Typography,
 } from "@mui/material"
 import React, { useState, useEffect } from "react"
-import { paperForm } from "../styles/modalStyles"
-import { encryptItem } from "../util/EncryptionHandler"
+import { paperForm } from "../../styles/modalStyles"
+import { encryptItem } from "../../util/EncryptionHandler"
 
 const AddressData = ({
   handleStartOrdering,
@@ -33,7 +33,7 @@ const AddressData = ({
   const [number, setNumber] = useState("")
   const [numberError, setNumberError] = useState({
     status: false,
-    message: "Add address detail (number/floor/block)",
+    message: "Add Address detail or '0' ",
   })
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const AddressData = ({
     if (!number) {
       return setNumberError({
         status: true,
-        message: "please add more detail or put '0' ",
+        message: "Add Address detail or '0'",
       })
     }
     if (phone && addressValue && street && number) {
@@ -174,7 +174,7 @@ const AddressData = ({
           variant="outlined"
           type="text"
           label={numberError.message}
-          placeholder="Address detail (number/floor/block)"
+          placeholder="Add Address detail or '0'"
           value={number || ""}
           onChange={e => setNumber(e.target.value)}
         />

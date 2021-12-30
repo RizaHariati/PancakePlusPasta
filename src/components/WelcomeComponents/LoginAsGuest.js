@@ -2,13 +2,18 @@ import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { red } from "@mui/material/colors"
-import { paper, loginButton } from "../styles/styles"
-import "../styles/styles.css"
+import { paper, loginButton } from "../../styles/styles"
+import "../../styles/styles.css"
 import { Favorite } from "@mui/icons-material"
-import { useGlobalContext } from "../context/GlobalContextProvider"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
 
-const LoginAsGuest = () => {
-  const { newGuest } = useGlobalContext()
+const LoginAsGuest = ({ setOpenRegisterForm }) => {
+  const { logoutUser } = useGlobalContext()
+
+  const handleRegister = () => {
+    logoutUser()
+    setOpenRegisterForm(true)
+  }
   return (
     <Paper variant="outlined" sx={paper}>
       <Typography variant="h4" color="white" align="center">
@@ -16,7 +21,7 @@ const LoginAsGuest = () => {
       </Typography>
       <div className="form-container">
         <StaticImage
-          src="../images/main/lunch.jpg"
+          src="../../images/main/lunch.jpg"
           alt="lunch"
           style={{ borderRadius: "3px" }}
         />
@@ -27,18 +32,19 @@ const LoginAsGuest = () => {
           style={{ color: red[900] }}
           endIcon={<Favorite />}
           startIcon={<Favorite />}
+          onClick={handleRegister}
         >
           still time to join us & register!
         </Button>
 
         <Button
-          onClick={newGuest}
+          onClick={() => logoutUser()}
           type="button"
           variant="contained"
           color="secondary"
           sx={loginButton}
         >
-          Login as new guest
+          Exit & Login as new guest
         </Button>
       </div>
     </Paper>

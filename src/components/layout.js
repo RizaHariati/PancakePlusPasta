@@ -1,25 +1,45 @@
 import React, { useState } from "react"
 import Footer from "./Footer"
-import Navbar from "./Navbar"
 import "../styles/styles.css"
-import ShoppingList from "./ShoppingList"
-import UserAccount from "./UserAccount"
+import Navbar from "./Navbar"
+import { useGlobalContext } from "../context/GlobalContextProvider"
+import ShoppingList from "./navbar/ShoppingList"
+import UserAccount from "./navbar/UserAccount"
+import ConfirmOrder from "./navbar/ConfirmOrder"
+import { Alert, Snackbar } from "@mui/material"
+
 const Layout = ({ children }) => {
-  const [showList, setShowList] = useState(false)
+  const [showShoppingList, setShowShoppingList] = useState(false)
   const [showUserAccount, setShowUserAccount] = useState(false)
+
+  const { alerting, alertStatus, alertMessage } = useGlobalContext()
+
   return (
     <div>
       <Navbar
-        showList={showList}
-        setShowList={setShowList}
-        showUserAccount={showUserAccount}
+        showShoppingList={showShoppingList}
+        setShowShoppingList={setShowShoppingList}
         setShowUserAccount={setShowUserAccount}
+        showUserAccount={showUserAccount}
       />
-      <ShoppingList showList={showList} setShowList={setShowList} />
+      <Snackbar
+        open={alerting}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert severity={alertStatus}>{alertMessage}</Alert>
+      </Snackbar>
+      <ShoppingList
+        showShoppingList={showShoppingList}
+        setShowShoppingList={setShowShoppingList}
+      />
+
       <UserAccount
         showUserAccount={showUserAccount}
         setShowUserAccount={setShowUserAccount}
       />
+
+      <ConfirmOrder />
+
       {children}
       <Footer />
     </div>

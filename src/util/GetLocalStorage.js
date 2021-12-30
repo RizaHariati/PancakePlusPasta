@@ -36,4 +36,29 @@ const getloginStatus = () => {
   return { login: false }
 }
 
-export { getshoppinglist, getuserList, getuser, getloginStatus }
+const getloginCheckOut = () => {
+  try {
+    let checkout = JSON.parse(localStorage.getItem("checkout"))
+    if (checkout) return checkout
+  } catch (error) {
+    console.log(error)
+  }
+  return { check: false, items: [], customer: {} }
+}
+const getmessageList = () => {
+  try {
+    let messageList = JSON.parse(localStorage.getItem("messageList"))
+    if (messageList) return messageList
+  } catch (error) {
+    console.log(error)
+  }
+  return []
+}
+export {
+  getshoppinglist,
+  getuserList,
+  getuser,
+  getloginStatus,
+  getloginCheckOut,
+  getmessageList,
+}

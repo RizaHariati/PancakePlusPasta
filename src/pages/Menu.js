@@ -1,11 +1,4 @@
-import {
-  Alert,
-  Container,
-  MenuItem,
-  Snackbar,
-  TextField,
-  Typography,
-} from "@mui/material"
+import { Container, MenuItem, TextField, Typography } from "@mui/material"
 import { graphql } from "gatsby"
 import React, { useState } from "react"
 import Layout from "../components/layout"
@@ -16,16 +9,10 @@ const Menu = ({ data }) => {
   const array = data.allContentfulPancakeMenu.nodes
   const menu = [...new Set(array.map(item => item.type))]
   const [subMenu, setSubMenu] = useState("pancakes")
-  const [showAlertMenu, setShowAlertMenu] = useState(false)
+
   return (
     <Layout>
       <Container maxWidth="md" sx={container}>
-        <Snackbar
-          open={showAlertMenu}
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        >
-          <Alert severity="error">Please login first</Alert>
-        </Snackbar>
         <Typography variant="h2" color="primary">
           Menu Selection
         </Typography>
@@ -48,7 +35,7 @@ const Menu = ({ data }) => {
             </MenuItem>
           ))}
         </TextField>
-        <Submenu type={subMenu} setShowAlertMenu={setShowAlertMenu} />
+        <Submenu type={subMenu} />
       </Container>
     </Layout>
   )

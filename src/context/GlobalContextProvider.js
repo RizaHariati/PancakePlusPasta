@@ -6,6 +6,8 @@ import {
   getuserList,
   getuser,
   getloginStatus,
+  getloginCheckOut,
+  getmessageList,
 } from "../util/GetLocalStorage"
 
 const request = graphql`
@@ -51,12 +53,13 @@ const initialState = {
   shoppingList: getshoppinglist(),
   totalItem: 0,
   totalPrice: 0,
-  editList: false,
   loginStatus: getloginStatus(),
-  loginMessage: "",
+  alertMessage: "",
   registerSuccess: false,
-  alert: false,
-  alertStatus: "success",
+  alerting: false,
+  alertStatus: "info",
+  checkout: getloginCheckOut(),
+  messageList: getmessageList(),
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -70,30 +73,50 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" })
-    const saveCart = (shoppingList, user, memberList, loginStatus) => {
+    const saveCart = (
+      shoppingList,
+      user,
+      memberList,
+      loginStatus,
+      checkout,
+      messageList
+    ) => {
       localStorage.setItem("shoppingList", JSON.stringify(shoppingList))
       localStorage.setItem("memberList", JSON.stringify(memberList))
       localStorage.setItem("user", JSON.stringify(user))
       localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
+      localStorage.setItem("checkout", JSON.stringify(checkout))
+      localStorage.setItem("messageList", JSON.stringify(messageList))
     }
 
     saveCart(
       state.shoppingList,
       state.user,
       state.memberList,
-      state.loginStatus
+      state.loginStatus,
+      state.checkout,
+      state.messageList
     )
     // eslint-disable-next-line
-  }, [state.shoppingList, state.user, state.memberList, state.loginStatus])
+  }, [
+    state.shoppingList,
+    state.user,
+    state.memberList,
+    state.loginStatus,
+    state.checkout,
+    state.messageList,
+  ])
 
   // =================useEffect for Alert Login============
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch({ type: "CLOSE_ALERT_LOGIN" })
-    }, 2000)
-    // eslint-disable-next-line
-  }, [state.alert])
+    const timer1 = setTimeout(() => {
+      dispatch({ type: "CLOSE_ALERT" })
+    }, 3000)
+    return () => {
+      clearTimeout(timer1)
+    }
+  }, [state.alerting])
 
   const editList = (id, nameItem, amount, price) => {
     dispatch({
@@ -101,6 +124,14 @@ const GlobalProvider = ({ children }) => {
       payload: { id, nameItem, amount, price },
     })
   }
+
+  const openAlert = (status, message) => {
+    dispatch({
+      type: "OPEN_ALERT",
+      payload: { status, message },
+    })
+  }
+
   const register = data => {
     if (data.userData.name === "guest") {
       return dispatch({
@@ -108,44 +139,56 @@ const GlobalProvider = ({ children }) => {
         payload: data,
       })
     }
-    if (!state.memberList) {
-      dispatch({
-        type: "REGISTER",
-        payload: data,
-      })
-    } else {
-      dispatch({
-        type: "SCREEN_MEMBER",
-        payload: data,
-      })
-    }
+
+    dispatch({
+      type: "REGISTER",
+      payload: data,
+    })
   }
 
-  const loginMember = (memberEmail, memberPassword) => {
-    if (state.memberList) {
-      dispatch({
-        type: "LOGIN_MEMBER",
-        payload: { memberEmail, memberPassword },
-      })
-    } else {
-      dispatch({
-        type: "ALERT_REGISTER",
-      })
-    }
+  const loginMember = memberEmail => {
+    dispatch({
+      type: "MEMBER_LOGIN",
+      payload: { memberEmail },
+    })
   }
-  const newGuest = () => {
+  const logoutUser = () => {
+    dispatch({ type: "LOGOUT_USER" })
+  }
+
+  const clearCart = () => {
     dispatch({ type: "CLEAR_CART" })
-    dispatch({ type: "GUEST_OUT" })
+  }
+  const confirming = (checkOut, itemsOut, customerOut) => {
+    dispatch({
+      type: "CHECK_OUT",
+      payload: { checkOut, itemsOut, customerOut },
+    })
+  }
+  const cancelCheckout = () => {
+    dispatch({
+      type: "CANCEL_CHECK_OUT",
+    })
   }
 
+  const confirmCheckout = () => {
+    dispatch({
+      type: "CONFIRM_CHECK_OUT",
+    })
+  }
   return (
     <GlobalContext.Provider
       value={{
         ...state,
         editList,
         register,
-        newGuest,
+        logoutUser,
         loginMember,
+        openAlert,
+        clearCart,
+        confirming,
+        cancelCheckout,
+        confirmCheckout,
       }}
     >
       {children}

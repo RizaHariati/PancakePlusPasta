@@ -1,8 +1,8 @@
 import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { paper, loginButton } from "../styles/styles"
-import "../styles/styles.css"
+import { paper, loginButton } from "../../styles/styles"
+import "../../styles/styles.css"
 import LoginForm from "./LoginForm"
 
 const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {

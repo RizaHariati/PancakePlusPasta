@@ -369,4 +369,66 @@ body input[type="number"] {
           justify-content: center;
   row-gap: 15px;
 }
+
+.checkout-address-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+.checkout-price1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.success-order {
+  position: absolute;
+  width: 70%;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  bottom: 5px;
+  right: 5px;
+}
+
+.success-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  z-index: 2;
+  row-gap: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  .success-order {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

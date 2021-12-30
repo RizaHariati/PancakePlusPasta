@@ -1,6 +1,6 @@
 import { Modal, Paper, Divider, Typography } from "@mui/material"
 import React from "react"
-import { paperModal } from "../styles/registerStyles"
+import { paperModal } from "../../styles/registerStyles"
 import RegisterData from "./RegisterData"
 
 const RegisterForm = ({

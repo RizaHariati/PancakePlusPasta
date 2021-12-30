@@ -12,12 +12,14 @@ import {
 
 import { useFormik } from "formik"
 import React, { useState } from "react"
-import { paperForm } from "../styles/registerStyles"
+import { paperForm } from "../../styles/registerStyles"
 import { VisibilityOff, Visibility } from "@mui/icons-material"
-import { validationSchema1 } from "../util/RegistrationFunctions"
-import { encryptItem } from "../util/EncryptionHandler"
+import { validationSchema1 } from "../../util/RegistrationFunctions"
+import { encryptItem } from "../../util/EncryptionHandler"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
 
 const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
+  const { memberList, openAlert } = useGlobalContext()
   const [showPassword1, setShowPassword1] = useState(false)
   const [showPassword2, setShowPassword2] = useState(false)
   const userData = useFormik({
@@ -29,6 +31,16 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
     },
     onSubmit: (values, { setSubmitting }) => {
       const passwordEncrypted = encryptItem(values.password1)
+      if (memberList) {
+        const findMember = memberList.find(
+          member => member.userData.email === values.email
+        )
+        if (findMember) {
+          openAlert("error", "Email already exist, please login")
+          return setOpenRegisterForm(false)
+        }
+      }
+
       setOpenAddressForm({
         status: true,
         userData: {
@@ -37,6 +49,8 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           password: passwordEncrypted,
         },
       })
+
+      setOpenRegisterForm(false)
       setSubmitting(false)
       setOpenRegisterForm(false)
     },

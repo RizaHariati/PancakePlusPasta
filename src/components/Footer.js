@@ -27,9 +27,9 @@ const Footer = () => {
         </Typography>
 
         <div className="footerAttribute">
-          <a href="https://www.vecteezy.com/free-vector/cartoon">
+          <a href="https://www.pexels.com/photo/gold-and-silver-baubles-on-white-wall-5725975/">
             <Typography variant="h6" color="whitesmoke">
-              Cartoon Vectors by Vecteezy
+              Photo by Karolina Grabowska from Pexels
             </Typography>
           </a>
           <a href="https://www.vecteezy.com/free-vector/mail">
@@ -42,7 +42,6 @@ const Footer = () => {
               People vector created by muammark - www.freepik.com
             </Typography>
           </a>
-
           <a href="https://www.freepik.com/vectors/medical">
             <Typography variant="h6" color="whitesmoke">
               Medical vector created by freepik - www.freepik.com
@@ -58,6 +57,24 @@ const Footer = () => {
               Web Vectors by Vecteezy
             </Typography>
           </a>
+          <div style={{ display: "flex" }}>
+            <Typography variant="h6" color="whitesmoke">
+              Image by-
+            </Typography>
+            <a href="https://pixabay.com/users/memed_nurrohmad-3307648/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2389219">
+              <Typography variant="h6" color="whitesmoke">
+                Memed_Nurrohmad-
+              </Typography>
+            </a>
+            <Typography variant="h6" color="whitesmoke">
+              from_
+            </Typography>
+            <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2389219">
+              <Typography variant="h6" color="whitesmoke">
+                Pixabay
+              </Typography>
+            </a>
+          </div>
         </div>
       </Toolbar>
     </AppBar>

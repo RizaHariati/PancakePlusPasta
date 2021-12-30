@@ -44,7 +44,8 @@ const paper = {
   alignItems: "center",
   justifyContent: "center",
   background: "transparent",
-  rowGap: "20px",
+  rowGap: "17px",
+  padding: "20px",
   border: `0.5px ${mainDark} ease-in`,
 }
 const loginButton = {
@@ -99,6 +100,17 @@ const shoppingPaper = {
   flexDirection: "column",
   rowGap: "10px",
 }
+const success = {
+  position: "relative",
+  height: { md: "300px", xs: "100%" },
+  width: { md: "500px", xs: "100%" },
+  margin: "auto",
+  marginTop: { md: "70px", xs: "0" },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
+}
 export {
   container,
   toolbar,
@@ -112,4 +124,5 @@ export {
   boxContainer,
   modalBtn,
   shoppingPaper,
+  success,
 }
