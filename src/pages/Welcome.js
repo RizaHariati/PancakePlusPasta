@@ -8,6 +8,7 @@ import RegisterForm from "../components/register/RegisterForm"
 import AddressForm from "../components/register/AddressForm"
 import LoginAsMember from "../components/WelcomeComponents/LoginAsMember"
 import LoginAsGuest from "../components/WelcomeComponents/LoginAsGuest"
+import SEO from "../components/SEO"
 
 const Welcome = () => {
   const { loginStatus, user } = useGlobalContext()
@@ -23,6 +24,7 @@ const Welcome = () => {
 
   return (
     <Layout>
+      <SEO title="Welcome" description="You can login as guest or as member" />
       <div className="content-container">
         <Slides />
         <div className="loginContainer">

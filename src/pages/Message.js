@@ -22,6 +22,7 @@ import "../styles/styles.css"
 import moment from "moment"
 import { Cancel } from "@mui/icons-material"
 import ListItemShort from "../components/shopping/ListItemShort"
+import SEO from "../components/SEO"
 
 const Message = () => {
   const { messageList } = useGlobalContext()
@@ -36,6 +37,7 @@ const Message = () => {
   else {
     return (
       <Layout>
+        <SEO title="Message" description="Message for our member" />
         <Container maxWidth="sm" sx={container}>
           <Paper variant="outlined" sx={paper}>
             {showMessageModal.status && (
