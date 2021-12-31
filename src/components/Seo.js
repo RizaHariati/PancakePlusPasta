@@ -15,7 +15,8 @@ const getTitle = graphql`
 
 const Seo = ({ title, description }) => {
   const findTitle = useStaticQuery(getTitle)
-  const { siteTitle } = findTitle.site.siteMetadata
+  const siteTitle = findTitle.site.siteMetadata.title
+
   return (
     <Helmet
       title={`${siteTitle} | ${title}`}
