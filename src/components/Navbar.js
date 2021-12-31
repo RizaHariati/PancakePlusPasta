@@ -51,6 +51,7 @@ const Navbar = ({
     if (messageList.length > 0) {
       setMessageNumber(messageList.length - numberToSave)
     }
+    // eslint-disable-next-line
   }, [messageList])
   useEffect(() => {
     localStorage.setItem("messageNumber", JSON.stringify(numberToSave))

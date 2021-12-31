@@ -1,12 +1,12 @@
 import { Container, Typography } from "@mui/material"
 import * as React from "react"
-import SEO from "../components/SEO"
+import Seo from "../components/Seo"
 import Layout from "../components/layout"
 import { container } from "../styles/styles"
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" description="404" />
+    <Seo title="404: Not found" description="404" />
     <Container maxWidth="md" sx={container}>
       <Typography
         variant="h1"

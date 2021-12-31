@@ -5,7 +5,7 @@ import "../styles/styles.css"
 import { Typography } from "@mui/material"
 import { theme } from "../styles/theme"
 import { makeStyles } from "@mui/styles"
-import SEO from "../components/SEO"
+import Seo from "../components/Seo"
 
 const useStyles = makeStyles({
   mainBackground: {
@@ -68,7 +68,7 @@ const IndexPage = () => {
   }, [enter])
   return (
     <div className={classes.mainBackground}>
-      <SEO title="Home" description="Home" />
+      <Seo title="Home" description="Home" />
       <div className={classes.mainText1}>
         <Typography
           variant="h2"

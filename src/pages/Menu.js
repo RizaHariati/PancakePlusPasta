@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import Layout from "../components/layout"
 import Submenu from "../components/Submenu"
 import { container } from "../styles/styles"
-import SEO from "../components/SEO"
+import Seo from "../components/Seo"
 
 const Menu = ({ data }) => {
   const array = data.allContentfulPancakeMenu.nodes
@@ -13,7 +13,7 @@ const Menu = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Menu" description="Select your menu" />
+      <Seo title="Menu" description="Select your menu" />
       <Container maxWidth="md" sx={container}>
         <Typography variant="h2" color="primary">
           Menu Selection

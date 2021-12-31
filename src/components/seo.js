@@ -1,13 +1,27 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import { graphql, useStaticQuery } from "gatsby"
 
-const SEO = ({ title, description }) => {
+const getTitle = graphql`
+  {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
+
+const Seo = ({ title, description }) => {
+  const resultTitle = useStaticQuery(getTitle)
+  const { siteTitle } = resultTitle.site.siteMetadata
   return (
     <Helmet
-      title={`Pancake Plus Pasta || ${title}`}
+      title={`${siteTitle} | ${title}`}
       meta={[{ name: `description`, content: description }]}
     ></Helmet>
   )
 }
 
-export default SEO
+export default Seo
