@@ -11,16 +11,21 @@ const getshoppinglist = () => {
 const getuserList = () => {
   try {
     const userList = JSON.parse(localStorage.getItem("memberList"))
-    if (userList) return userList
+
+    if (userList) {
+      return userList
+    }
   } catch (error) {
     console.log(error)
   }
-  return null
+  return []
 }
 const getuser = () => {
   try {
     const user = JSON.parse(localStorage.getItem("user"))
-    if (user) return user
+    if (user) {
+      return user
+    }
   } catch (error) {
     console.log(error)
   }

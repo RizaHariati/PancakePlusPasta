@@ -119,10 +119,8 @@ export const reducer = (state, action) => {
       shoppingList: [],
     }
   }
-
+  // ================== register && login=======================
   if (action.type === "MEMBER_LOGIN") {
-    // ================== register && login=======================
-
     const memberList = state.memberList
     const email = action.payload.memberEmail
     const member = memberList.find(user => user.userData.email === email)
@@ -201,6 +199,27 @@ export const reducer = (state, action) => {
     }
   }
 
+  if (action.type === "REMOVE_ACCOUNT") {
+    const newMemberList = state.memberList.filter(
+      member => member.userData.email !== action.payload
+    )
+    const findMember = state.memberList.find(
+      member => member.userData.email === action.payload
+    )
+    const name = findMember.userData.name
+
+    return {
+      ...state,
+      user: {},
+      memberList: newMemberList,
+      shoppingList: [],
+      loginStatus: { login: false },
+      alertMessage: `Sad to see you go! ${name}`,
+      alerting: true,
+      alertStatus: "info",
+    }
+  }
+
   // ========================checkout process==================
   if (action.type === "CHECK_OUT") {
     const { checkOut, itemsOut, customerOut } = action.payload
@@ -220,13 +239,15 @@ export const reducer = (state, action) => {
 
   if (action.type === "CONFIRM_CHECK_OUT") {
     const id = uuidv4()
+    const date = new Date()
     const newMessage = {
       id,
       items: state.checkout.items,
       customer: state.checkout.customer,
       total: state.totalPrice,
+      date,
     }
-    console.log(newMessage)
+
     if (state.checkout.customer.userData.name === "guest") {
       return {
         ...state,

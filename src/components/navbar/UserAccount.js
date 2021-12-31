@@ -1,4 +1,4 @@
-import { Cancel } from "@mui/icons-material"
+import { Cancel, PersonRemoveRounded } from "@mui/icons-material"
 import {
   Box,
   Button,
@@ -7,6 +7,7 @@ import {
   Modal,
   Paper,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material"
 import React from "react"
@@ -17,7 +18,7 @@ import { useGlobalContext } from "../../context/GlobalContextProvider"
 import { decryptItem } from "../../util/EncryptionHandler"
 
 const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
-  const { user, loginStatus, logoutUser } = useGlobalContext()
+  const { user, loginStatus, logoutUser, removeAccount } = useGlobalContext()
 
   const handleLogout = () => {
     logoutUser()
@@ -30,9 +31,24 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         <IconButton onClick={() => setShowUserAccount(false)} sx={modalBtn}>
           <Cancel color="error" />
         </IconButton>
-        <Typography variant="h4" color="primary.dark">
-          Your Account
-        </Typography>
+        <div className="user-title">
+          <Typography variant="h4" color="primary.dark">
+            Your Account
+          </Typography>
+          {loginStatus.login && user.userData.name !== "guest" && (
+            <Tooltip title="Remove-account" placement="left">
+              <IconButton
+                onClick={() => {
+                  removeAccount(user.userData.email)
+                  setShowUserAccount(false)
+                  navigate("/Welcome/")
+                }}
+              >
+                <PersonRemoveRounded color="error" />
+              </IconButton>
+            </Tooltip>
+          )}
+        </div>
         <Paper variant="outlined" sx={shoppingPaper}>
           <Typography
             variant="h3"

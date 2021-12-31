@@ -47,13 +47,12 @@ const AddressData = ({
         status: false,
         message: "Location selected",
       })
-      if (!street) {
-        setStreet(Address)
-        setStreetError({
-          status: false,
-          message: "Edit street name",
-        })
-      }
+
+      setStreet(Address)
+      setStreetError({
+        status: false,
+        message: "Edit street name",
+      })
     } else {
       setAddressValue("")
       setAddressValueError({
@@ -66,13 +65,24 @@ const AddressData = ({
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (!phone || phone.length < 11 || phone.length > 13) {
+    if (!phone) {
       return setPhoneError({
         status: true,
-        message: "phone number is not valid",
+        message: "insert phone number",
       })
     }
-
+    if (phone.length < 11) {
+      return setPhoneError({
+        status: true,
+        message: "too short, phone number is not valid",
+      })
+    }
+    if (phone.length > 13) {
+      return setPhoneError({
+        status: true,
+        message: "too long, phone number is not valid",
+      })
+    }
     if (!addressValue) {
       return setAddressValueError({
         status: true,

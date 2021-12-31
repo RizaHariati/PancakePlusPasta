@@ -6,6 +6,10 @@ const paperModal = {
   width: { md: "80vw", xs: "100vw" },
   height: { md: "80vh", xs: "100vh" },
   overflowY: { md: "auto", xs: "scroll" },
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
 }
 const gridModalContainer = { padding: "20px" }
 

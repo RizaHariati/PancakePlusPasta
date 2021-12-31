@@ -264,3 +264,20 @@ body {
     width: 100%;
   }
 }
+
+.message-subtitle {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 10px;
+}
+
+.user-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

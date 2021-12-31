@@ -95,6 +95,10 @@ const modalBtn = {
 const shoppingPaper = {
   height: "calc(100% - 80px)",
   overflowY: "scroll",
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
   padding: "10px",
   display: "flex",
   flexDirection: "column",
@@ -102,8 +106,8 @@ const shoppingPaper = {
 }
 const success = {
   position: "relative",
-  height: { md: "300px", xs: "100%" },
-  width: { md: "500px", xs: "100%" },
+  height: { md: "400px", xs: "100%" },
+  width: { md: "600px", xs: "100%" },
   margin: "auto",
   marginTop: { md: "70px", xs: "0" },
   display: "flex",

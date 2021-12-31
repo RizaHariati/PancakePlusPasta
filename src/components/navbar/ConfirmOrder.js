@@ -21,6 +21,8 @@ import { useGlobalContext } from "../../context/GlobalContextProvider"
 import { decryptItem } from "../../util/EncryptionHandler"
 import TotalPrice from "../shopping/TotalPrice"
 import { StaticImage } from "gatsby-plugin-image"
+import ListItemShort from "../shopping/ListItemShort"
+import { navigate } from "gatsby"
 
 const ConfirmOrder = () => {
   const { checkout, cancelCheckout, confirmCheckout } = useGlobalContext()
@@ -28,9 +30,10 @@ const ConfirmOrder = () => {
   const { check, items, customer } = checkout
   const handleConfirm = async () => {
     setSuccessOrder(true)
+
     setTimeout(() => {
       confirmCheckout()
-      window.location.reload()
+      navigate("/Welcome/")
     }, 1200)
   }
   if (!items) return <div></div>
@@ -54,7 +57,7 @@ const ConfirmOrder = () => {
             <Divider variant="fullWidth" sx={{ width: "100%" }} />
             {items.map(list => {
               const { id } = list
-              return <ListItem key={id} list={list} />
+              return <ListItemShort key={id} list={list} />
             })}
             <TotalPrice />
           </Paper>
@@ -171,58 +174,58 @@ const CostumerData = ({ customer }) => {
   )
 }
 
-const ListItem = ({ list }) => {
-  const { id, title, price } = list
+// const ListItem = ({ list }) => {
+//   const { id, title, price } = list
 
-  return (
-    <div className="myCartPrice-logos">
-      <div className="myCartPrice-title">
-        <Typography variant="h4" color="textPrimary" fontSize={18}>
-          {title}
-        </Typography>
-      </div>
-      <div className="checkout-price1">
-        {price.map((item, index) => {
-          const { amount } = item
-          if (!amount) return <div key={index}></div>
-          else {
-            return (
-              <ShoppingListItem key={index} {...item} id={id} amount={amount} />
-            )
-          }
-        })}
-        <Divider variant="fullWidth" sx={{ width: "100%" }} />
-      </div>
-    </div>
-  )
-}
+//   return (
+//     <div className="myCartPrice-logos">
+//       <div className="myCartPrice-title">
+//         <Typography variant="h4" color="textPrimary" fontSize={18}>
+//           {title}
+//         </Typography>
+//       </div>
+//       <div className="checkout-price1">
+//         {price.map((item, index) => {
+//           const { amount } = item
+//           if (!amount) return <div key={index}></div>
+//           else {
+//             return (
+//               <ShoppingListItem key={index} {...item} id={id} amount={amount} />
+//             )
+//           }
+//         })}
+//         <Divider variant="fullWidth" sx={{ width: "100%" }} />
+//       </div>
+//     </div>
+//   )
+// }
 
-const ShoppingListItem = ({ name, price, amount, id }) => {
-  return (
-    <div className="myCartPrice-price2">
-      <Typography
-        variant="body1"
-        sx={{ width: "100px" }}
-        color="secondary.dark"
-      >
-        {name.replace(/_/g, " ")}
-      </Typography>
-      <Typography
-        variant="body1"
-        align="right"
-        sx={{ marginLeft: "auto" }}
-        color="secondary.dark"
-      >
-        x{amount}
-      </Typography>
-      <Typography
-        variant="body1"
-        align="right"
-        sx={{ width: "70px" }}
-        color="secondary.dark"
-      >
-        ${(price * amount) / 100}
-      </Typography>
-    </div>
-  )
-}
+// const ShoppingListItem = ({ name, price, amount, id }) => {
+//   return (
+//     <div className="myCartPrice-price2">
+//       <Typography
+//         variant="body1"
+//         sx={{ width: "100px" }}
+//         color="secondary.dark"
+//       >
+//         {name.replace(/_/g, " ")}
+//       </Typography>
+//       <Typography
+//         variant="body1"
+//         align="right"
+//         sx={{ marginLeft: "auto" }}
+//         color="secondary.dark"
+//       >
+//         x{amount}
+//       </Typography>
+//       <Typography
+//         variant="body1"
+//         align="right"
+//         sx={{ width: "70px" }}
+//         color="secondary.dark"
+//       >
+//         ${(price * amount) / 100}
+//       </Typography>
+//     </div>
+//   )
+// }

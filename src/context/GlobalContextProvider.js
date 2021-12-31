@@ -73,6 +73,9 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" })
+  }, [state.shoppingList])
+
+  useEffect(() => {
     const saveCart = (
       shoppingList,
       user,
@@ -176,6 +179,14 @@ const GlobalProvider = ({ children }) => {
       type: "CONFIRM_CHECK_OUT",
     })
   }
+
+  const removeAccount = email => {
+    dispatch({
+      type: "REMOVE_ACCOUNT",
+      payload: email,
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -189,6 +200,7 @@ const GlobalProvider = ({ children }) => {
         confirming,
         cancelCheckout,
         confirmCheckout,
+        removeAccount,
       }}
     >
       {children}

@@ -9,10 +9,10 @@ const Footer = () => {
   const footerAppbar = {
     background: theme.palette.secondary.dark,
 
-    bottom: { md: -80, xs: -130 },
+    bottom: { md: -80, xs: -135 },
     top: "auto",
     textAlign: { md: "left", xs: "center" },
-    height: { md: 80, xs: 130 },
+    height: { md: 80, xs: 135 },
   }
 
   return (

@@ -10,9 +10,19 @@ import {
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
+
+const getMessageNumber = () => {
+  try {
+    const messageNumber = JSON.parse(localStorage.getItem("messageNumber"))
+    if (messageNumber) return messageNumber
+  } catch (error) {
+    console.log(error)
+  }
+  return 0
+}
 const Navbar = ({
   showShoppingList,
   setShowShoppingList,
@@ -20,20 +30,31 @@ const Navbar = ({
   setShowUserAccount,
 }) => {
   const theme = useTheme()
+  const [messageNumber, setMessageNumber] = useState(0)
+  const [numberToSave, setNumberToSave] = useState(getMessageNumber())
   const { loginStatus, totalItem, messageList, user, openAlert } =
     useGlobalContext()
 
-  const handleMail = () => {
+  const handleMail = async () => {
+    await setNumberToSave(prev => prev + messageNumber)
+    setMessageNumber(0)
     if (!loginStatus.login) {
       navigate(`/Menu`)
       return openAlert("error", "you have to login first")
     }
     if (user && user.userData.name === "guest") {
-      return openAlert("error", "you're logged in as guest'")
+      return openAlert("error", "No message, you're logged in as guest")
     }
     navigate(`/Message`)
   }
-
+  useEffect(() => {
+    if (messageList.length > 0) {
+      setMessageNumber(messageList.length - numberToSave)
+    }
+  }, [messageList])
+  useEffect(() => {
+    localStorage.setItem("messageNumber", JSON.stringify(numberToSave))
+  }, [numberToSave])
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
@@ -80,7 +101,7 @@ const Navbar = ({
 
           <Tooltip title="messages">
             <Badge
-              badgeContent={messageList.length}
+              badgeContent={messageNumber}
               color="error"
               overlap="circular"
             >

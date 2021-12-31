@@ -69,6 +69,12 @@ const LoginForm = () => {
         variant="outlined"
         size="small"
         color="info"
+        inputProps={{
+          autoComplete: "new-password",
+          form: {
+            autoComplete: "off",
+          },
+        }}
         error={
           loginData.errors.email === "required" ||
           loginData.errors.email === "invalid email format"
@@ -94,6 +100,12 @@ const LoginForm = () => {
           // value={userData.values.password1 }
           // onChange={userData.handleChange}
           color="info"
+          inputProps={{
+            autoComplete: "new-password",
+            form: {
+              autoComplete: "off",
+            },
+          }}
           {...loginData.getFieldProps("password")}
           style={{
             backgroundColor: "white",

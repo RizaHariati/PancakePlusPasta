@@ -16,13 +16,41 @@ const paper = {
   background: "transparent",
   rowGap: "17px",
   padding: "20px",
+  overflowY: "scroll",
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
 }
 const lineBtn = {
+  width: "100%",
   color: "black",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  width: "100%",
   fontSize: "10px",
 }
-export { container, paper, lineBtn }
+const modalBtn = {
+  position: "absolute",
+  top: 0,
+  right: 0,
+}
+const boxContainer = {
+  position: "relative",
+  width: { sm: "400px", xs: "100vw" },
+  height: { sm: "80%", xs: "100vh" },
+  background: "white",
+  margin: "auto",
+  marginTop: { sm: "50px", xs: "0px" },
+  padding: "20px",
+  paddingTop: "50px",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "10px",
+  overflowY: "scroll",
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+}
+export { container, paper, lineBtn, modalBtn, boxContainer }
