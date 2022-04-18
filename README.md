@@ -1,7 +1,7 @@
 
 # Pancake Plus Pasta
 
-A simple e-commerce website
+A simple e-commerce website\
 Please visit the website on : [PancakePlusPasta](https://pancakepluspasta.netlify.app/)
 
 ## Description
