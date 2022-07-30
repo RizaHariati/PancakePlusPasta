@@ -56,17 +56,27 @@ const useStyles = makeStyles({
 
 const IndexPage = () => {
   const classes = useStyles()
-  const [enter, setEnter] = useState(0)
 
+const [imageMain, setImageMain] = useState(null)
   useEffect(() => {
-    if (enter < 1) {
-      setTimeout(async () => {
-        await setEnter(prev => prev + 1)
-        navigate("/Welcome")
-      }, 1000)
+    setImageMain("../images/main/fruits1.jpg")
+  }, [])
+  useEffect(() => {
+    if (imageMain) {
+      setTimeout(() => {
+        navigate("/Welcome/")
+      }, 1500);
     }
-  }, [enter])
-  return (
+  
+  
+  }, [imageMain])
+  
+  
+  if (!imageMain) {
+    return <div> test</div>
+  }
+  else if(imageMain) {
+     return (
     <div className={classes.mainBackground}>
       <Seo title="Home" description="Home" />
       <div className={classes.mainText1}>
@@ -84,8 +94,8 @@ const IndexPage = () => {
           align="center"
           sx={{ fontSize: { md: "60px", sm: "50px", xs: "40px" } }}
         >
-          Pancake{" "}
-          <span style={{ color: theme.palette.secondary.dark }}>Plus</span>{" "}
+          Pancake
+          <span style={{ color: theme.palette.secondary.dark }}>Plus</span>
           Pasta
         </Typography>
       </div>
@@ -110,6 +120,7 @@ const IndexPage = () => {
       />
     </div>
   )
+  }
 }
 
 export default IndexPage
