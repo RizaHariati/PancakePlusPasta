@@ -32,7 +32,12 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
 
   return (
     <Paper variant="outlined" sx={paper}>
-      <GatsbyImage image={pathToImage} alt="icon" />
+      <GatsbyImage
+        image={pathToImage}
+        alt="icon"
+        objectFit="cover"
+        style={{ height: "100%" }}
+      />
 
       <Typography variant="h4" color="white" align="center">
         Welcome to Pancake Plus Pasta

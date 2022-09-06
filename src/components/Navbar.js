@@ -91,15 +91,20 @@ const Navbar = ({
             cursor: "pointer",
           }}
         >
-          <Avatar variant="square" alt="icon">
-            {/* <StaticImage
+          {/* <Avatar variant="square" alt="icon"> */}
+          {/* <StaticImage
               src="../images/icons/icon-light-192x192.png"
               objectFit="fill"
               objectPosition="center"
               alt="logo"
             /> */}
-            <GatsbyImage image={pathToImage} alt="logo" />
-          </Avatar>
+          <GatsbyImage
+            image={pathToImage}
+            alt="logo"
+            objectFit="cover"
+            style={{ height: "100%" }}
+          />
+          {/* </Avatar> */}
           <Typography
             variant="h3"
             color="white"
