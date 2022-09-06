@@ -54,7 +54,7 @@ const Navbar = ({
     useGlobalContext()
 
   const logoImage = useStaticQuery(requestLogo)
-  const pathToImage = getSrc(
+  const pathToImage = getImage(
     logoImage?.allImageSharp?.nodes[0]?.gatsbyImageData
   )
 
@@ -92,19 +92,20 @@ const Navbar = ({
           }}
         >
           <Avatar variant="square" alt="icon">
-            <StaticImage
+            {/* <StaticImage
               // src="../images/icons/icon-light-192x192.png"
               src={`${pathToImage}`}
               objectFit="fill"
               objectPosition="center"
               alt="logo"
+            /> */}
+            <GatsbyImage
+              image={pathToImage}
+              alt="logo"
+              objectFit="cover"
+              placeholder="tracedSVG"
+              style={{ height: "100%", margin: "auto" }}
             />
-            {/* <GatsbyImage
-            image={pathToImage}
-            alt="logo"
-            objectFit="cover"
-            style={{ height: "100%" }}
-          /> */}
           </Avatar>
           <Typography
             variant="h3"

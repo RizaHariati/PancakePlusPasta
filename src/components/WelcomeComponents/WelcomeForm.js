@@ -34,9 +34,10 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
     <Paper variant="outlined" sx={paper}>
       <GatsbyImage
         image={pathToImage}
-        alt="icon"
+        alt="main-icon"
         objectFit="cover"
-        style={{ height: "100%" }}
+        placeholder="tracedSVG"
+        style={{ height: "100%", margin: "auto" }}
       />
 
       <Typography variant="h4" color="white" align="center">
