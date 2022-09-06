@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { useTheme } from "@mui/styles"
-import { StaticImage, getImage, GatsbyImage } from "gatsby-plugin-image"
+import { StaticImage, getImage, GatsbyImage, getSrc } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
 import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
@@ -54,7 +54,7 @@ const Navbar = ({
     useGlobalContext()
 
   const logoImage = useStaticQuery(requestLogo)
-  const pathToImage = getImage(
+  const pathToImage = getSrc(
     logoImage?.allImageSharp?.nodes[0]?.gatsbyImageData
   )
 
@@ -91,20 +91,21 @@ const Navbar = ({
             cursor: "pointer",
           }}
         >
-          {/* <Avatar variant="square" alt="icon"> */}
-          {/* <StaticImage
-              src="../images/icons/icon-light-192x192.png"
+          <Avatar variant="square" alt="icon">
+            <StaticImage
+              // src="../images/icons/icon-light-192x192.png"
+              src={`${pathToImage}`}
               objectFit="fill"
               objectPosition="center"
               alt="logo"
-            /> */}
-          <GatsbyImage
+            />
+            {/* <GatsbyImage
             image={pathToImage}
             alt="logo"
             objectFit="cover"
             style={{ height: "100%" }}
-          />
-          {/* </Avatar> */}
+          /> */}
+          </Avatar>
           <Typography
             variant="h3"
             color="white"
