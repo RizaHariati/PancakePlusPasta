@@ -10,13 +10,13 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: process.env.GOOGLE_ANALYTIC,
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        enableWebVitalsTracking: true,
+        trackingIds: [process.env.GOOGLE_ANALYTIC, process.env.GOOGLE_INDEX],
+
+        pluginConfig: {
+          head: true,
+        },
       },
     },
     `gatsby-plugin-react-helmet`,

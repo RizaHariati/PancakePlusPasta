@@ -1,7 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { graphql, useStaticQuery } from "gatsby"
-import { Script } from "gatsby"
 const getTitle = graphql`
   {
     allImageSharp(
@@ -43,7 +42,7 @@ const Seo = ({ title, description }) => {
           { name: `description`, content: description || siteDescription },
           {
             name: `google-site-verification`,
-            content: "ToQHHEWK48t95I0a2-VCdlbdgY7joocmPhmLPMS2KUw",
+            content: process.env.GOOGLE_INDEX,
           },
           { name: `image`, content: siteImage },
           { name: `keywords`, content: process.env.GOOGLE_KEY },
