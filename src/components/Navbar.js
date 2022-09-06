@@ -8,12 +8,11 @@ import {
   Typography,
 } from "@mui/material"
 import { useTheme } from "@mui/styles"
-import { StaticImage, getImage, GatsbyImage, getSrc } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
 import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-import { graphql, useStaticQuery } from "gatsby"
 const getMessageNumber = () => {
   try {
     const messageNumber = JSON.parse(localStorage.getItem("messageNumber"))
@@ -24,23 +23,6 @@ const getMessageNumber = () => {
   return 0
 }
 
-const requestLogo = graphql`
-  {
-    allImageSharp(
-      filter: { id: { eq: "e4e41ef3-5c22-51c1-8d75-a1cd112e07b5" } }
-    ) {
-      nodes {
-        gatsbyImageData(
-          placeholder: DOMINANT_COLOR
-          layout: CONSTRAINED
-          width: 40
-          height: 40
-        )
-        id
-      }
-    }
-  }
-`
 const Navbar = ({
   showShoppingList,
   setShowShoppingList,
@@ -52,11 +34,6 @@ const Navbar = ({
   const [numberToSave, setNumberToSave] = useState(getMessageNumber())
   const { loginStatus, totalItem, messageList, user, openAlert } =
     useGlobalContext()
-
-  const logoImage = useStaticQuery(requestLogo)
-  const pathToImage = getImage(
-    logoImage?.allImageSharp?.nodes[0]?.gatsbyImageData
-  )
 
   const handleMail = async () => {
     await setNumberToSave(prev => prev + messageNumber)
@@ -92,20 +69,22 @@ const Navbar = ({
           }}
         >
           <Avatar variant="square" alt="icon">
-            {/* <StaticImage
-              // src="../images/icons/icon-light-192x192.png"
-              src={`${pathToImage}`}
+            <StaticImage
+              src="../images/icons/icon-light-192x192.png"
               objectFit="fill"
               objectPosition="center"
+              placeholder="tracedSVG"
+              style={{ height: "100%", margin: "auto" }}
               alt="logo"
-            /> */}
-            <GatsbyImage
+            />
+            {/* <GatsbyImage
+              id={data?.id}
               image={pathToImage}
               alt="logo"
               objectFit="cover"
               placeholder="tracedSVG"
               style={{ height: "100%", margin: "auto" }}
-            />
+            /> */}
           </Avatar>
           <Typography
             variant="h3"
