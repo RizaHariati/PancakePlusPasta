@@ -65,13 +65,13 @@ const IndexPage = () => {
     setImageMain("../images/main/fruits1.jpg")
   }, [])
 
-  // useEffect(() => {
-  //   if (imageMain) {
-  //     setTimeout(() => {
-  //       navigate("/Welcome/")
-  //     }, 1500)
-  //   }
-  // }, [imageMain])
+  useEffect(() => {
+    if (imageMain) {
+      setTimeout(() => {
+        navigate("/Welcome/")
+      }, 1500)
+    }
+  }, [imageMain])
 
   if (!imageMain) {
     return <div> test</div>

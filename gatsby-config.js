@@ -9,6 +9,16 @@ module.exports = {
     author: `@rizahariati`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: process.env.GOOGLE_ANALYTIC,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true,
+        enableWebVitalsTracking: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {

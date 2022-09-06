@@ -37,17 +37,6 @@ const Seo = ({ title, description }) => {
 
   return (
     <>
-      <Script
-        id="gtm-script-1"
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-VF6FQK4595`}
-      />
-      <Script id="gtm-script-2" strategy="lazyOnload">
-        {`window.dataLayer = window.dataLayer || [];`}
-        {`function gtag(){dataLayer.push(arguments);}`}
-        {`gtag('js', new Date());`}
-        {`gtag('config','G-VF6FQK4595');`}
-      </Script>
       <Helmet
         title={`${siteTitle} | ${title}`}
         meta={[
