@@ -8,7 +8,7 @@ const Item = ({ name, price, id }) => {
   const [data, setData] = useState(0)
 
   useEffect(() => {
-    const menu = shoppingList.find(item => item.id === id)
+    const menu = shoppingList?.find(item => item.id === id)
     if (menu) {
       const item = menu.price.find(item => item.name === name)
       setData(item.amount)
@@ -17,7 +17,7 @@ const Item = ({ name, price, id }) => {
     // eslint-disable-next-line
   }, [id])
   const handleData = (data, status) => {
-    if (!loginStatus.login) return openAlert("error", "Please login first")
+    if (!loginStatus?.login) return openAlert("error", "Please login first")
     else {
       if (status === "decrease") {
         if (data <= 0) {

@@ -35,7 +35,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
           <Typography variant="h4" color="primary.dark">
             Your Account
           </Typography>
-          {loginStatus.login && user.userData.name !== "guest" && (
+          {loginStatus?.login && user?.userData.name !== "guest" && (
             <Tooltip title="Remove-account" placement="left">
               <IconButton
                 onClick={() => {
@@ -55,12 +55,12 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
             color="secondary.dark"
             sx={{ fontVariant: "small-caps", fontSize: "28px" }}
           >
-            {loginStatus.login
-              ? `Hi, ${user.userData.name} `
+            {loginStatus?.login
+              ? `Hi, ${user?.userData.name} `
               : "You're not logged in"}
           </Typography>
           <Divider />
-          {loginStatus.login && <AccountData user={user} />}
+          {loginStatus?.login && <AccountData user={user} />}
         </Paper>
         <Button
           variant="contained"
@@ -70,7 +70,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         >
           Cancel
         </Button>
-        {loginStatus.login && (
+        {loginStatus?.login && (
           <Button
             variant="contained"
             color="primary"

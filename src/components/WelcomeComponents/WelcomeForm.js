@@ -1,18 +1,39 @@
 import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { paper, loginButton } from "../../styles/styles"
 import "../../styles/styles.css"
 import LoginForm from "./LoginForm"
+import { graphql, useStaticQuery } from "gatsby"
+
+const requestImage = graphql`
+  {
+    allImageSharp(
+      filter: { id: { eq: "e4e41ef3-5c22-51c1-8d75-a1cd112e07b5" } }
+    ) {
+      nodes {
+        gatsbyImageData(
+          placeholder: DOMINANT_COLOR
+          layout: CONSTRAINED
+          width: 70
+          height: 70
+        )
+        id
+      }
+    }
+  }
+`
 
 const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
+  const logoImage = useStaticQuery(requestImage)
+  const pathToImage = getImage(
+    logoImage?.allImageSharp?.nodes[0]?.gatsbyImageData
+  )
+
   return (
     <Paper variant="outlined" sx={paper}>
-      <StaticImage
-        src="../images/icons/icon-light-192x192.png"
-        alt="icon"
-        style={{ width: "70px", height: "70px" }}
-      />
+      <GatsbyImage image={pathToImage} alt="icon" />
+
       <Typography variant="h4" color="white" align="center">
         Welcome to Pancake Plus Pasta
       </Typography>

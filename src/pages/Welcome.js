@@ -24,20 +24,20 @@ const Welcome = () => {
 
   return (
     <Layout>
-      <Seo title="Welcome" description="You can login as guest or as member" />
+      <Seo title="Welcome" />
       <div className="content-container">
         <Slides />
         <div className="loginContainer">
-          {!loginStatus.login && (
+          {!loginStatus?.login && (
             <WelcomeForm
               setOpenAddressForm={setOpenAddressForm}
               setOpenRegisterForm={setOpenRegisterForm}
             />
           )}
-          {loginStatus.login && user.userData.name === "guest" && (
+          {loginStatus?.login && user?.userData.name === "guest" && (
             <LoginAsGuest setOpenRegisterForm={setOpenRegisterForm} />
           )}
-          {loginStatus.login && user.userData.name !== "guest" && (
+          {loginStatus?.login && user?.userData.name !== "guest" && (
             <LoginAsMember />
           )}
         </div>

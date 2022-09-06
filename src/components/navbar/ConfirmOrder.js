@@ -27,7 +27,7 @@ import { navigate } from "gatsby"
 const ConfirmOrder = () => {
   const { checkout, cancelCheckout, confirmCheckout } = useGlobalContext()
   const [successOrder, setSuccessOrder] = useState(false)
-  const { check, items, customer } = checkout
+  // const { check, items, customer } = checkout
   const handleConfirm = async () => {
     setSuccessOrder(true)
 
@@ -36,10 +36,10 @@ const ConfirmOrder = () => {
       navigate("/Welcome/")
     }, 1200)
   }
-  if (!items) return <div></div>
+  if (!checkout?.items) return <div></div>
   else {
     return (
-      <Modal open={check} sx={{ padding: { md: "20px", xs: "0" } }}>
+      <Modal open={checkout?.check} sx={{ padding: { md: "20px", xs: "0" } }}>
         <Box sx={boxContainer}>
           <ChildModal
             successOrder={successOrder}
@@ -53,9 +53,9 @@ const ConfirmOrder = () => {
             Confirm Order
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
-            <CostumerData customer={customer} />
+            <CostumerData customer={checkout?.customer} />
             <Divider variant="fullWidth" sx={{ width: "100%" }} />
-            {items.map(list => {
+            {checkout?.items.map(list => {
               const { id } = list
               return <ListItemShort key={id} list={list} />
             })}
@@ -173,59 +173,3 @@ const CostumerData = ({ customer }) => {
     </div>
   )
 }
-
-// const ListItem = ({ list }) => {
-//   const { id, title, price } = list
-
-//   return (
-//     <div className="myCartPrice-logos">
-//       <div className="myCartPrice-title">
-//         <Typography variant="h4" color="textPrimary" fontSize={18}>
-//           {title}
-//         </Typography>
-//       </div>
-//       <div className="checkout-price1">
-//         {price.map((item, index) => {
-//           const { amount } = item
-//           if (!amount) return <div key={index}></div>
-//           else {
-//             return (
-//               <ShoppingListItem key={index} {...item} id={id} amount={amount} />
-//             )
-//           }
-//         })}
-//         <Divider variant="fullWidth" sx={{ width: "100%" }} />
-//       </div>
-//     </div>
-//   )
-// }
-
-// const ShoppingListItem = ({ name, price, amount, id }) => {
-//   return (
-//     <div className="myCartPrice-price2">
-//       <Typography
-//         variant="body1"
-//         sx={{ width: "100px" }}
-//         color="secondary.dark"
-//       >
-//         {name.replace(/_/g, " ")}
-//       </Typography>
-//       <Typography
-//         variant="body1"
-//         align="right"
-//         sx={{ marginLeft: "auto" }}
-//         color="secondary.dark"
-//       >
-//         x{amount}
-//       </Typography>
-//       <Typography
-//         variant="body1"
-//         align="right"
-//         sx={{ width: "70px" }}
-//         color="secondary.dark"
-//       >
-//         ${(price * amount) / 100}
-//       </Typography>
-//     </div>
-//   )
-// }

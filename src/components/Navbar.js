@@ -8,12 +8,12 @@ import {
   Typography,
 } from "@mui/material"
 import { useTheme } from "@mui/styles"
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage, getImage, GatsbyImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
 import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-
+import { graphql, useStaticQuery } from "gatsby"
 const getMessageNumber = () => {
   try {
     const messageNumber = JSON.parse(localStorage.getItem("messageNumber"))
@@ -23,6 +23,24 @@ const getMessageNumber = () => {
   }
   return 0
 }
+
+const requestLogo = graphql`
+  {
+    allImageSharp(
+      filter: { id: { eq: "e4e41ef3-5c22-51c1-8d75-a1cd112e07b5" } }
+    ) {
+      nodes {
+        gatsbyImageData(
+          placeholder: DOMINANT_COLOR
+          layout: CONSTRAINED
+          width: 40
+          height: 40
+        )
+        id
+      }
+    }
+  }
+`
 const Navbar = ({
   showShoppingList,
   setShowShoppingList,
@@ -35,10 +53,15 @@ const Navbar = ({
   const { loginStatus, totalItem, messageList, user, openAlert } =
     useGlobalContext()
 
+  const logoImage = useStaticQuery(requestLogo)
+  const pathToImage = getImage(
+    logoImage?.allImageSharp?.nodes[0]?.gatsbyImageData
+  )
+
   const handleMail = async () => {
     await setNumberToSave(prev => prev + messageNumber)
     setMessageNumber(0)
-    if (!loginStatus.login) {
+    if (!loginStatus?.login) {
       navigate(`/Menu`)
       return openAlert("error", "you have to login first")
     }
@@ -48,7 +71,7 @@ const Navbar = ({
     navigate(`/Message`)
   }
   useEffect(() => {
-    if (messageList.length > 0) {
+    if (messageList?.length > 0) {
       setMessageNumber(messageList.length - numberToSave)
     }
     // eslint-disable-next-line
@@ -56,6 +79,7 @@ const Navbar = ({
   useEffect(() => {
     localStorage.setItem("messageNumber", JSON.stringify(numberToSave))
   }, [numberToSave])
+
   return (
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
@@ -68,12 +92,13 @@ const Navbar = ({
           }}
         >
           <Avatar variant="square" alt="icon">
-            <StaticImage
+            {/* <StaticImage
               src="../images/icons/icon-light-192x192.png"
               objectFit="fill"
               objectPosition="center"
               alt="logo"
-            />
+            /> */}
+            <GatsbyImage image={pathToImage} alt="logo" />
           </Avatar>
           <Typography
             variant="h3"
@@ -145,7 +170,7 @@ const Navbar = ({
               color="success"
               overlap="circular"
               variant="dot"
-              invisible={!loginStatus.login}
+              invisible={!loginStatus?.login}
             >
               <IconButton variant="contained">
                 <Avatar style={{ height: 35, width: 35 }}>

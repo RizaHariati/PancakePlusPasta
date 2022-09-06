@@ -65,7 +65,7 @@ export const reducer = (state, action) => {
         shoppingList: newShoppingList,
       }
     } else {
-      shoppingList.map(item => {
+      shoppingList?.map(item => {
         if (item.id === id) {
           item.price.map(num => {
             if (num.name === nameItem) {
@@ -76,7 +76,7 @@ export const reducer = (state, action) => {
         }
         return item
       })
-      const newList = shoppingList.filter(item => {
+      const newList = shoppingList?.filter(item => {
         const newlist = item.price.filter(a => a.amount !== 0)
         return newlist.length > 0
       })
@@ -89,27 +89,32 @@ export const reducer = (state, action) => {
   }
 
   if (action.type === "GET_TOTAL") {
-    const reducer = state.shoppingList.reduce(
-      (total, item) => {
-        const eachItem = item.price.reduce(
-          (totalPrice, totalItem) => {
-            totalPrice.price += totalItem.price * totalItem.amount
-            totalPrice.amount += totalItem.amount
-            return totalPrice
-          },
-          { price: 0, amount: 0 }
-        )
-        total.amount += eachItem.amount
-        total.price += eachItem.price
-        return total
-      },
-      { price: 0, amount: 0 }
-    )
-
-    return {
-      ...state,
-      totalItem: reducer.amount,
-      totalPrice: reducer.price,
+    if (state.shoppingList) {
+      const reducer = state.shoppingList.reduce(
+        (total, item) => {
+          const eachItem = item.price.reduce(
+            (totalPrice, totalItem) => {
+              totalPrice.price += totalItem.price * totalItem.amount
+              totalPrice.amount += totalItem.amount
+              return totalPrice
+            },
+            { price: 0, amount: 0 }
+          )
+          total.amount += eachItem.amount
+          total.price += eachItem.price
+          return total
+        },
+        { price: 0, amount: 0 }
+      )
+      return {
+        ...state,
+        totalItem: reducer.amount,
+        totalPrice: reducer.price,
+      }
+    } else {
+      return {
+        ...state,
+      }
     }
   }
 

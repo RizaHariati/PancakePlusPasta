@@ -26,7 +26,7 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
     await confirming(true, shoppingList, user)
     setShowShoppingList(false)
   }
-  if (shoppingList.length === 0) {
+  if (shoppingList && shoppingList.length < 1) {
     return (
       <Modal open={showShoppingList} sx={{ padding: { md: "20px", xs: "0" } }}>
         <Box sx={boxContainer}>
@@ -76,10 +76,11 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
             My Cart
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
-            {shoppingList.map(list => {
-              const { id } = list
-              return <ListItem key={id} list={list} />
-            })}
+            {shoppingList?.length > 0 &&
+              shoppingList.map(list => {
+                const { id } = list
+                return <ListItem key={id} list={list} />
+              })}
             <TotalPrice />
           </Paper>
           <Button
