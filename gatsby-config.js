@@ -13,7 +13,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [process.env.GOOGLE_ANALYTIC, process.env.GOOGLE_INDEX],
+        trackingIds: [process.env.GOOGLE_ANALYTIC],
 
         pluginConfig: {
           head: true,
