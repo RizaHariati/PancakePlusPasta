@@ -37,7 +37,7 @@ const Seo = ({ title, description }) => {
   return (
     <>
       <Helmet
-        title={`${siteTitle} | ${title}`}
+        title={`${siteTitle || "Riza Hariati"} | ${title}`}
         meta={[
           { name: `description`, content: description || siteDescription },
           {

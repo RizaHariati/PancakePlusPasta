@@ -13,14 +13,17 @@ import { toolbar } from "../styles/styles"
 import React, { useState, useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
+
+const windowGlobal = typeof window !== "undefined" && window
+const localStorage = windowGlobal.localStorage
+
 const getMessageNumber = () => {
   try {
-    const messageNumber = JSON.parse(localStorage.getItem("messageNumber"))
+    const messageNumber = JSON.parse(localStorage?.getItem("messageNumber"))
     if (messageNumber) return messageNumber
   } catch (error) {
-    console.log(error)
+    return 0
   }
-  return 0
 }
 
 const Navbar = ({
@@ -54,7 +57,7 @@ const Navbar = ({
     // eslint-disable-next-line
   }, [messageList])
   useEffect(() => {
-    localStorage.setItem("messageNumber", JSON.stringify(numberToSave))
+    localStorage?.setItem("messageNumber", JSON.stringify(numberToSave))
   }, [numberToSave])
 
   return (

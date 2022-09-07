@@ -84,12 +84,12 @@ const GlobalProvider = ({ children }) => {
       checkout,
       messageList
     ) => {
-      localStorage.setItem("shoppingList", JSON.stringify(shoppingList))
-      localStorage.setItem("memberList", JSON.stringify(memberList))
-      localStorage.setItem("user", JSON.stringify(user))
-      localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
-      localStorage.setItem("checkout", JSON.stringify(checkout))
-      localStorage.setItem("messageList", JSON.stringify(messageList))
+      localStorage?.setItem("shoppingList", JSON.stringify(shoppingList))
+      localStorage?.setItem("memberList", JSON.stringify(memberList))
+      localStorage?.setItem("user", JSON.stringify(user))
+      localStorage?.setItem("loginStatus", JSON.stringify(loginStatus))
+      localStorage?.setItem("checkout", JSON.stringify(checkout))
+      localStorage?.setItem("messageList", JSON.stringify(messageList))
     }
 
     saveCart(

@@ -7,6 +7,7 @@ module.exports = {
     title: `Pancake Plus Pasta`,
     description: `Freshly made Pancake and Pasta for you to start the day. A mock up restauran delivery page by Riza Hariati. Please Login before ordering`,
     author: `@rizahariati`,
+    siteUrl: process.env.URL || `https://pancakepluspasta.netlify.app`,
   },
   plugins: [
     {
@@ -21,6 +22,13 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        output: `.`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
