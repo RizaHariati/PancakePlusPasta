@@ -42,10 +42,14 @@ const Seo = ({ title, description }) => {
           { name: `description`, content: description || siteDescription },
           {
             name: `google-site-verification`,
-            content: process.env.GOOGLE_INDEX,
+            content: "ToQHHEWK48t95I0a2-VCdlbdgY7joocmPhmLPMS2KUw",
           },
           { name: `image`, content: siteImage },
-          { name: `keywords`, content: process.env.GOOGLE_KEY },
+          { property: `og:image`, content: siteImage },
+          {
+            name: `keywords`,
+            content: "riza, hariati, rizahariati, azricoding, food, pancake",
+          },
         ]}
       ></Helmet>
     </>
