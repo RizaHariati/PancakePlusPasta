@@ -91,7 +91,7 @@ const Navbar = ({
           </Avatar>
           <Typography
             variant="h3"
-            color="white"
+            color="textColor"
             sx={{ display: { md: "block", sm: "none", xs: "none" } }}
           >
             Pancake{" "}

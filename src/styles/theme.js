@@ -11,8 +11,10 @@ export const theme = createTheme({
       light: "#729384",
       main: "#729384",
       dark: "#729384",
-      contrastText: "#000",
+      contrastText: "#333343",
     },
+    textColor: "#333343",
+    text: { default: "#333343" },
     info: {
       dark: "#E6D3A3",
       main: "#E6D3A3",
@@ -20,7 +22,8 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "'Helvetica Neue', sans-serif",
+
     h1: {
       fontSize: "60px",
     },

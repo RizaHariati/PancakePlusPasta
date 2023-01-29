@@ -23,7 +23,7 @@ const Footer = () => {
             {" "}
             Pancake Plus Pasta Copyright
           </span>{" "}
-          Riza Hariati &copy;2021
+          Riza Hariati &copy;{new Date().getFullYear()}
         </Typography>
 
         <div className="footerAttribute">
