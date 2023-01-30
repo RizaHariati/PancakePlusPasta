@@ -1,10 +1,8 @@
 import { Typography } from "@mui/material"
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { useGlobalContext } from "../../context/GlobalContextProvider"
 
 const ShoppingListItem = ({ name, price, amount }) => {
-  const { editList } = useGlobalContext()
-
   return (
     <div className="myCartPrice-price2">
       <Typography variant="body2" sx={{ width: "100px", alignText: "left" }}>
