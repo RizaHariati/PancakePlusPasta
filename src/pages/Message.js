@@ -41,12 +41,6 @@ const Message = () => {
         <Seo title="Message" description="Message for our member" />
         <Container maxWidth="sm" sx={container}>
           <Paper variant="outlined" sx={paper}>
-            {showMessageModal.status && (
-              <MessageModal
-                showMessageModal={showMessageModal}
-                setShowMessageModal={setShowMessageModal}
-              />
-            )}
             <Typography variant="h5" color="accentColor">
               No message yet
             </Typography>
@@ -80,15 +74,16 @@ const Message = () => {
             </div>
             <Divider variant="fullWidth" />
             {messageList.map(message => {
-              const { id, date } = message
+              const { id, date , status} = message
               const orderTime = moment(date).format(
                 "dddd, MMMM Do YYYY, h:mm:ss a"
               )
+              console.log(message);
               return (
                 <div key={id}>
                   <Button
                     variant="text"
-                    color="inherit"
+                    color={status ? "inherit" : "primary"}
                     sx={lineBtn}
                     onClick={() => handleClick(true, message)}
                   >

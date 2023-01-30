@@ -10,7 +10,7 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { card, cardActions } from "../styles/styles"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-import Item from "./Item"
+import SubmenuItem from "./SubmenuItem"
 
 const Submenu = ({ type }) => {
   const { mainData } = useGlobalContext()
@@ -55,7 +55,7 @@ const Submenu = ({ type }) => {
                       </Typography>
                       <div className="priceContainer">
                         {price.map((item, index) => {
-                          return <Item key={index} {...item} id={id} />
+                          return <SubmenuItem key={index} {...item} id={id} />
                         })}
                       </div>
                     </CardActions>

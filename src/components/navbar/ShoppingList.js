@@ -26,7 +26,8 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
     await confirming(true, shoppingList, user)
     setShowShoppingList(false)
   }
-  if (shoppingList && shoppingList.length < 1) {
+  if (!shoppingList) return <div></div>
+  if (shoppingList.length < 1) {
     return (
       <Modal open={showShoppingList} sx={{ padding: { md: "20px", xs: "0" } }}>
         <Box sx={boxContainer}>
@@ -37,11 +38,11 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
             My Cart
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
-            <Typography variant="h5" color="textColor">
+            <Typography variant="body1" color="textColor">
               You have no items in your cart yet
             </Typography>
             {!loginStatus.login && (
-              <Typography variant="h5">Please login first!</Typography>
+              <Typography variant="body1">Please login first!</Typography>
             )}
           </Paper>
           <Button

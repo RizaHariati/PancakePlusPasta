@@ -32,7 +32,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
           <Cancel color="error" />
         </IconButton>
         <div className="user-title">
-          <Typography variant="h4" color="accentColor">
+          <Typography variant="h5" color="accentColor">
             Your Account
           </Typography>
           {loginStatus?.login && user?.userData.name !== "Guest" && (
@@ -50,11 +50,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
           )}
         </div>
         <Paper variant="outlined" sx={shoppingPaper}>
-          <Typography
-            variant="h5"
-            color="textColor"
-
-          >
+          <Typography variant="body1" color="textColor">
             {loginStatus?.login
               ? `Hi, ${user?.userData.name} `
               : "You're not logged in"}

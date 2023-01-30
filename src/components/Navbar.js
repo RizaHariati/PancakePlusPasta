@@ -10,12 +10,11 @@ import {
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
 import { toolbar } from "../styles/styles"
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 
 const windowGlobal = typeof window !== "undefined" && window
-const localStorage = windowGlobal.localStorage
 
 const Navbar = ({
   showShoppingList,
@@ -25,14 +24,8 @@ const Navbar = ({
 }) => {
   const theme = useTheme()
 
-  const {
-    loginStatus,
-    totalItem,
-    messageList,
-    user,
-    openAlert,
-    messageNumber,
-  } = useGlobalContext()
+  const { loginStatus, totalItem, user, openAlert, messageNumber } =
+    useGlobalContext()
 
   const handleMail = async () => {
     if (!loginStatus?.login) {
@@ -69,14 +62,6 @@ const Navbar = ({
               }}
               alt="logo"
             />
-            {/* <GatsbyImage
-              id={data?.id}
-              image={pathToImage}
-              alt="logo"
-              objectFit="cover"
-              placeholder="tracedSVG"
-              style={{ height: "100%", margin: "auto" }}
-            /> */}
           </Avatar>
           <Typography
             variant="h4"

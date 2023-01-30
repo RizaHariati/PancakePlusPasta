@@ -202,7 +202,7 @@ body input::-webkit-inner-spin-button {
 }
 
 .myCartPrice-price2 {
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,9 +213,10 @@ body input::-webkit-inner-spin-button {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-left: auto;
 }
 
 .myCart-image {

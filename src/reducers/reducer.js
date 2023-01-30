@@ -255,6 +255,7 @@ export const reducer = (state, action) => {
     const id = uuidv4()
     const date = new Date()
     const newMessage = {
+      status: false,
       id,
       items: state.checkout.items,
       customer: state.checkout.customer,
