@@ -9,20 +9,18 @@ const RegisterForm = ({
   setOpenAddressForm,
 }) => {
   return (
-    <div>
-      <Modal open={openRegisterForm}>
-        <Paper sx={paperModal}>
-          <Typography variant="h4" color="primary">
-            Welcome to the club!
-          </Typography>
-          <Divider variant="fullWidth" />
-          <RegisterData
-            setOpenRegisterForm={setOpenRegisterForm}
-            setOpenAddressForm={setOpenAddressForm}
-          />
-        </Paper>
-      </Modal>
-    </div>
+    <Modal open={openRegisterForm} >
+      <Paper sx={paperModal}>
+        <Typography variant="h4" color="accentColor">
+          Welcome to the club!
+        </Typography>
+        <Divider variant="fullWidth" />
+        <RegisterData
+          setOpenRegisterForm={setOpenRegisterForm}
+          setOpenAddressForm={setOpenAddressForm}
+        />
+      </Paper>
+    </Modal>
   )
 }
 

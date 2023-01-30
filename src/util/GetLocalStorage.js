@@ -55,6 +55,14 @@ const getmessageList = () => {
     return []
   }
 }
+const getMessageNumber = () => {
+  try {
+    let messageNumber = JSON.parse(localStorage.getItem("messageNumber"))
+    if (messageNumber) return messageNumber
+  } catch (error) {
+    return 0
+  }
+}
 export {
   getshoppinglist,
   getuserList,
@@ -62,4 +70,5 @@ export {
   getloginStatus,
   getloginCheckOut,
   getmessageList,
+  getMessageNumber,
 }

@@ -150,6 +150,9 @@ export const reducer = (state, action) => {
       alertMessage: "You are logged out, data cleared",
       alerting: true,
       alertStatus: "success",
+      messageNumber: 0,
+      totalItem: 0,
+      totalPrice: 0,
     }
   }
 
@@ -241,6 +244,12 @@ export const reducer = (state, action) => {
       checkout: { check: false, items: [], customer: {} },
     }
   }
+  if (action.type === "REDUCE_MESSAGE_NUMBER") {
+    return {
+      ...state,
+      messageNumber: state.messageNumber > 0 ? state.messageNumber - 1 : 0,
+    }
+  }
 
   if (action.type === "CONFIRM_CHECK_OUT") {
     const id = uuidv4()
@@ -264,10 +273,14 @@ export const reducer = (state, action) => {
         alertMessage: "finish purcashing, thank you",
         alerting: true,
         alertStatus: "success",
+        messageNumber: 0,
+        totalItem: 0,
+        totalPrice: 0,
       }
     }
 
     let messageArray
+
     if (!state.messageList) {
       messageArray = [newMessage]
     } else {
@@ -276,8 +289,11 @@ export const reducer = (state, action) => {
     return {
       ...state,
       messageList: messageArray,
-      checkout: { check: false, items: [], customer: {} },
+      messageNumber: state.messageNumber ? state.messageNumber + 1 : 1,
+      checkout: { check: false, items: [], customer: {}, total: 0 },
       shoppingList: [],
+      totalItem: 0,
+      totalPrice: 0,
     }
   }
 

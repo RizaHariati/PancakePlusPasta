@@ -17,15 +17,6 @@ import { useGlobalContext } from "../context/GlobalContextProvider"
 const windowGlobal = typeof window !== "undefined" && window
 const localStorage = windowGlobal.localStorage
 
-const getMessageNumber = () => {
-  try {
-    const messageNumber = JSON.parse(localStorage?.getItem("messageNumber"))
-    if (messageNumber) return messageNumber
-  } catch (error) {
-    return 0
-  }
-}
-
 const Navbar = ({
   showShoppingList,
   setShowShoppingList,
@@ -33,14 +24,17 @@ const Navbar = ({
   setShowUserAccount,
 }) => {
   const theme = useTheme()
-  const [messageNumber, setMessageNumber] = useState(0)
-  const [numberToSave, setNumberToSave] = useState(getMessageNumber())
-  const { loginStatus, totalItem, messageList, user, openAlert } =
-    useGlobalContext()
+
+  const {
+    loginStatus,
+    totalItem,
+    messageList,
+    user,
+    openAlert,
+    messageNumber,
+  } = useGlobalContext()
 
   const handleMail = async () => {
-    await setNumberToSave(prev => prev + messageNumber)
-    setMessageNumber(0)
     if (!loginStatus?.login) {
       navigate(`/Menu`)
       return openAlert("error", "you have to login first")
@@ -50,15 +44,6 @@ const Navbar = ({
     }
     navigate(`/Message`)
   }
-  useEffect(() => {
-    if (messageList?.length > 0) {
-      setMessageNumber(messageList.length - numberToSave)
-    }
-    // eslint-disable-next-line
-  }, [messageList])
-  useEffect(() => {
-    localStorage?.setItem("messageNumber", JSON.stringify(numberToSave))
-  }, [numberToSave])
 
   return (
     <AppBar position="sticky" color="primary">
@@ -94,7 +79,7 @@ const Navbar = ({
             /> */}
           </Avatar>
           <Typography
-            variant="h3"
+            variant="h4"
             color="accentColor"
             sx={{ display: { md: "block", sm: "none", xs: "none" } }}
           >
@@ -120,7 +105,7 @@ const Navbar = ({
 
           <Tooltip title="messages">
             <Badge
-              badgeContent={messageNumber}
+              badgeContent={messageNumber ? messageNumber : 0}
               color="error"
               overlap="circular"
             >

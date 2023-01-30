@@ -1,7 +1,6 @@
 import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { red } from "@mui/material/colors"
 import { paper, loginButton } from "../../styles/styles"
 import "../../styles/styles.css"
 import { Favorite } from "@mui/icons-material"

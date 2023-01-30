@@ -19,7 +19,11 @@ const Submenu = ({ type }) => {
   else {
     return (
       <div>
-        <Typography variant="h3" color="secondary.dark">
+        <Typography
+          variant="h5"
+          color="secondary"
+          sx={{ textTransform: "capitalize" }}
+        >
           {type.replace(/-/g, " ")}
         </Typography>
         <Grid container spacing={2}>
@@ -44,7 +48,7 @@ const Submenu = ({ type }) => {
                     <CardActions sx={cardActions}>
                       <Typography
                         variant="body1"
-                        color="primary.dark"
+                        color="textColor"
                         align="center"
                       >
                         {title}

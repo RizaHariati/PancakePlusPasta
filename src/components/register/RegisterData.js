@@ -59,7 +59,7 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
 
   return (
     <Paper variant="outlined" sx={paperForm}>
-      <form onSubmit={userData.handleSubmit} className="guest-loginForm">
+      <form onSubmit={userData.handleSubmit} className="loginForm">
         <TextField
           id="name"
           name="name"
@@ -160,7 +160,7 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
         <ButtonGroup>
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             sx={{
               width: "100px",
             }}
@@ -171,7 +171,7 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           <Button
             type="submit"
             variant="contained"
-            color="primary"
+            color="secondary"
             sx={{
               color: "white",
               width: "100px",

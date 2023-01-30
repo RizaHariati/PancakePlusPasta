@@ -16,7 +16,7 @@ export const theme = createTheme({
       light: "#98c2af",
       main: "#729384",
       dark: "#546e62",
-      contrastText: "#333343",
+      contrastText: "#fefcf1",
     },
     textColor: "#333343",
     accentColor: "#DD9056",
@@ -31,21 +31,6 @@ export const theme = createTheme({
   typography: {
     fontFamily: "'Helvetica Neue', sans-serif",
 
-    h1: {
-      fontSize: "60px",
-    },
-    h2: {
-      fontSize: "45px",
-    },
-    h3: {
-      fontSize: "32px",
-      textTransform: "capitalize",
-    },
-    h4: {
-      fontSize: "24px",
-      lineHeight: "24px",
-      textTransform: "capitalize",
-    },
     h6: {
       fontSize: "10px",
       lineHeight: "12px",

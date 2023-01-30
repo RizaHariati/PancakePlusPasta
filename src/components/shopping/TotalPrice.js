@@ -9,42 +9,42 @@ const TotalPrice = () => {
   return (
     <div className="myCartPrice-total">
       <div className="myCartPrice-subtotal">
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           Subtotal
         </Typography>
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           ${totalPrice / 100}
         </Typography>
       </div>
       <div className="myCartPrice-subtotal">
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           Delivery Fee
         </Typography>
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           $3.45
         </Typography>
       </div>
       <div className="myCartPrice-subtotal">
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           Packaging Fee
         </Typography>
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           $1.25
         </Typography>
       </div>
       <div className="myCartPrice-subtotal">
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           Tax 10%
         </Typography>
-        <Typography variant="body1" color="secondary.dark">
+        <Typography variant="body2" color="secondary">
           ${tax.toFixed(2)}
         </Typography>
       </div>
       <div className="myCartPrice-subtotal">
-        <Typography variant="h4" color="textPrimary" fontSize={18}>
+        <Typography variant="body1" color="textPrimary" >
           Total
         </Typography>
-        <Typography variant="h4" color="textPrimary" fontSize={18}>
+        <Typography variant="body1" color="textPrimary" >
           ${total.toFixed(2)}
         </Typography>
       </div>

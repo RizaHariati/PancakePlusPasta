@@ -8,6 +8,7 @@ import {
   getloginStatus,
   getloginCheckOut,
   getmessageList,
+  getMessageNumber,
 } from "../util/GetLocalStorage"
 
 const request = graphql`
@@ -60,6 +61,7 @@ const initialState = {
   alertStatus: "info",
   checkout: getloginCheckOut(),
   messageList: getmessageList(),
+  messageNumber: getMessageNumber(),
 }
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
@@ -82,7 +84,8 @@ const GlobalProvider = ({ children }) => {
       memberList,
       loginStatus,
       checkout,
-      messageList
+      messageList,
+      messageNumber
     ) => {
       localStorage?.setItem("shoppingList", JSON.stringify(shoppingList))
       localStorage?.setItem("memberList", JSON.stringify(memberList))
@@ -90,6 +93,7 @@ const GlobalProvider = ({ children }) => {
       localStorage?.setItem("loginStatus", JSON.stringify(loginStatus))
       localStorage?.setItem("checkout", JSON.stringify(checkout))
       localStorage?.setItem("messageList", JSON.stringify(messageList))
+      localStorage?.setItem("messageNumber", JSON.stringify(messageNumber))
     }
 
     saveCart(
@@ -98,7 +102,8 @@ const GlobalProvider = ({ children }) => {
       state.memberList,
       state.loginStatus,
       state.checkout,
-      state.messageList
+      state.messageList,
+      state.messageNumber
     )
     // eslint-disable-next-line
   }, [
@@ -108,6 +113,7 @@ const GlobalProvider = ({ children }) => {
     state.loginStatus,
     state.checkout,
     state.messageList,
+    state.messageNumber,
   ])
 
   // =================useEffect for Alert Login============
@@ -187,6 +193,12 @@ const GlobalProvider = ({ children }) => {
     })
   }
 
+  const reduceMessagesNumber = () => {
+    dispatch({
+      type: "REDUCE_MESSAGE_NUMBER",
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -201,6 +213,7 @@ const GlobalProvider = ({ children }) => {
         cancelCheckout,
         confirmCheckout,
         removeAccount,
+        reduceMessagesNumber,
       }}
     >
       {children}

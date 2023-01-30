@@ -33,30 +33,20 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
           <IconButton onClick={() => setShowShoppingList(false)} sx={modalBtn}>
             <Cancel color="error" />
           </IconButton>
-          <Typography variant="h4" color="primary.dark">
+          <Typography variant="h5" color="accentColor">
             My Cart
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
-            <Typography
-              variant="h3"
-              color="secondary.dark"
-              sx={{ fontVariant: "small-caps", fontSize: "28px" }}
-            >
+            <Typography variant="h5" color="textColor">
               You have no items in your cart yet
             </Typography>
             {!loginStatus.login && (
-              <Typography
-                variant="h3"
-                color="secondary.dark"
-                sx={{ fontVariant: "small-caps", fontSize: "28px" }}
-              >
-                Please Login
-              </Typography>
+              <Typography variant="h5">Please login first!</Typography>
             )}
           </Paper>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="small"
             onClick={() => setShowShoppingList(false)}
           >
@@ -72,7 +62,7 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
           <IconButton onClick={() => setShowShoppingList(false)} sx={modalBtn}>
             <Cancel color="error" />
           </IconButton>
-          <Typography variant="h3" color="primary.dark">
+          <Typography variant="h5" color="accentColor">
             My Cart
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>

@@ -1,5 +1,8 @@
 :root {
   --primary-light: #efede0;
+  --primary-dark: #729384;
+  --secondary-dark: #546e62;
+  --primary-transition: all 1s ease-in;
 }
 
 * {
@@ -199,7 +202,8 @@ body {
   justify-content: space-between;
 }
 .addToCart {
-  border: 0.5px solid black;
+  color: var(--primary-dark);
+  border: 0.5px solid var(--primary-dark);
   height: 25px;
   width: 75px;
   border-radius: 3px;
@@ -207,13 +211,24 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
   overflow: hidden;
+  transition: var(--primary-transition);
+  &:hover {
+    border: 0.5px solid var(--secondary-dark);
+    color: var(--secondary-dark);
+  }
 }
+
 .inputCart {
   border: none;
   height: 100%;
   width: 25px;
   text-align: center;
-  border-inline: 0.5px solid black;
+  border-inline: 0.5px solid var(--primary-dark);
+  transition: var(--primary-transition);
+  &:hover {
+    border: 0.5px solid var(--secondary-dark);
+    color: var(--secondary-dark);
+  }
 }
 .itemPrice {
   width: 100%;

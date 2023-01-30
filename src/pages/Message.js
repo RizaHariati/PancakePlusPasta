@@ -25,15 +25,35 @@ import ListItemShort from "../components/shopping/ListItemShort"
 import Seo from "../components/Seo"
 
 const Message = () => {
-  const { messageList } = useGlobalContext()
+  const { messageList, reduceMessagesNumber } = useGlobalContext()
   const [showMessageModal, setShowMessageModal] = useState({
     status: false,
     message: "",
   })
   const handleClick = (status, message) => {
     setShowMessageModal({ status, message })
+    reduceMessagesNumber()
   }
-  if (!messageList) return <div></div>
+
+  if (messageList.length < 0)
+    return (
+      <Layout>
+        <Seo title="Message" description="Message for our member" />
+        <Container maxWidth="sm" sx={container}>
+          <Paper variant="outlined" sx={paper}>
+            {showMessageModal.status && (
+              <MessageModal
+                showMessageModal={showMessageModal}
+                setShowMessageModal={setShowMessageModal}
+              />
+            )}
+            <Typography variant="h5" color="accentColor">
+              No message yet
+            </Typography>
+          </Paper>
+        </Container>
+      </Layout>
+    )
   else {
     return (
       <Layout>
@@ -46,7 +66,7 @@ const Message = () => {
                 setShowMessageModal={setShowMessageModal}
               />
             )}
-            <Typography variant="h4" color="primary.dark">
+            <Typography variant="h5" color="accentColor">
               My Orders
             </Typography>
             <Divider variant="fullWidth" />
@@ -116,7 +136,7 @@ const MessageModal = ({ showMessageModal, setShowMessageModal }) => {
         >
           <Cancel color="error" />
         </IconButton>
-        <Typography variant="h4" color="secondary.dark">
+        <Typography variant="h5" color="secondary.dark">
           Your Order detail
         </Typography>
         <Divider variant="fullWidth" />

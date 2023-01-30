@@ -11,7 +11,7 @@ const ListItem = ({ list }) => {
     <div className="myCartPrice-logos">
       <div className="myCartPrice-title">
         <GatsbyImage image={pathToImage} alt="title" className="myCart-image" />
-        <Typography variant="h4" color="primary" fontSize={18}>
+        <Typography variant="h5" color="accentColor" fontSize={18}>
           {title}
         </Typography>
       </div>

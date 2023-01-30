@@ -13,8 +13,8 @@ const LoginAsMember = () => {
     const { userData } = user
     return (
       <Paper variant="outlined" sx={paper}>
-        <Typography variant="h4" color="white" align="center">
-          {` Hi, ${userData.name}! Ready to order? `}
+        <Typography variant="h5" color="secondary" align="center" sx={{display:"block"}}>
+         Hi, <span style={{textTransform:"capitalize"}}>{userData.name}</span> ! Ready to order?
         </Typography>
         <div className="form-container">
           <StaticImage

@@ -39,7 +39,7 @@ const ConfirmOrder = () => {
   if (!checkout?.items) return <div></div>
   else {
     return (
-      <Modal open={checkout?.check} sx={{ padding: { md: "20px", xs: "0" } }}>
+      <Modal open={checkout?.check}>
         <Box sx={boxContainer}>
           <ChildModal
             successOrder={successOrder}
@@ -49,7 +49,7 @@ const ConfirmOrder = () => {
           <IconButton onClick={cancelCheckout} sx={modalBtn}>
             <Cancel color="error" />
           </IconButton>
-          <Typography variant="h3" color="primary.dark">
+          <Typography variant="h5" color="accentColor">
             Confirm Order
           </Typography>
           <Paper variant="outlined" sx={shoppingPaper}>
@@ -95,29 +95,17 @@ const ChildModal = ({ successOrder, setSuccessOrder }) => {
           </IconButton>
           <div className="success-content">
             <CheckCircle fontSize="large" color="primary" />
-            <Typography
-              variant="h3"
-              color="secondary.dark"
-              sx={{ fontVariant: "small-caps", fontSize: "28px" }}
-            >
+            <Typography variant="body1" color="accentColor">
               Thank you{" "}
             </Typography>
-            <Typography
-              variant="h3"
-              color="secondary.dark"
-              sx={{ fontVariant: "small-caps", fontSize: "22px" }}
-            >
+            <Typography variant="body1" color="accentColor">
               purchase was successful
             </Typography>
-            <Typography
-              variant="h3"
-              color="secondary.dark"
-              sx={{ fontVariant: "small-caps", fontSize: "22px" }}
-            >
+            <Typography variant="body1" color="accentColor">
               Bon Appétit
             </Typography>
             <Button
-              color="primary"
+              color="secondary"
               variant="outlined"
               onClick={() => setSuccessOrder(false)}
             >
@@ -142,31 +130,39 @@ const CostumerData = ({ customer }) => {
     <div>
       <div className="checkout-address-title ">
         <LocationOn fontSize="medium" />
-        <Typography
-          variant="h3"
-          color="secondary.dark"
-          sx={{ fontVariant: "small-caps", fontSize: "22px" }}
-        >
+        <Typography variant="body1" color="accentColor">
           Deliver to
         </Typography>
       </div>
       {userData.name !== "guest" && (
-        <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+        <Typography
+          variant="body1"
+          sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
+        >
           {userData.name}
         </Typography>
       )}
-      <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+      <Typography
+        variant="body2"
+        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
+      >
         {street}
       </Typography>
-      <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+      <Typography
+        variant="body2"
+        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
+      >
         add: {number}
       </Typography>
-      <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+      <Typography
+        variant="body2"
+        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
+      >
         {location}
       </Typography>
       <div className="checkout-address-title ">
         <Phone fontSize="small" />
-        <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+        <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
           {phoneDecrypt}
         </Typography>
       </div>

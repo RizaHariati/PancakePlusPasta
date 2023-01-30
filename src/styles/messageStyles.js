@@ -37,8 +37,8 @@ const modalBtn = {
 }
 const boxContainer = {
   position: "relative",
-  width: { sm: "400px", xs: "100vw" },
-  height: { sm: "80%", xs: "100vh" },
+  width: { sm: "600px", xs: "100vw" },
+  height: { sm: "90%", xs: "100vh" },
   background: "white",
   margin: "auto",
   marginTop: { sm: "50px", xs: "0px" },

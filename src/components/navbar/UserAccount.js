@@ -32,10 +32,10 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
           <Cancel color="error" />
         </IconButton>
         <div className="user-title">
-          <Typography variant="h4" color="primary.dark">
+          <Typography variant="h4" color="accentColor">
             Your Account
           </Typography>
-          {loginStatus?.login && user?.userData.name !== "guest" && (
+          {loginStatus?.login && user?.userData.name !== "Guest" && (
             <Tooltip title="Remove-account" placement="left">
               <IconButton
                 onClick={() => {
@@ -51,9 +51,9 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         </div>
         <Paper variant="outlined" sx={shoppingPaper}>
           <Typography
-            variant="h3"
-            color="secondary.dark"
-            sx={{ fontVariant: "small-caps", fontSize: "28px" }}
+            variant="h5"
+            color="textColor"
+
           >
             {loginStatus?.login
               ? `Hi, ${user?.userData.name} `
@@ -64,7 +64,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         </Paper>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           size="small"
           onClick={() => setShowUserAccount(false)}
         >
@@ -73,7 +73,7 @@ const UserAccount = ({ showUserAccount, setShowUserAccount }) => {
         {loginStatus?.login && (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="small"
             onClick={handleLogout}
           >

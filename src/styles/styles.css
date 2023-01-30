@@ -1,5 +1,8 @@
 :root {
   --primary-light: #efede0;
+  --primary-dark: #729384;
+  --secondary-dark: #546e62;
+  --primary-transition: all 1s ease-in;
 }
 
 * {
@@ -323,7 +326,8 @@ body input::-webkit-inner-spin-button {
 }
 
 .addToCart {
-  border: 0.5px solid black;
+  color: var(--primary-dark);
+  border: 0.5px solid var(--primary-dark);
   height: 25px;
   width: 75px;
   border-radius: 3px;
@@ -333,6 +337,13 @@ body input::-webkit-inner-spin-button {
       grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
   overflow: hidden;
+  -webkit-transition: var(--primary-transition);
+  transition: var(--primary-transition);
+}
+
+.addToCart:hover {
+  border: 0.5px solid var(--secondary-dark);
+  color: var(--secondary-dark);
 }
 
 .inputCart {
@@ -340,7 +351,14 @@ body input::-webkit-inner-spin-button {
   height: 100%;
   width: 25px;
   text-align: center;
-  border-inline: 0.5px solid black;
+  border-inline: 0.5px solid var(--primary-dark);
+  -webkit-transition: var(--primary-transition);
+  transition: var(--primary-transition);
+}
+
+.inputCart:hover {
+  border: 0.5px solid var(--secondary-dark);
+  color: var(--secondary-dark);
 }
 
 .itemPrice {
