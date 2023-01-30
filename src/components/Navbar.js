@@ -64,7 +64,7 @@ const Navbar = ({
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
         <Link
-          to="/"
+          to="/Welcome/"
           style={{
             display: "inline-flex",
             columnGap: "10px",

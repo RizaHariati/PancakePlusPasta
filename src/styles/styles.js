@@ -61,11 +61,11 @@ const paper = {
   alignItems: "center",
   justifyContent: "center",
   borderColor: "transparent",
-  padding: "10px",
+  padding: { xs: "10px", sm: "30px", md: "40px", lg: "10px", xl: "40px" },
   paddingInline: "20px",
   border: `0.5px ${mainDark} ease-in`,
   backgroundColor: mainLight,
-  rowGap: "3px",
+  rowGap: { xs: "3px", sm: "8px", md: "3px", lg: "8px", xl: "10px" },
 }
 const loginButton = {
   width: "100%",

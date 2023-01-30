@@ -138,7 +138,9 @@ const AddressData = ({
   }
   return (
     <Paper variant="outlined" sx={paperForm}>
-      <Typography>Please fill in your phone and Address</Typography>
+      <Typography color="textColor">
+        Please fill in your phone and Address
+      </Typography>
       <form noValidate className="guest-loginForm" onSubmit={handleSubmit}>
         <TextField
           min={0}
@@ -192,7 +194,7 @@ const AddressData = ({
         <ButtonGroup>
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             onClick={() =>
               setOpenAddressForm({
                 status: false,
@@ -209,7 +211,7 @@ const AddressData = ({
           <Button
             type="submit"
             variant="contained"
-            color="primary"
+            color="secondary"
             style={{ color: "white" }}
             disableElevation
           >

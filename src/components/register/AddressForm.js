@@ -59,7 +59,7 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
                     variant="outlined"
                     sx={{ height: "100px", padding: "10px" }}
                   >
-                    <Typography variant="body1" color="textPrimary">
+                    <Typography variant="body1" color="textColor">
                       To ensure that you receive warm meals, our delivery zone
                       is based on delivery journey time, please pick an address
                       within the area cirlced area

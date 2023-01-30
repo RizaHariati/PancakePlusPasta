@@ -89,6 +89,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 10px;
 }
 .loginForm {
   width: 100%;
@@ -182,6 +183,9 @@ body {
     column-gap: 0rem;
     row-gap: 0rem;
   }
+  .form-container {
+    row-gap: 10px;
+  }
 }
 
 // ======================submenu==============
@@ -263,6 +267,9 @@ body {
 @media screen and(max-width:400px) {
   .success-order {
     width: 100%;
+  }
+  .form-container {
+    row-gap: 1px;
   }
 }
 

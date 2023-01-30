@@ -78,24 +78,14 @@ const IndexPage = () => {
       <div className={classes.mainBackground}>
         <Seo title="Home" />
         <div className={classes.mainText1}>
-          <StaticImage
-            src="../images/main/fruits1.jpg"
-            alt="fruits2"
-            placeholder="tracedSVG"
-            layout="constrained"
-            className={classes.image1}
-            objectFit="cover"
-            objectPosition="center"
-          />
-          <StaticImage
-            src="../images/main/fruits2.jpg"
-            alt="fruits1"
-            placeholder="tracedSVG"
-            layout="constrained"
-            objectFit="cover"
-            objectPosition="center"
-            className={classes.image2}
-          />
+             <Typography
+            variant="h2"
+            color="textColor"
+            align="center"
+            sx={{ fontSize: { md: "40px", sm: "30px", xs: "24px" } }}
+          >
+      Loading...
+          </Typography>
         </div>
       </div>
     )

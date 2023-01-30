@@ -16,23 +16,28 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
   }
   return (
     <Paper variant="outlined" sx={paper}>
-      <Typography variant="h4" color="primary" align="center">
+      <Typography
+        variant="h4"
+        color="textColor"
+        align="center"
+        sx={{ marginBottom: "10px" }}
+      >
         You are logged in as Guest
       </Typography>
       <div className="form-container">
         <StaticImage
           src="../../images/main/lunch.jpg"
           alt="lunch"
-          style={{ borderRadius: "3px" }}
+          style={{ borderRadius: "3px", width: "80%", marginBottom: "10px" }}
         />
         <Button
           type="button"
           variant="outlined"
-          color="secondary"
-          style={{ color: red[900] }}
+          color="error"
           endIcon={<Favorite />}
           startIcon={<Favorite />}
           onClick={handleRegister}
+          sx={{ marginBottom: "10px" }}
         >
           still time to join us & register!
         </Button>
@@ -42,9 +47,9 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
           type="button"
           variant="contained"
           color="secondary"
-          sx={loginButton}
+          sx={[loginButton, { width: "fit-content" }]}
         >
-          Exit & Login as new guest
+          &nbsp;&nbsp;Exit & Login as new guest&nbsp;&nbsp;
         </Button>
       </div>
     </Paper>
