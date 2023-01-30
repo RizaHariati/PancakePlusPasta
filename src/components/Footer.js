@@ -18,14 +18,15 @@ const Footer = () => {
   return (
     <AppBar position="sticky" sx={footerAppbar}>
       <Toolbar sx={footerToolbar}>
-        <Typography variant="body1" color="white">
-          <span style={{ color: theme.palette.primary.light }}>
-            {" "}
-            Pancake Plus Pasta Copyright
-          </span>{" "}
-          Riza Hariati &copy;{new Date().getFullYear()}
-        </Typography>
-
+        <a href="https://ichacodes.com/">
+          <Typography variant="body1" color="white">
+            <span style={{ color: theme.palette.primary.light }}>
+              {" "}
+              Pancake Plus Pasta Copyright
+            </span>{" "}
+            Riza Hariati &copy;{new Date().getFullYear()}
+          </Typography>{" "}
+        </a>
         <div className="footerAttribute">
           <a href="https://www.pexels.com/photo/gold-and-silver-baubles-on-white-wall-5725975/">
             <Typography variant="h6" color="whitesmoke">
@@ -66,15 +67,19 @@ const Footer = () => {
                 Memed_Nurrohmad-
               </Typography>
             </a>
-            <Typography variant="h6" color="whitesmoke">
-              from_
-            </Typography>
+
             <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2389219">
               <Typography variant="h6" color="whitesmoke">
                 Pixabay
               </Typography>
             </a>
           </div>
+          <a href="https://www.vecteezy.com/free-vector/glass">
+            {" "}
+            <Typography variant="h6" color="whitesmoke">
+              Glass Vectors by Vecteezy{" "}
+            </Typography>
+          </a>
         </div>
       </Toolbar>
     </AppBar>

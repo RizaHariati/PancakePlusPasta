@@ -27,21 +27,21 @@ const Welcome = () => {
       <Seo title="Welcome" />
       <div className="content-container">
         <Slides />
-        <div className="loginContainer">
-          {!loginStatus?.login && (
-            <WelcomeForm
-              setOpenAddressForm={setOpenAddressForm}
-              setOpenRegisterForm={setOpenRegisterForm}
-            />
-          )}
-          {loginStatus?.login && user?.userData.name === "guest" && (
-            <LoginAsGuest setOpenRegisterForm={setOpenRegisterForm} />
-          )}
-          {loginStatus?.login && user?.userData.name !== "guest" && (
-            <LoginAsMember />
-          )}
-        </div>
+        {/* <div className="login-container"> */}
+        {!loginStatus?.login && (
+          <WelcomeForm
+            setOpenAddressForm={setOpenAddressForm}
+            setOpenRegisterForm={setOpenRegisterForm}
+          />
+        )}
+        {loginStatus?.login && user?.userData.name === "guest" && (
+          <LoginAsGuest setOpenRegisterForm={setOpenRegisterForm} />
+        )}
+        {loginStatus?.login && user?.userData.name !== "guest" && (
+          <LoginAsMember />
+        )}
       </div>
+      {/* </div> */}
       <AddressForm
         openAddressForm={openAddressForm}
         setOpenAddressForm={setOpenAddressForm}

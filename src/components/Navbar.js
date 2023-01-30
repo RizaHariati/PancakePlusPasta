@@ -64,20 +64,24 @@ const Navbar = ({
     <AppBar position="sticky" color="primary">
       <Toolbar sx={toolbar}>
         <Link
-          to="/Welcome/"
+          to="/"
           style={{
             display: "inline-flex",
             columnGap: "10px",
             cursor: "pointer",
           }}
         >
-          <Avatar variant="square" alt="icon">
+          <Avatar variant="rounded" alt="icon">
             <StaticImage
               src="../images/icons/icon-light-192x192.png"
               objectFit="fill"
               objectPosition="center"
               placeholder="tracedSVG"
-              style={{ height: "100%", margin: "auto" }}
+              style={{
+                height: "100%",
+                margin: "auto",
+                borderRadius: "5px",
+              }}
               alt="logo"
             />
             {/* <GatsbyImage

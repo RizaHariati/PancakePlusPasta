@@ -16,7 +16,7 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
   }
   return (
     <Paper variant="outlined" sx={paper}>
-      <Typography variant="h4" color="white" align="center">
+      <Typography variant="h4" color="primary" align="center">
         You are logged in as Guest
       </Typography>
       <div className="form-container">

@@ -1,4 +1,5 @@
-const mainDark = "#ef6c00"
+const mainDark = "#729384"
+const mainLight = "#EFEDE0"
 // =====================layout=======================
 const toolbar = {
   width: "100%",
@@ -9,6 +10,12 @@ const toolbar = {
   justifyContent: "space-between",
 }
 
+const iconImage = {
+  width: "25%",
+  height: "auto",
+  marginHorizontal: "auto",
+  borderRadius: "5px",
+}
 const footerToolbar = {
   width: "100%",
   display: "flex",
@@ -36,21 +43,34 @@ const deliveryTitle = {
   zIndex: 1,
   marginTop: { md: "10px", sm: "5px", xs: "5px" },
 }
+const slider = {
+  height: "100%",
+  position: "relative",
+  marginInline: "auto",
+  width: "100%",
+  overflow: "hidden",
+  // display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  display: { xs: "flex", sm: "none", md: "flex" },
+}
 const paper = {
-  minHeight: "100%",
-  margin: "auto",
+  height: "100%",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  background: "transparent",
-  rowGap: "17px",
-  padding: "20px",
+  borderColor: "transparent",
+  padding: "10px",
+  paddingInline: "20px",
   border: `0.5px ${mainDark} ease-in`,
+  backgroundColor: mainLight,
+  rowGap: "3px",
 }
 const loginButton = {
   width: "100%",
   size: { md: "large", sm: "small" },
+  color: "white",
 }
 // =====================Menu=======================
 
@@ -129,4 +149,6 @@ export {
   modalBtn,
   shoppingPaper,
   success,
+  iconImage,
+  slider,
 }

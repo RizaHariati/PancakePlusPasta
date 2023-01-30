@@ -1,7 +1,7 @@
 import { Button, Paper, Typography } from "@mui/material"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { paper, loginButton } from "../../styles/styles"
+import { paper, loginButton, iconImage } from "../../styles/styles"
 import "../../styles/styles.css"
 import LoginForm from "./LoginForm"
 
@@ -11,26 +11,31 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
       <StaticImage
         src="../../images/icons/icon-light-192x192.png"
         objectPosition="center"
-        placeholder="tracedSVG"
-        style={{ height: "70px", width: "70px", margin: "auto" }}
+        placeholder="dominantColor"
+        style={iconImage}
         alt="main-icon"
       />
-      <Typography variant="h4" color="white" align="center">
+
+      <Typography variant="h4" color="textColor" align="center">
         Welcome to Pancake Plus Pasta
       </Typography>
-      <div className="form-container">
+      <div className="form-container ">
         <LoginForm />
         <Button
           type="button"
           variant="text"
           color="error"
           onClick={() => setOpenRegisterForm(true)}
+          sx={{
+            lineHeight: "16px",
+            paddingBlock: "5px",
+            display: "block",
+            fontWeight: "bold",
+          }}
         >
-          want to enjoy our membership privilege? register!
+          want to enjoy our membership privilege?{" "}
+          <span style={{ textDecoration: "underline" }}>register!</span>
         </Button>
-        <Typography variant="h4" color="white">
-          OR
-        </Typography>
 
         <Button
           onClick={() =>

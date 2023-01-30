@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import "../styles/styles.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Typography } from "@mui/material"
-import { deliveryTitle } from "../styles/styles"
+import { Paper, Typography } from "@mui/material"
+import { deliveryTitle, slider } from "../styles/styles"
 
 const query = graphql`
   query delivery {
@@ -53,7 +53,7 @@ const Slides = () => {
   }, [])
 
   return (
-    <div className="slider">
+    <Paper variant="elevation" sx={slider}>
       {array.map((item, indexArray) => {
         const { description, image } = item
         const pathToImage = getImage(image.gatsbyImageData)
@@ -77,12 +77,12 @@ const Slides = () => {
               image={pathToImage}
               alt="transaction"
               objectFit="cover"
-              style={{ height: "100%" }}
+              style={{ height: "100%", width: "auto" }}
             />
           </div>
         )
       })}
-    </div>
+    </Paper>
   )
 }
 

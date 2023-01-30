@@ -74,7 +74,31 @@ const IndexPage = () => {
   }, [imageMain])
 
   if (!imageMain) {
-    return <div> test</div>
+    return (
+      <div className={classes.mainBackground}>
+        <Seo title="Home" />
+        <div className={classes.mainText1}>
+          <StaticImage
+            src="../images/main/fruits1.jpg"
+            alt="fruits2"
+            placeholder="tracedSVG"
+            layout="constrained"
+            className={classes.image1}
+            objectFit="cover"
+            objectPosition="center"
+          />
+          <StaticImage
+            src="../images/main/fruits2.jpg"
+            alt="fruits1"
+            placeholder="tracedSVG"
+            layout="constrained"
+            objectFit="cover"
+            objectPosition="center"
+            className={classes.image2}
+          />
+        </div>
+      </div>
+    )
   } else if (imageMain) {
     return (
       <div className={classes.mainBackground}>
@@ -82,7 +106,7 @@ const IndexPage = () => {
         <div className={classes.mainText1}>
           <Typography
             variant="h2"
-            color="primary"
+            color="textColor"
             align="center"
             sx={{ fontSize: { md: "40px", sm: "30px", xs: "24px" } }}
           >
@@ -90,13 +114,13 @@ const IndexPage = () => {
           </Typography>
           <Typography
             variant="h1"
-            color="primary"
+            color="textColor"
             align="center"
             sx={{ fontSize: { md: "60px", sm: "50px", xs: "40px" } }}
           >
-            Pancake
-            <span style={{ color: theme.palette.secondary.dark }}>Plus</span>
-            Pasta
+            Pancake&nbsp;
+            <span style={{ color: theme.palette.accentColor }}>Plus</span>
+            &nbsp;Pasta
           </Typography>
         </div>
 
