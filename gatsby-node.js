@@ -5,3 +5,11 @@ exports.onPostBuild = () => {
     fs.renameSync("./public/sitemap-0.xml", "./public/sitemap.xml")
   }
 }
+
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+  if (getConfig().mode === "production") {
+    actions.setWebpackConfig({
+      devtool: false,
+    })
+  }
+}
