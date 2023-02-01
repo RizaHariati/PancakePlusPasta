@@ -3,9 +3,9 @@ import Footer from "./Footer"
 import "../styles/styles.css"
 import Navbar from "./Navbar"
 import { useGlobalContext } from "../context/GlobalContextProvider"
-import ShoppingList from "./navbar/ShoppingList"
-import UserAccount from "./navbar/UserAccount"
-import ConfirmOrder from "./navbar/ConfirmOrder"
+import ShoppingList from "./navbarLinks/ShoppingList"
+import UserAccount from "./navbarLinks/UserAccount"
+import ConfirmOrder from "./navbarLinks/ConfirmOrder"
 import { Alert, Snackbar } from "@mui/material"
 
 const Layout = ({ children }) => {

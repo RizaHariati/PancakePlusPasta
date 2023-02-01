@@ -27,6 +27,7 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
         <StaticImage
           src="../../images/main/lunch.jpg"
           alt="lunch"
+          placeholder="dominantColor"
           style={{ borderRadius: "3px", width: "80%", marginBottom: "10px" }}
         />
         <Button

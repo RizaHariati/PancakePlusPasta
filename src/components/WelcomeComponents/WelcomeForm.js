@@ -16,10 +16,20 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         alt="main-icon"
       />
 
-      <Typography variant="h5" color="textColor" align="center" sx={{lineHeight:"15px"}}>
+      <Typography
+        variant="h5"
+        color="textColor"
+        align="center"
+        sx={{ lineHeight: "15px" }}
+      >
         Welcome to
       </Typography>
-      <Typography variant="h5" color="textColor" align="center"sx={{lineHeight:"18px"}}>
+      <Typography
+        variant="h5"
+        color="textColor"
+        align="center"
+        sx={{ lineHeight: "18px" }}
+      >
         Pancake Plus Pasta
       </Typography>
       <div className="form-container ">

@@ -9,7 +9,7 @@ import {
 } from "@mui/material"
 import { useTheme } from "@mui/styles"
 import { StaticImage } from "gatsby-plugin-image"
-import { toolbar } from "../styles/styles"
+import { avatar, toolbar } from "../styles/styles"
 import React from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
@@ -79,7 +79,7 @@ const Navbar = ({
                 color="secondary"
                 onClick={() => setShowShoppingList(!showShoppingList)}
               >
-                <Avatar style={{ height: 35, width: 35 }}>
+                <Avatar sx={avatar}>
                   <StaticImage src="../images/icons/cart.jpg" alt="cart" />
                 </Avatar>
               </IconButton>
@@ -97,7 +97,7 @@ const Navbar = ({
                 color="secondary"
                 onClick={handleMail}
               >
-                <Avatar style={{ height: 35, width: 35 }}>
+                <Avatar sx={avatar}>
                   <StaticImage src="../images/icons/mail.jpg" alt="mail" />
                 </Avatar>
               </IconButton>
@@ -107,7 +107,7 @@ const Navbar = ({
           <Link to="/Menu">
             <Tooltip title="menu">
               <IconButton variant="contained" color="secondary">
-                <Avatar style={{ height: 35, width: 35 }}>
+                <Avatar sx={avatar}>
                   <StaticImage
                     src="../images/icons/menu.png"
                     alt="mail"
@@ -134,7 +134,7 @@ const Navbar = ({
               invisible={!loginStatus?.login}
             >
               <IconButton variant="contained">
-                <Avatar style={{ height: 35, width: 35 }}>
+                <Avatar sx={avatar}>
                   <StaticImage src="../images/icons/user.jpg" alt="user" />
                 </Avatar>
               </IconButton>

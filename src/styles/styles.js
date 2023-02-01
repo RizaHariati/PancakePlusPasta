@@ -61,8 +61,7 @@ const paper = {
   alignItems: "center",
   justifyContent: { xs: "start", sm: "center" },
   borderColor: "transparent",
-  padding: { xs: "10px", sm: "30px", md: "40px", lg: "10px", xl: "40px" },
-  paddingInline: "20px",
+  padding: { xs: "20px", sm: "30px", md: "40px", lg: "10px", xl: "40px" },
   border: `0.5px ${mainDark} ease-in`,
   backgroundColor: mainLight,
   rowGap: { xs: "5px", sm: "8px", md: "3px", lg: "8px", xl: "10px" },
@@ -95,6 +94,11 @@ const cardActions = {
 }
 
 // ====================box======================
+export const avatar = {
+  height: { xs: "35px", md: "40px" },
+  width: { xs: "35px", md: "40px" },
+  marginLeft: { xs: "-10px", md: "5px" },
+}
 const boxContainer = {
   position: "relative",
   width: { sm: "400px", xs: "100vw" },

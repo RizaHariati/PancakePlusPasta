@@ -293,6 +293,8 @@ body::-webkit-inner-spin-button {
   row-gap: 10px;
 }
 @media screen and(max-width:400px) {
+  .menu-links {
+  }
   .success-order {
     width: 100%;
   }
