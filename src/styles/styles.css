@@ -13,13 +13,19 @@
   text-decoration: none;
 }
 
-body {
+* input::-webkit-outer-spin-button,
+* input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+image.png body {
   width: 100%;
   color: #333343;
 }
 
-body input::-webkit-outer-spin-button,
-body input::-webkit-inner-spin-button {
+body::-webkit-outer-spin-button,
+body::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -55,8 +61,8 @@ body input::-webkit-inner-spin-button {
 
 .slider {
   position: relative;
-  height: 100%;
   margin-inline: auto;
+  height: 100%;
   width: 100%;
   margin-block: auto;
   overflow: hidden;
@@ -76,33 +82,29 @@ body input::-webkit-inner-spin-button {
 }
 
 .slide {
-  margin-inline: auto;
-  -webkit-transition: all 1s ease-in;
-  transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   position: absolute;
-  padding: 30px;
+  height: 100%;
   width: 100%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 
 .slide.before {
   left: 100%;
-  opacity: 0;
   z-index: -1;
+  opacity: 0;
 }
 
 .slide.active {
-  left: 0;
-  opacity: 1;
+  left: 0%;
   z-index: 1;
+  opacity: 1;
 }
 
 .slide.after {
   left: -100%;
-  opacity: 0;
   z-index: -1;
+  opacity: 0;
 }
 
 .login-container {
@@ -145,7 +147,8 @@ body input::-webkit-inner-spin-button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  row-gap: 5px;
+  row-gap: 15px;
+  height: 100%;
 }
 
 .myCartPrice-title {
@@ -202,7 +205,7 @@ body input::-webkit-inner-spin-button {
 }
 
 .myCartPrice-price2 {
-  width: 80%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,10 +216,9 @@ body input::-webkit-inner-spin-button {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  margin-left: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .myCart-image {
@@ -275,14 +277,6 @@ body input::-webkit-inner-spin-button {
     -ms-grid-rows: 4fr 8fr;
         grid-template-rows: 4fr 8fr;
   }
-  .slider {
-    max-width: 300px;
-  }
-  .slide {
-    top: 0%;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
 }
 
 @media screen and (max-width: 900px) {
@@ -291,7 +285,7 @@ body input::-webkit-inner-spin-button {
   }
   .loginForm {
     width: 100%;
-    row-gap: 5px;
+    row-gap: 15px;
   }
   .footerAttribute {
     display: -ms-grid;
@@ -360,6 +354,12 @@ body input::-webkit-inner-spin-button {
 .inputCart:hover {
   border: 0.5px solid var(--secondary-dark);
   color: var(--secondary-dark);
+}
+
+.inputCart::-webkit-outer-spin-button,
+.inputCart::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .itemPrice {

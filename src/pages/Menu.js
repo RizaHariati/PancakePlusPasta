@@ -22,6 +22,7 @@ const Menu = ({ data }) => {
           select
           label="What do you want to have today? "
           value={subMenu}
+          color="secondary"
           placeholder={subMenu}
           onChange={e => setSubMenu(e.target.value)}
           fullWidth

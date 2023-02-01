@@ -10,15 +10,21 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-}
-body {
-  width: 100%;
-  color: #333343;
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+}
+
+image.png body {
+  width: 100%;
+  color: #333343;
+}
+body::-webkit-outer-spin-button,
+body::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .footerAttribute {
   display: grid;
@@ -42,8 +48,8 @@ body {
 }
 .slider {
   position: relative;
-  height: 100%;
   margin-inline: auto;
+  height: 100%;
   width: 100%;
   margin-block: auto;
   overflow: hidden;
@@ -56,27 +62,27 @@ body {
   padding-top: 7px;
 }
 .slide {
-  margin-inline: auto;
-  transition: all 1s ease-in;
+  // margin-inline: auto;
+  transition: all 1s ease-in-out;
   position: absolute;
-  padding: 30px;
+  // padding: 30px;
+  height: 100%;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+
   &.before {
     left: 100%;
-    opacity: 0;
     z-index: -1;
+    opacity: 0;
   }
   &.active {
-    left: 0;
-    opacity: 1;
+    left: 0%;
     z-index: 1;
+    opacity: 1;
   }
   &.after {
     left: -100%;
-    opacity: 0;
     z-index: -1;
+    opacity: 0;
   }
 }
 
@@ -100,7 +106,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 5px;
+  row-gap: 15px;
+  height: 100%;
 }
 .myCartPrice-title {
   width: 100%;
@@ -130,7 +137,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: space-between;
-  justify-content:center;
+  justify-content: center;
 }
 .myCart-image {
   height: 50px;
@@ -163,13 +170,11 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 4fr 8fr;
   }
-  .slider {
-    max-width: 300px;
-  }
-  .slide {
-    top: 0%;
-    transform: translateY(0%);
-  }
+
+  // .slide {
+  //   top: 0%;
+  //   transform: translateY(0%);
+  // }
 }
 
 @media screen and(max-width:900px) {
@@ -178,7 +183,7 @@ body {
   }
   .loginForm {
     width: 100%;
-    row-gap: 5px;
+    row-gap: 15px;
   }
   .footerAttribute {
     display: grid;
@@ -229,6 +234,12 @@ body {
     border: 0.5px solid var(--secondary-dark);
     color: var(--secondary-dark);
   }
+}
+
+.inputCart::-webkit-outer-spin-button,
+.inputCart::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .itemPrice {
   width: 100%;

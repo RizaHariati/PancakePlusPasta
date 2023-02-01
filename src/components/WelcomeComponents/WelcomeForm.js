@@ -16,8 +16,11 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         alt="main-icon"
       />
 
-      <Typography variant="h4" color="textColor" align="center">
-        Welcome to Pancake Plus Pasta
+      <Typography variant="h5" color="textColor" align="center">
+        Welcome to
+      </Typography>
+      <Typography variant="h5" color="textColor" align="center">
+        Pancake Plus Pasta
       </Typography>
       <div className="form-container ">
         <LoginForm />

@@ -24,11 +24,11 @@ const gridModalMap = {
   order: { md: 2, xs: 1 },
 }
 const paperForm = {
-  padding: "10px",
+
   width: "100%",
   marginRight: { md: "15px", xs: "0px" },
   marginTop: { md: "0px", xs: "15px" },
-  height: { md: "calc(80vh - 40px)", xs: "auto" },
+  height: { md: "calc(80vh - 40px)", xs: "100%" },
 }
 export {
   paperModal,

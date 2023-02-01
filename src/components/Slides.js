@@ -22,7 +22,6 @@ const query = graphql`
             placeholder: DOMINANT_COLOR
             layout: CONSTRAINED
             height: 700
-            aspectRatio: 1.6
           )
         }
       }
@@ -70,15 +69,14 @@ const Slides = () => {
 
         return (
           <div className={`slide ${position}`} key={indexArray}>
-            <Typography variant="h2" color="secondary.dark" sx={deliveryTitle}>
-              {indexArray + 1} - {description.description}
-            </Typography>
-            <GatsbyImage
-              image={pathToImage}
-              alt="transaction"
-              objectFit="cover"
-              style={{ height: "100%", width: "auto" }}
-            />
+            <div className="slider">
+              <GatsbyImage
+                image={pathToImage}
+                alt="transaction"
+                objectFit="cover"
+                style={{ height: "100%" }}
+              />
+            </div>{" "}
           </div>
         )
       })}

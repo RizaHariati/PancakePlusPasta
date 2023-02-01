@@ -67,6 +67,7 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           label={userData.errors.name || "Your Name"}
           type="text"
           size="small"
+          color="secondary"
           fullWidth
           variant="outlined"
           // value={userData.values.name}
@@ -74,7 +75,12 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           {...userData.getFieldProps("name")}
         />
 
-        <FormControl fullWidth variant="outlined" size="small">
+        <FormControl
+          fullWidth
+          variant="outlined"
+          size="small"
+          color="secondary"
+        >
           <InputLabel
             htmlFor="email"
             error={
@@ -99,7 +105,12 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           />
         </FormControl>
 
-        <FormControl fullWidth variant="outlined" size="small">
+        <FormControl
+          fullWidth
+          variant="outlined"
+          color="secondary"
+          size="small"
+        >
           <InputLabel
             htmlFor="password1"
             error={userData.errors.password1 === "required"}
@@ -125,7 +136,12 @@ const RegisterData = ({ setOpenRegisterForm, setOpenAddressForm }) => {
           />
         </FormControl>
 
-        <FormControl fullWidth variant="outlined" size="small">
+        <FormControl
+          fullWidth
+          variant="outlined"
+          color="secondary"
+          size="small"
+        >
           <InputLabel
             error={
               userData.errors.password2 === "retype password" ||

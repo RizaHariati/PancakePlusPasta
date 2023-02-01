@@ -138,7 +138,7 @@ const AddressData = ({
   }
   return (
     <Paper variant="outlined" sx={paperForm}>
-      <Typography color="textColor">
+      <Typography color="textInfo">
         Please fill in your phone and Address
       </Typography>
       <form noValidate className="guest-loginForm" onSubmit={handleSubmit}>
@@ -149,6 +149,7 @@ const AddressData = ({
           fullWidth
           variant="outlined"
           type="number"
+          color="secondary"
           value={phone || ""}
           label={phoneError.message}
           placeholder="Phone number"
@@ -159,6 +160,7 @@ const AddressData = ({
           error={addressValueError.status}
           size="small"
           fullWidth
+          color="secondary"
           variant="outlined"
           type="text"
           value={addressValue}
@@ -173,6 +175,7 @@ const AddressData = ({
           size="small"
           fullWidth
           variant="outlined"
+          color="secondary"
           type="text"
           value={street || ""}
           label={streetError.message}
@@ -184,6 +187,7 @@ const AddressData = ({
           size="small"
           fullWidth
           variant="outlined"
+          color="secondary"
           type="text"
           label={numberError.message}
           placeholder="Add Address detail or '0'"

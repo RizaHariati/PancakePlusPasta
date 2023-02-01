@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 import React from "react"
-import { useGlobalContext } from "../../context/GlobalContextProvider"
+// import { useGlobalContext } from "../../context/GlobalContextProvider"
 
 const ShoppingListItem = ({ name, price, amount }) => {
   return (

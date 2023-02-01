@@ -60,6 +60,7 @@ const LoginForm = () => {
       className="loginForm"
       autoComplete="disable"
       onSubmit={loginData.handleSubmit}
+      style={{ rowGap: "7px" }}
     >
       <TextField
         fullWidth
@@ -68,7 +69,7 @@ const LoginForm = () => {
         type="email"
         variant="outlined"
         size="small"
-        color="info"
+        color="secondary"
         inputProps={{
           autoComplete: "new-password",
           form: {
@@ -81,12 +82,15 @@ const LoginForm = () => {
         }
         label={loginData.errors.email || "Your Email"}
         {...loginData.getFieldProps("email")}
-        style={{ backgroundColor: "white", borderRadius: "5px" }}
+        style={{
+          backgroundColor: "white",
+          borderRadius: "5px",
+          color: "#57534e",
+        }}
       />
-      <FormControl fullWidth variant="outlined" size="small">
+      <FormControl fullWidth variant="outlined" color="secondary" size="small">
         <InputLabel
           htmlFor="password"
-          color="info"
           error={loginData.errors.password === "required"}
         >
           {loginData.errors.password || "password"}
@@ -109,7 +113,7 @@ const LoginForm = () => {
           {...loginData.getFieldProps("password")}
           style={{
             backgroundColor: "white",
-            color: "black",
+            color: "#57534e",
             borderRadius: "5px",
           }}
           endAdornment={

@@ -49,7 +49,7 @@ const slider = {
   marginInline: "auto",
   width: "100%",
   overflow: "hidden",
-  // display: "flex",
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
   display: { xs: "flex", sm: "none", md: "flex" },

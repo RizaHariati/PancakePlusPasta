@@ -14,8 +14,6 @@ import React from "react"
 import { Link, navigate } from "gatsby"
 import { useGlobalContext } from "../context/GlobalContextProvider"
 
-const windowGlobal = typeof window !== "undefined" && window
-
 const Navbar = ({
   showShoppingList,
   setShowShoppingList,

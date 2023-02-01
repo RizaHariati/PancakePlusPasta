@@ -9,9 +9,9 @@ const RegisterForm = ({
   setOpenAddressForm,
 }) => {
   return (
-    <Modal open={openRegisterForm} >
+    <Modal open={openRegisterForm}>
       <Paper sx={paperModal}>
-        <Typography variant="h4" color="accentColor">
+        <Typography variant="h5" color="textColor">
           Welcome to the club!
         </Typography>
         <Divider variant="fullWidth" />

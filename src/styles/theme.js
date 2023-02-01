@@ -21,10 +21,11 @@ export const theme = createTheme({
     textColor: "#333343",
     accentColor: "#DD9056",
     text: { default: "#333343" },
+    textInfo:"#44403c",
     info: {
-      dark: "#333343",
-      main: "#333343",
-      light: "#333343",
+      dark: "#44403c",
+      main: "#57534e",
+      light: "#78716c",
     },
   },
 
