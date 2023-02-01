@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import "../styles/styles.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Paper, Typography } from "@mui/material"
-import { deliveryTitle, slider } from "../styles/styles"
+import { Paper } from "@mui/material"
+import { slider } from "../styles/styles"
 
 const query = graphql`
   query delivery {
@@ -45,7 +45,7 @@ const Slides = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prev => prev + 1)
-    }, 3000)
+    }, 5000)
     return () => {
       clearInterval(interval)
     }
@@ -54,7 +54,7 @@ const Slides = () => {
   return (
     <Paper variant="elevation" sx={slider}>
       {array.map((item, indexArray) => {
-        const { description, image } = item
+        const { image } = item
         const pathToImage = getImage(image.gatsbyImageData)
 
         let position = "before"

@@ -21,7 +21,8 @@ const footerToolbar = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "center",
+   textAlign: { md: "left", sm: "center", xs: "center" },
 }
 const subTitle = {
   textTransform: "capitalize",
@@ -52,7 +53,6 @@ const slider = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  display: { xs: "flex", sm: "none", md: "flex" },
 }
 const paper = {
   height: "100%",

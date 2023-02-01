@@ -38,9 +38,9 @@ const Footer = () => {
               Mail Vectors by Vecteezy
             </Typography>
           </a>
-          <a href="https://www.freepik.com/vectors/people">
+          <a href="https://www.canva.com/">
             <Typography variant="h6" color="whitesmoke">
-              People vector created by muammark - www.freepik.com
+            Sliders images by Canva
             </Typography>
           </a>
           <a href="https://www.freepik.com/vectors/medical">
@@ -58,22 +58,7 @@ const Footer = () => {
               Web Vectors by Vecteezy
             </Typography>
           </a>
-          <div style={{ display: "flex" }}>
-            <Typography variant="h6" color="whitesmoke">
-              Image by-
-            </Typography>
-            <a href="https://pixabay.com/users/memed_nurrohmad-3307648/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2389219">
-              <Typography variant="h6" color="whitesmoke">
-                Memed_Nurrohmad-
-              </Typography>
-            </a>
 
-            <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2389219">
-              <Typography variant="h6" color="whitesmoke">
-                Pixabay
-              </Typography>
-            </a>
-          </div>
           <a href="https://www.vecteezy.com/free-vector/glass">
             {" "}
             <Typography variant="h6" color="whitesmoke">
