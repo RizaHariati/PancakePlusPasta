@@ -22,7 +22,7 @@ const footerToolbar = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-   textAlign: { md: "left", sm: "center", xs: "center" },
+  textAlign: { md: "left", sm: "center", xs: "center" },
 }
 const subTitle = {
   textTransform: "capitalize",
@@ -59,13 +59,13 @@ const paper = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: { xs: "start", sm: "center" },
   borderColor: "transparent",
   padding: { xs: "10px", sm: "30px", md: "40px", lg: "10px", xl: "40px" },
   paddingInline: "20px",
   border: `0.5px ${mainDark} ease-in`,
   backgroundColor: mainLight,
-  rowGap: { xs: "3px", sm: "8px", md: "3px", lg: "8px", xl: "10px" },
+  rowGap: { xs: "5px", sm: "8px", md: "3px", lg: "8px", xl: "10px" },
 }
 const loginButton = {
   width: "100%",

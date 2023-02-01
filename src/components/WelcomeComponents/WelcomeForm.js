@@ -16,15 +16,16 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         alt="main-icon"
       />
 
-      <Typography variant="h5" color="textColor" align="center">
+      <Typography variant="h5" color="textColor" align="center" sx={{lineHeight:"15px"}}>
         Welcome to
       </Typography>
-      <Typography variant="h5" color="textColor" align="center">
+      <Typography variant="h5" color="textColor" align="center"sx={{lineHeight:"18px"}}>
         Pancake Plus Pasta
       </Typography>
       <div className="form-container ">
         <LoginForm />
         <Button
+          size="small"
           type="button"
           variant="text"
           color="error"
@@ -41,6 +42,7 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         </Button>
 
         <Button
+          size="small"
           onClick={() =>
             setOpenAddressForm({
               status: true,

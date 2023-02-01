@@ -2,6 +2,7 @@
   --primary-light: #efede0;
   --primary-dark: #729384;
   --secondary-dark: #546e62;
+  --primary-accent: #dd9056;
   --primary-transition: all 1s ease-in;
 }
 
@@ -56,6 +57,7 @@ body::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--primary-accent);
 }
 
 .menu-links {
@@ -296,6 +298,7 @@ body::-webkit-inner-spin-button {
   }
   .form-container {
     row-gap: 1px;
+    max-width: 250px;
   }
 }
 

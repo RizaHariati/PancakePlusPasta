@@ -128,6 +128,7 @@ const LoginForm = () => {
       <Button
         type="submit"
         variant="contained"
+        size="small"
         color="secondary"
         sx={loginButton}
       >
