@@ -40,12 +40,12 @@ const Footer = () => {
           </a>
           <a href="https://www.canva.com/">
             <Typography variant="h6" color="whitesmoke">
-            Sliders images by Canva
+              Sliders images by Canva
             </Typography>
           </a>
-          <a href="https://www.freepik.com/vectors/medical">
+          <a href="https://pixabay.com/">
             <Typography variant="h6" color="whitesmoke">
-              Medical vector created by freepik - www.freepik.com
+              Images by Pixabay
             </Typography>
           </a>
           <a href="https://www.freepik.com/vectors/money">

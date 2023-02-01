@@ -79,15 +79,15 @@ const IndexPage = () => {
         <Seo title="Home" />
         <div className={classes.mainText1}>
           <Typography
-            variant="h3"
+            variant="h5"
             color="secondary"
             align="center"
             sx={{
               fontSize: { md: "40px", sm: "30px", xs: "24px" },
-              marginTop: { xs: "20px", md: "45px" },
+              marginTop: "45px",
             }}
           >
-            Loading...
+            Hungry?
           </Typography>
         </div>
       </div>

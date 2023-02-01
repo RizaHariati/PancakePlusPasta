@@ -16,7 +16,7 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
   return (
     <Paper variant="outlined" sx={paper}>
       <Typography
-        variant="h4"
+        variant="h5"
         color="textColor"
         align="center"
         sx={{ marginBottom: "10px" }}

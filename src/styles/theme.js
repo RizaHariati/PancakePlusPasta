@@ -21,7 +21,7 @@ export const theme = createTheme({
     textColor: "#333343",
     accentColor: "#DD9056",
     text: { default: "#333343" },
-    textInfo:"#44403c",
+    textInfo: "#44403c",
     info: {
       dark: "#44403c",
       main: "#57534e",

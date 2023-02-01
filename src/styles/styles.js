@@ -64,7 +64,7 @@ const paper = {
   padding: { xs: "20px", sm: "30px", md: "40px", lg: "10px", xl: "40px" },
   border: `0.5px ${mainDark} ease-in`,
   backgroundColor: mainLight,
-  rowGap: { xs: "5px", sm: "8px", md: "3px", lg: "8px", xl: "10px" },
+  rowGap: { xs: "8px", sm: "15px" },
 }
 const loginButton = {
   width: "100%",
