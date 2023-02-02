@@ -15,7 +15,11 @@ const Menu = ({ data }) => {
     <Layout>
       <Seo title="Menu" description="Select your menu" />
       <Container maxWidth="md" sx={container}>
-        <Typography variant="h4" color="secondary" sx={{ fontWeight: "bold" }}>
+        <Typography
+          variant="h4"
+          color="secondary"
+          sx={{ fontWeight: "bold", fontFamily: "cursive" }}
+        >
           Menu Selection
         </Typography>
         <TextField
@@ -29,7 +33,7 @@ const Menu = ({ data }) => {
           sx={{ textTransform: "capitalize" }}
         >
           {menu.map((option, index) => (
-            <MenuItem key={index} value={option}>
+            <MenuItem key={index} value={option} sx={{ fontFamily: "fantasy" }}>
               {option.replace(/-/g, " ")}
             </MenuItem>
           ))}

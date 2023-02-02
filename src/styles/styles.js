@@ -1,5 +1,5 @@
-const mainDark = "#729384"
-const mainLight = "#EFEDE0"
+export const mainDark = "#729384"
+export const mainLight = "#EFEDE0"
 // =====================layout=======================
 const toolbar = {
   width: "100%",
@@ -101,12 +101,12 @@ export const avatar = {
 }
 const boxContainer = {
   position: "relative",
-  width: { sm: "400px", xs: "100vw" },
-  height: { sm: "100%", xs: "100vh" },
+  width: { sm: "600px", xs: "100vw" },
+  height: { sm: "100%", xs: "100vh", xl: "80%" },
   background: "white",
   margin: "auto",
   padding: "20px",
-  paddingTop: "50px",
+  paddingBottom: { sm: "20px", xs: "80px" },
   display: "flex",
   flexDirection: "column",
   rowGap: "10px",

@@ -16,6 +16,7 @@ const gridModalContainer = { padding: "20px" }
 const gridModalForm = {
   width: "100%",
   height: "100%",
+
   order: { md: 1, xs: 2 },
 }
 const gridModalMap = {
@@ -24,11 +25,22 @@ const gridModalMap = {
   order: { md: 2, xs: 1 },
 }
 const paperForm = {
-
   width: "100%",
   marginRight: { md: "15px", xs: "0px" },
   marginTop: { md: "0px", xs: "15px" },
   height: { md: "calc(80vh - 40px)", xs: "100%" },
+}
+const paperForm2 = {
+  width: "100%",
+  marginRight: { md: "15px", xs: "0px" },
+  marginTop: { md: "0px", xs: "15px" },
+  height: { md: "calc(80vh - 40px)", xs: "100%" },
+  padding: "10px",
+}
+const confirmText = {
+  textTransform: "capitalize",
+  paddingLeft: "44px",
+  letterSpacing: "1px",
 }
 export {
   paperModal,
@@ -36,4 +48,6 @@ export {
   gridModalMap,
   gridModalContainer,
   paperForm,
+  paperForm2,
+  confirmText,
 }

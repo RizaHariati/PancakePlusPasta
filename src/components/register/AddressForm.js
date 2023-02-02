@@ -43,7 +43,7 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
       </Snackbar>
       <Modal open={openAddressForm.status}>
         <Paper sx={paperModal}>
-          <Grid container sx={gridModalContainer}>
+          <Grid container sx={gridModalContainer} spacing={1}>
             <Grid item md={7} xs={12} sx={gridModalForm}>
               <AddressData
                 handleStartOrdering={handleStartOrdering}
@@ -53,16 +53,16 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
               />
             </Grid>
             <Grid item md={5} xs={12} sx={gridModalMap}>
-              <Grid container spacing={2}>
+              <Grid container sx={{ rowGap: { xs: 0, md: 2 } }}>
                 <Grid item xs={12}>
                   <Paper
                     variant="outlined"
                     sx={{ height: "100px", padding: "10px" }}
                   >
                     <Typography variant="body2" color="textInfo">
-                      To ensure that you receive warm meals, our delivery zone
-                      is based on delivery journey time, please pick an address
-                      within the area cirlced area
+                      To ensure you receive warm meals, our delivery zone is
+                      based on delivery journey time, please pick an address
+                      within the circled area.
                     </Typography>
                   </Paper>
                 </Grid>

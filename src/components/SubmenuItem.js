@@ -7,7 +7,6 @@ const SubmenuItem = ({ name, price, id }) => {
   const { editList, loginStatus, openAlert } = useGlobalContext()
   const [data, setData] = useState(0)
 
-
   const handleData = (data, status) => {
     if (!loginStatus?.login) return openAlert("error", "Please login first")
     else {
@@ -24,7 +23,7 @@ const SubmenuItem = ({ name, price, id }) => {
   }
   const handleChange = e => {
     e.preventDefault()
-    const number = parseInt(e.target.value)
+    const number = e.target.valueAsNumber
     if (number > 0) {
       setData(number)
     } else {
@@ -50,7 +49,7 @@ const SubmenuItem = ({ name, price, id }) => {
         <input
           id="menu"
           name="menu"
-          type="number"
+          type="text"
           value={data}
           onChange={e => handleChange(e)}
           className="inputCart"

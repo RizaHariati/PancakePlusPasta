@@ -67,7 +67,6 @@ body::-webkit-inner-spin-button {
   // margin-inline: auto;
   transition: all 1s ease-in-out;
   position: absolute;
-  // padding: 30px;
   height: 100%;
   width: 100%;
 
@@ -226,12 +225,14 @@ body::-webkit-inner-spin-button {
 }
 
 .inputCart {
-  border: none;
+  border-block: 0.5px solid var(--primary-dark);
   height: 100%;
   width: 25px;
   text-align: center;
   border-inline: 0.5px solid var(--primary-dark);
   transition: var(--primary-transition);
+  overflow: hidden;
+  z-index: 2;
   &:hover {
     border: 0.5px solid var(--secondary-dark);
     color: var(--secondary-dark);

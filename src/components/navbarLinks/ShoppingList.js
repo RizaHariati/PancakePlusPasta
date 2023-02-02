@@ -76,7 +76,7 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
           </Paper>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="small"
             onClick={handleClearCart}
           >
@@ -84,7 +84,7 @@ const ShoppingList = ({ showShoppingList, setShowShoppingList }) => {
           </Button>
           <Button
             variant="contained"
-            color="primary"
+            color="error"
             size="small"
             onClick={handleCheckOut}
           >

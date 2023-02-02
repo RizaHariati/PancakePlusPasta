@@ -23,6 +23,7 @@ import TotalPrice from "../shopping/TotalPrice"
 import { StaticImage } from "gatsby-plugin-image"
 import ListItemShort from "../shopping/ListItemShort"
 import { navigate } from "gatsby"
+import { confirmText } from "../../styles/modalStyles"
 
 const ConfirmOrder = () => {
   const { checkout, cancelCheckout, confirmCheckout } = useGlobalContext()
@@ -63,7 +64,7 @@ const ConfirmOrder = () => {
           </Paper>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="small"
             onClick={cancelCheckout}
           >
@@ -71,7 +72,7 @@ const ConfirmOrder = () => {
           </Button>
           <Button
             variant="contained"
-            color="warning"
+            color="error"
             size="small"
             onClick={handleConfirm}
           >
@@ -129,40 +130,32 @@ const CostumerData = ({ customer }) => {
   return (
     <div>
       <div className="checkout-address-title ">
-        <LocationOn fontSize="medium" />
+        <LocationOn fontSize="medium" color="error" />
         <Typography variant="body1" color="accentColor">
           Deliver to
         </Typography>
       </div>
       {userData.name !== "guest" && (
-        <Typography
-          variant="body1"
-          sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
-        >
+        <Typography variant="body1" sx={confirmText} color="textInfo">
           {userData.name}
         </Typography>
       )}
-      <Typography
-        variant="body2"
-        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
-      >
+      <Typography variant="body2" sx={confirmText} color="textInfo">
         {street}
       </Typography>
-      <Typography
-        variant="body2"
-        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
-      >
+      <Typography variant="body2" sx={confirmText} color="textInfo">
         add: {number}
       </Typography>
-      <Typography
-        variant="body2"
-        sx={{ textTransform: "capitalize", paddingLeft: "40px" }}
-      >
+      <Typography variant="body2" sx={confirmText} color="textInfo">
         {location}
       </Typography>
       <div className="checkout-address-title ">
-        <Phone fontSize="small" />
-        <Typography variant="body2" sx={{ textTransform: "capitalize" }}>
+        <Phone fontSize="small" color="error" />
+        <Typography
+          variant="body2"
+          sx={{ textTransform: "capitalize", letterSpacing: "1px" }}
+          color="textInfo"
+        >
           {phoneDecrypt}
         </Typography>
       </div>

@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material"
 import React, { useState, useEffect } from "react"
-import { paperForm } from "../../styles/modalStyles"
+import { paperForm, paperForm2 } from "../../styles/modalStyles"
 import { encryptItem } from "../../util/EncryptionHandler"
 
 const AddressData = ({
@@ -137,7 +137,7 @@ const AddressData = ({
     }
   }
   return (
-    <Paper variant="outlined" sx={paperForm}>
+    <Paper variant="outlined" sx={paperForm2}>
       <Typography color="textInfo">
         Please fill in your phone and Address
       </Typography>
@@ -148,7 +148,7 @@ const AddressData = ({
           size="small"
           fullWidth
           variant="outlined"
-          type="number"
+          type="text"
           color="secondary"
           value={phone || ""}
           label={phoneError.message}
@@ -195,7 +195,7 @@ const AddressData = ({
           onChange={e => setNumber(e.target.value)}
         />
 
-        <ButtonGroup>
+        <ButtonGroup size="small">
           <Button
             variant="outlined"
             color="secondary"

@@ -17,7 +17,7 @@ const LoginAsMember = () => {
           variant="h5"
           color="secondary"
           align="center"
-          sx={{ display: "block" }}
+          sx={{ display: "block", fontWeight: "bold", fontFamily: "cursive" }}
         >
           Hi,{" "}
           <span style={{ textTransform: "capitalize", color: "#C36021" }}>
@@ -27,21 +27,37 @@ const LoginAsMember = () => {
         </Typography>
         <div className="form-container">
           <StaticImage
-            src="../../images/main/newyear.jpg"
+            src="../../images/main/lunch.jpg"
             alt="lunch"
-            style={{ borderRadius: "3px" }}
+            placeholder="dominantColor"
+            style={{ borderRadius: "3px", width: "80%", marginBottom: "10px" }}
           />
           <Typography
-            variant="button"
-            color="error"
+            color="textInfo"
             align="center"
-            sx={{ lineHeight: "17px" }}
+            size="small"
+            sx={{
+              lineHeight: "17px",
+              marginBottom: "8px",
+            }}
           >
             Come and hang out with us for the New Year's Eve! We have 15%
-            discount for P3 members.
+            discount for{" "}
+            <span
+              style={{
+                textTransform: "capitalize",
+                color: "#C36021",
+                fontFamily: "cursive",
+                fontWeight: "bold",
+              }}
+            >
+              P3
+            </span>{" "}
+            members.
           </Typography>
           <Link to="/Menu">
             <Button
+              size="small"
               type="button"
               variant="contained"
               color="secondary"

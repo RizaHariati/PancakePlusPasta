@@ -10,7 +10,7 @@ export const theme = createTheme({
       light: "#fefcf1",
       main: "#EFEDE0",
       dark: "#cfcdc1",
-      contrastText: "#333343",
+      contrastText: "#44403c",
     },
     secondary: {
       light: "#98c2af",
@@ -20,8 +20,8 @@ export const theme = createTheme({
     },
     textColor: "#333343",
     accentColor: "#DD9056",
-    text: { default: "#333343" },
-    textInfo: "#44403c",
+    text: { default: "#44403c" },
+    textInfo: "#57534e",
     info: {
       dark: "#44403c",
       main: "#57534e",

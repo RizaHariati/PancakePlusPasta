@@ -6,7 +6,7 @@ const getTitle = graphql`
     allImageSharp(
       filter: {
         original: {
-          src: { eq: "/static/snippet-fef6159afb1b8ded8c0377448c5e41cb.png" }
+          src: { eq: "/static/snippet-c11a7adfcecfc53b5d03b903d3895c3b.png" }
         }
       }
     ) {
@@ -21,6 +21,7 @@ const getTitle = graphql`
       siteMetadata {
         title
         description
+        siteUrl
       }
     }
   }
@@ -28,8 +29,11 @@ const getTitle = graphql`
 
 const Seo = ({ title, description }) => {
   const result = useStaticQuery(getTitle)
-  const { title: siteTitle, description: siteDescription } =
-    result?.site?.siteMetadata
+  const {
+    title: siteTitle,
+    description: siteDescription,
+    siteUrl,
+  } = result?.site?.siteMetadata
   const imageStatic = result?.allImageSharp
   const siteImage =
     imageStatic?.nodes[0]?.gatsbyImageData?.images?.fallback?.src
@@ -44,8 +48,9 @@ const Seo = ({ title, description }) => {
             name: `google-site-verification`,
             content: process.env.GOOGLE_INDEX,
           },
-          { name: `image`, content: siteImage },
-          { property: `og:image`, content: siteImage },
+          { name: `image`, content: siteUrl + siteImage },
+          { property: `og:image`, content: siteUrl + siteImage },
+          { property: `og:url`, content: siteUrl },
         ]}
       ></Helmet>
     </>

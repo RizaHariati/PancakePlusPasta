@@ -1,6 +1,6 @@
 const container = {
   width: "100%",
-  height: "calc(100vh - 60px)",
+  height: "calc(100vh - 120px)",
   display: "flex",
   flexDirection: "column",
   rowGap: "20px",

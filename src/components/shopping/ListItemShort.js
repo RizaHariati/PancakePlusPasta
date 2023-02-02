@@ -46,7 +46,7 @@ const ShoppingListItem = ({ name, price, amount }) => {
         sx={{ marginLeft: "auto" }}
         color="secondary.dark"
       >
-        x{amount}
+        &nbsp;x &nbsp;{amount}
       </Typography>
       <Typography
         variant="body2"

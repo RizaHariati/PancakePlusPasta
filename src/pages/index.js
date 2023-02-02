@@ -6,6 +6,7 @@ import { Typography } from "@mui/material"
 import { theme } from "../styles/theme"
 import { makeStyles } from "@mui/styles"
 import Seo from "../components/Seo"
+import { mainLight } from "../styles/styles"
 
 const useStyles = makeStyles({
   mainBackground: {
@@ -75,7 +76,10 @@ const IndexPage = () => {
 
   if (!imageMain) {
     return (
-      <div className={classes.mainBackground}>
+      <div
+        className={classes.mainBackground}
+        style={{ backGroundColor: "#fefcf1" }}
+      >
         <Seo title="Home" />
         <div className={classes.mainText1}>
           <Typography
