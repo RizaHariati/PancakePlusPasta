@@ -32,10 +32,11 @@ body::-webkit-inner-spin-button {
 }
 
 .footerAttribute {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-background {
