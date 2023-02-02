@@ -68,6 +68,15 @@ body::-webkit-inner-spin-button {
   background-color: var(--primary-accent);
 }
 
+.modal-info {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  row-gap: 15px;
+}
+
 .menu-links {
   padding-top: 7px;
 }

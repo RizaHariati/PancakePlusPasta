@@ -2,9 +2,11 @@ import { Container, MenuItem, TextField, Typography } from "@mui/material"
 import { graphql } from "gatsby"
 import React, { useState } from "react"
 import Layout from "../components/layout"
-import Submenu from "../components/Submenu"
+
 import { container } from "../styles/styles"
 import Seo from "../components/Seo"
+import Submenu from "../components/MenuComponents/Submenu"
+import MenuDetail from "../components/MenuComponents/MenuDetail"
 
 const Menu = ({ data }) => {
   const array = data.allContentfulPancakeMenu.nodes
@@ -14,6 +16,7 @@ const Menu = ({ data }) => {
   return (
     <Layout>
       <Seo title="Menu" description="Select your menu" />
+      <MenuDetail />
       <Container maxWidth="md" sx={container}>
         <Typography
           variant="h4"

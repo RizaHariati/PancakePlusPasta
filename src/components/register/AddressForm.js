@@ -26,18 +26,17 @@ const AddressForm = ({ openAddressForm, setOpenAddressForm }) => {
   useEffect(() => {
     if (!address.inArea) {
       setOpenAlert(true)
-      setTimeout(() => {
-        setOpenAlert(false)
-      }, 1500)
     }
   }, [address])
   return (
     <div>
       <Snackbar
+        autoHideDuration={1500}
         open={openAlert}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setOpenAlert(false)}
       >
-        <Alert severity="error" sx={{ width: "100%" }}>
+        <Alert severity="warning" sx={{ width: "100%" }}>
           Location is outside the delivery Address
         </Alert>
       </Snackbar>

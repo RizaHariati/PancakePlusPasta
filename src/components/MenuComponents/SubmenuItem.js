@@ -1,7 +1,7 @@
 import { Add, Remove } from "@mui/icons-material"
 import { ButtonBase, Typography } from "@mui/material"
 import React, { useState, useEffect } from "react"
-import { useGlobalContext } from "../context/GlobalContextProvider"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
 
 const SubmenuItem = ({ name, price, id }) => {
   const { editList, loginStatus, openAlert } = useGlobalContext()

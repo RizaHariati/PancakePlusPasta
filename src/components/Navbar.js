@@ -72,7 +72,7 @@ const Navbar = ({
           </Typography>
         </Link>
         <div className="menu-links">
-          <Tooltip title="your order">
+          <Tooltip title="Your Order">
             <Badge badgeContent={totalItem} color="error" overlap="circular">
               <IconButton
                 variant="contained"
@@ -86,7 +86,7 @@ const Navbar = ({
             </Badge>
           </Tooltip>
 
-          <Tooltip title="messages">
+          <Tooltip title="Messages">
             <Badge
               badgeContent={messageNumber ? messageNumber : 0}
               color="error"
@@ -105,7 +105,7 @@ const Navbar = ({
           </Tooltip>
 
           <Link to="/Menu">
-            <Tooltip title="menu">
+            <Tooltip title="Menu">
               <IconButton variant="contained" color="secondary">
                 <Avatar sx={avatar}>
                   <StaticImage
@@ -124,7 +124,7 @@ const Navbar = ({
           </Link>
 
           <Tooltip
-            title="your account"
+            title="Your Account"
             onClick={() => setShowUserAccount(!showUserAccount)}
           >
             <Badge

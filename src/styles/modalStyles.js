@@ -42,6 +42,36 @@ const confirmText = {
   paddingLeft: "44px",
   letterSpacing: "1px",
 }
+
+const modalContainer = {
+  position: "relative",
+  width: "90%",
+  maxWidth: "700px",
+  height: "fit",
+  background: "white",
+  margin: "auto",
+  display: "flex",
+  flexDirection: "column",
+  rowGap: "10px",
+  borderRadius: "5px",
+}
+
+const modalImage = {
+  width: "100%",
+  aspectRatio: { xs: "1.3", sm: "2" },
+}
+const modalBase = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}
+const modalBtn = {
+  position: "absolute",
+  top: 0,
+  right: 0,
+  zIndex: 3,
+  mixBlendMode: "difference",
+}
 export {
   paperModal,
   gridModalForm,
@@ -50,4 +80,8 @@ export {
   paperForm,
   paperForm2,
   confirmText,
+  modalContainer,
+  modalBase,
+  modalBtn,
+  modalImage,
 }

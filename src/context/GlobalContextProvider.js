@@ -1,4 +1,10 @@
-import React, { createContext, useReducer, useContext, useEffect } from "react"
+import React, {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import { reducer } from "../reducers/reducer"
 import { graphql, useStaticQuery } from "gatsby"
 import {
@@ -66,6 +72,11 @@ const initialState = {
 const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [showModal, setShowModal] = useState({
+    status: false,
+    description: null,
+    image: "",
+  })
   const data = useStaticQuery(request)
 
   useEffect(() => {
@@ -127,6 +138,21 @@ const GlobalProvider = ({ children }) => {
     }
   }, [state.alerting])
 
+  const openModal = (description, image) => {
+    if (!description) {
+      return
+    }
+
+    setShowModal({ description, image, status: true })
+  }
+
+  const closeModal = () => {
+    setShowModal({
+      status: false,
+      description: null,
+      image: "",
+    })
+  }
   const editList = (id, nameItem, amount, price) => {
     dispatch({
       type: "EDIT_SHOPPING_LIST",
@@ -214,6 +240,9 @@ const GlobalProvider = ({ children }) => {
         confirmCheckout,
         removeAccount,
         reduceMessagesNumber,
+        closeModal,
+        openModal,
+        showModal,
       }}
     >
       {children}

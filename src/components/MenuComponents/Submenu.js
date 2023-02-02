@@ -8,18 +8,17 @@ import {
 } from "@mui/material"
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { card, cardActions } from "../styles/styles"
-import { useGlobalContext } from "../context/GlobalContextProvider"
+import { card, cardActions } from "../../styles/styles"
+import { useGlobalContext } from "../../context/GlobalContextProvider"
 import SubmenuItem from "./SubmenuItem"
 
 const Submenu = ({ type }) => {
-  const { mainData } = useGlobalContext()
-
-  const handleClick = description => {
+  const { mainData, openModal, closeModal } = useGlobalContext()
+  const handleClick = (description, image) => {
     if (!description) {
-      console.log("no description")
+      return closeModal()
     } else {
-      console.log(description["description"])
+      return openModal(description, image)
     }
   }
   if (!mainData) return <div></div>
@@ -43,7 +42,9 @@ const Submenu = ({ type }) => {
               return (
                 <Grid item md={4} sm={6} xs={12} key={id} justifyItems="center">
                   <Card sx={card}>
-                    <CardActionArea onClick={() => handleClick(description)}>
+                    <CardActionArea
+                      onClick={() => handleClick(description, image)}
+                    >
                       <CardMedia
                         sx={{
                           maxHeight: "180px",
