@@ -20,7 +20,7 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         variant="h4"
         color="textColor"
         align="center"
-        sx={{ lineHeight: "18px", fontWeight: "medium", fontFamily: "cursive" }}
+        sx={{ lineHeight: "20px", fontWeight: "medium", fontFamily: "cursive" }}
       >
         Welcome to
       </Typography>
@@ -28,7 +28,7 @@ const WelcomeForm = ({ setOpenAddressForm, setOpenRegisterForm }) => {
         variant="h4"
         color="textColor"
         align="center"
-        sx={{ lineHeight: "21px", fontWeight: "medium", fontFamily: "cursive" }}
+        sx={{ lineHeight: "24px", fontWeight: "medium", fontFamily: "cursive" }}
       >
         Pancake Plus Pasta
       </Typography>
