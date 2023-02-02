@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material"
 import React, { useState, useEffect } from "react"
-import { paperForm, paperForm2 } from "../../styles/modalStyles"
+import { paperForm2 } from "../../styles/modalStyles"
 import { encryptItem } from "../../util/EncryptionHandler"
 
 const AddressData = ({

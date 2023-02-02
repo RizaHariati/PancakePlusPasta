@@ -18,7 +18,7 @@ export const theme = createTheme({
       dark: "#546e62",
       contrastText: "#fefcf1",
     },
-    textColor: "#333343",
+    textColor: "#44403c",
     accentColor: "#DD9056",
     text: { default: "#44403c" },
     textInfo: "#57534e",

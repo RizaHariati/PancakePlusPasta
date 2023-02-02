@@ -6,7 +6,6 @@ import { Typography } from "@mui/material"
 import { theme } from "../styles/theme"
 import { makeStyles } from "@mui/styles"
 import Seo from "../components/Seo"
-import { mainLight } from "../styles/styles"
 
 const useStyles = makeStyles({
   mainBackground: {

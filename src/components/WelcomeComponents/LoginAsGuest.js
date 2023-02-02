@@ -16,10 +16,14 @@ const LoginAsGuest = ({ setOpenRegisterForm }) => {
   return (
     <Paper variant="outlined" sx={paper}>
       <Typography
-        variant="h5"
+        variant="h4"
         color="textColor"
         align="center"
-        sx={{ marginBottom: "10px" }}
+        sx={{
+          marginBottom: "10px",
+          fontWeight: "medium",
+          fontFamily: "cursive",
+        }}
       >
         You are logged in as Guest
       </Typography>
