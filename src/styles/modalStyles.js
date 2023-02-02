@@ -59,11 +59,13 @@ const modalContainer = {
 const modalImage = {
   width: "100%",
   aspectRatio: { xs: "1.3", sm: "2" },
+  overflow: "hidden",
 }
 const modalBase = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  overflow: "hidden",
 }
 const modalBtn = {
   position: "absolute",
