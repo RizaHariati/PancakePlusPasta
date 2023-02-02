@@ -38,7 +38,13 @@ const SubmenuItem = ({ name, price, id }) => {
 
   return (
     <div className="itemPrice">
-      <Typography variant="body2">
+      <Typography
+        variant="body2"
+        sx={{
+          textTransform: "capitalize",
+          textAlign: "justify",
+        }}
+      >
         {name.replace(/_/g, " ")} : ${price / 100}
       </Typography>
       <div className="addToCart">

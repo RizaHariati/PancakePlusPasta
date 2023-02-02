@@ -82,7 +82,8 @@ const container = {
   paddingBlock: "20px",
 }
 const card = {
-  width: "220px",
+  width: "100%",
+  maxWidth: "280px",
   margin: "auto",
 }
 const cardActions = {

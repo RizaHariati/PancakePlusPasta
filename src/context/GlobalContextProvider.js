@@ -23,13 +23,13 @@ const request = graphql`
             _2_piece
             _3_piece
             _5_piece
-            coca_cola
+            cola
             fanta
             cup
             large
             regular
             sprite
-            item
+            serving
           }
         }
         image {

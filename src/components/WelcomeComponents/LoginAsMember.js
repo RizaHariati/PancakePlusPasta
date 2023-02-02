@@ -14,7 +14,7 @@ const LoginAsMember = () => {
     return (
       <Paper variant="outlined" sx={paper}>
         <Typography
-          variant="h5"
+          variant="h4"
           color="secondary"
           align="center"
           sx={{ display: "block", fontWeight: "bold", fontFamily: "cursive" }}

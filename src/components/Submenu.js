@@ -15,6 +15,13 @@ import SubmenuItem from "./SubmenuItem"
 const Submenu = ({ type }) => {
   const { mainData } = useGlobalContext()
 
+  const handleClick = description => {
+    if (!description) {
+      console.log("no description")
+    } else {
+      console.log(description["description"])
+    }
+  }
   if (!mainData) return <div></div>
   else {
     return (
@@ -30,18 +37,27 @@ const Submenu = ({ type }) => {
           {mainData
             .filter(item => item.type === type)
             .map(menu => {
-              const { price, id, title, image } = menu
+              const { price, id, title, image, description } = menu
               const pathToImage = getImage(image)
 
               return (
                 <Grid item md={4} sm={6} xs={12} key={id} justifyItems="center">
                   <Card sx={card}>
-                    <CardActionArea>
-                      <CardMedia sx={{ maxHeight: "180px" }}>
+                    <CardActionArea onClick={() => handleClick(description)}>
+                      <CardMedia
+                        sx={{
+                          maxHeight: "180px",
+                          width: "100%",
+                          overflow: "hidden",
+                          // maxWidth: "250px",
+                        }}
+                      >
                         <GatsbyImage
                           image={pathToImage}
                           alt={title}
                           objectPosition="top"
+                          objectFit="fill"
+                          style={{ width: "100%" }}
                         />
                       </CardMedia>
                     </CardActionArea>
@@ -50,6 +66,11 @@ const Submenu = ({ type }) => {
                         variant="body1"
                         color="textColor"
                         align="center"
+                        sx={{
+                          textTransform: "capitalize",
+                          letterSpacing: "1.2px",
+                          fontWeight: "medium",
+                        }}
                       >
                         {title}
                       </Typography>

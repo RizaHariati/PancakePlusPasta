@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Pancake Plus Pasta`,
-    description: `Freshly made Pancake and Pasta for you to start the day. A mock up restauran delivery page by Riza Hariati. Please Login before ordering`,
+    description: `Freshly made Pancake and Pasta for you to start the day. A restaurant delivery page by Riza Hariati. Please Login before ordering`,
     author: `@rizahariati`,
     siteUrl: process.env.SITE_URL || `https://pancakepluspasta.netlify.app`,
   },

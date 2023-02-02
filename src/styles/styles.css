@@ -1,9 +1,11 @@
 :root {
   --primary-light: #efede0;
   --primary-dark: #729384;
+  --primary-medium: #98c2af;
   --secondary-dark: #546e62;
   --primary-accent: #dd9056;
   --primary-transition: all 1s ease-in;
+  --textColor: "#44403c";
 }
 
 * {
@@ -20,7 +22,7 @@
 
 image.png body {
   width: 100%;
-  color: #333343;
+  color: var(--textColor);
 }
 
 body::-webkit-outer-spin-button,
@@ -238,7 +240,7 @@ body::-webkit-inner-spin-button {
 }
 
 .inputCart {
-  border-block: 0.5px solid var(--primary-dark);
+  border-block: 0.1px solid var(--primary-medium);
   height: 100%;
   width: 25px;
   text-align: center;
@@ -250,12 +252,6 @@ body::-webkit-inner-spin-button {
 .inputCart:hover {
   border: 0.5px solid var(--secondary-dark);
   color: var(--secondary-dark);
-}
-
-.inputCart::-webkit-outer-spin-button,
-.inputCart::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .itemPrice {

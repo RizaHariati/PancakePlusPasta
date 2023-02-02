@@ -33,7 +33,11 @@ const Menu = ({ data }) => {
           sx={{ textTransform: "capitalize" }}
         >
           {menu.map((option, index) => (
-            <MenuItem key={index} value={option} sx={{ fontFamily: "fantasy" }}>
+            <MenuItem
+              key={index}
+              value={option}
+              sx={{ textTransform: "capitalize" }}
+            >
               {option.replace(/-/g, " ")}
             </MenuItem>
           ))}
